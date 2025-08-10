@@ -5,13 +5,24 @@ import Apps from './Apps';
 import Contact from './Contact';
 import BubbleBackground from './BubbleBackground';
 import Footer from './Footer';
+import LoadingScreen from './LoadingScreen';
 
 function AppContent() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [flashlightSize, setFlashlightSize] = useState(350);
+  const [isLoading, setIsLoading] = useState(true);
   const location = useLocation();
   const isHomePage = location.pathname === '/';
+
+  // Handle initial loading
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 2000); // Show loading screen for 2 seconds
+
+    return () => clearTimeout(timer);
+  }, []);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -71,6 +82,11 @@ function AppContent() {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [location.pathname]);
+
+  // Show loading screen
+  if (isLoading) {
+    return <LoadingScreen />;
+  }
 
   return (
     <div className={`App ${isHomePage ? 'home-page' : ''}`}>
