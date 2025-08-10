@@ -12,6 +12,8 @@ function AppContent() {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [flashlightSize, setFlashlightSize] = useState(350);
   const [isLoading, setIsLoading] = useState(true);
+  const [isNavVisible, setIsNavVisible] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
   const location = useLocation();
   const isHomePage = location.pathname === '/';
 
@@ -56,6 +58,32 @@ function AppContent() {
       window.removeEventListener('resize', updateFlashlightSize);
     };
   }, []);
+
+  // Handle scroll-based navigation visibility
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+      
+      // Always show nav at the top
+      if (currentScrollY <= 100) {
+        setIsNavVisible(true);
+        setLastScrollY(currentScrollY);
+        return;
+      }
+      
+      // Show nav when scrolling up, hide when scrolling down
+      if (currentScrollY < lastScrollY - 10) { // Scrolling up (with threshold)
+        setIsNavVisible(true);
+      } else if (currentScrollY > lastScrollY + 10) { // Scrolling down (with threshold)
+        setIsNavVisible(false);
+      }
+      
+      setLastScrollY(currentScrollY);
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [lastScrollY]);
 
   // Close mobile menu when screen gets bigger
   useEffect(() => {
@@ -103,7 +131,7 @@ function AppContent() {
       {!isHomePage && <BubbleBackground />}
       
       {/* Navigation */}
-      <nav className={`navbar ${!isHomePage ? 'inverted' : ''}`}>
+      <nav className={`navbar ${!isHomePage ? 'inverted' : ''} ${isNavVisible ? 'nav-visible' : 'nav-hidden'}`}>
         <div className="nav-container">
           <div className="nav-logo">
             <svg className="logo-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
