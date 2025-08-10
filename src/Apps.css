@@ -129,7 +129,7 @@
 /* Responsive Design */
 @media (max-width: 768px) {
   .apps-page {
-    padding: 80px 16px 30px;
+    padding: 120px 16px 30px;
   }
   
   .apps-header h1 {
