@@ -1,0 +1,194 @@
+.apps-page {
+  min-height: 100vh;
+  padding: 100px 20px 40px;
+  background: inherit;
+  position: relative;
+}
+
+.apps-header {
+  text-align: center;
+  margin-bottom: 60px;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.apps-header h1 {
+  font-size: 48px;
+  font-weight: 700;
+  color: white;
+  margin-bottom: 16px;
+  text-shadow: 0 0 15px rgba(255, 255, 255, 0.8);
+}
+
+.apps-header p {
+  font-size: 18px;
+  color: rgba(255, 255, 255, 0.9);
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.6);
+}
+
+.apps-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.app-card {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  padding: 30px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+.app-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.1),
+    transparent
+  );
+  transition: left 0.5s ease;
+}
+
+.app-card:hover::before {
+  left: 100%;
+}
+
+.app-card:hover {
+  transform: translateY(-8px);
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+.app-logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.app-icon {
+  font-size: 64px;
+  filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.3));
+  transition: transform 0.3s ease;
+}
+
+.app-card:hover .app-icon {
+  transform: scale(1.1);
+}
+
+.app-info {
+  text-align: center;
+}
+
+.app-info h3 {
+  font-size: 24px;
+  font-weight: 600;
+  color: white;
+  margin-bottom: 12px;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.6);
+}
+
+.app-description {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.8);
+  line-height: 1.6;
+  margin-bottom: 16px;
+  text-shadow: 0 0 8px rgba(255, 255, 255, 0.4);
+}
+
+.app-category {
+  display: inline-block;
+  background: rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.9);
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .apps-page {
+    padding: 80px 16px 30px;
+  }
+  
+  .apps-header h1 {
+    font-size: 36px;
+    color: white;
+    text-shadow: 0 0 15px rgba(255, 255, 255, 0.8);
+  }
+  
+  .apps-header p {
+    font-size: 16px;
+    color: rgba(255, 255, 255, 0.9);
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.6);
+  }
+  
+  .apps-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    padding: 10px;
+  }
+  
+  .app-card {
+    padding: 24px;
+  }
+  
+  .app-icon {
+    font-size: 48px;
+  }
+  
+  .app-info h3 {
+    font-size: 20px;
+    color: white;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.6);
+  }
+}
+
+@media (max-width: 480px) {
+  .apps-header h1 {
+    font-size: 28px;
+    color: white;
+    text-shadow: 0 0 15px rgba(255, 255, 255, 0.8);
+  }
+  
+  .apps-header p {
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.9);
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.6);
+  }
+  
+  .app-card {
+    padding: 20px;
+  }
+  
+  .app-icon {
+    font-size: 40px;
+  }
+  
+  .app-info h3 {
+    font-size: 18px;
+    color: white;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.6);
+  }
+} 
