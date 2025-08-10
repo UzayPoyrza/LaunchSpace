@@ -31,10 +31,19 @@ body {
     transform: translateZ(0);
   }
   
-  /* Disable animations on mobile Safari for better performance */
-  .home-page::after,
+  /* Enable animations on mobile but make them more visible */
+  .home-page::after {
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent); /* Much more visible */
+    filter: brightness(0.8) contrast(2.5); /* Much brighter */
+  }
+  
   .home-page::before {
-    animation: none;
+    background: linear-gradient(
+      45deg,
+      transparent 30%,
+      rgba(255, 255, 255, 0.12) 50%, /* Much more visible */
+      transparent 70%
+    );
   }
 }
 

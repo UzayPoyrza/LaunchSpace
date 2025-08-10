@@ -35,17 +35,20 @@ function BubbleBackground() {
     // Create initial bubbles
     const createBubbles = () => {
       const bubbles: Bubble[] = [];
-      const numBubbles = 8; // Number of bubbles
+      const isMobile = window.innerWidth < 768;
+      const numBubbles = isMobile ? 6 : 8; // 6 bubbles on mobile, 8 on desktop
 
       for (let i = 0; i < numBubbles; i++) {
         bubbles.push({
           id: i,
           x: Math.random() * canvas.width,
           y: Math.random() * canvas.height,
-          size: Math.random() * 120 + 80, // 80-200px
-          speedX: (Math.random() - 0.5) * 0.5, // -0.25 to 0.25
-          speedY: (Math.random() - 0.5) * 0.5,
-          opacity: Math.random() * 0.3 + 0.1 // 0.1 to 0.4
+          size: isMobile ? 
+            Math.random() * 60 + 40 : // 40-100px on mobile (smaller)
+            Math.random() * 120 + 80, // 80-200px on desktop
+          speedX: (Math.random() - 0.5) * (isMobile ? 0.3 : 0.5), // Slower on mobile
+          speedY: (Math.random() - 0.5) * (isMobile ? 0.3 : 0.5),
+          opacity: Math.random() * 0.2 + 0.1 // 0.1 to 0.3 (less opaque)
         });
       }
       return bubbles;
