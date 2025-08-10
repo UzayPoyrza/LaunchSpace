@@ -1,7 +1,25 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './App.css';
 
 function App() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+
+  // Close mobile menu when screen gets bigger
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth > 768 && isMenuOpen) {
+        setIsMenuOpen(false);
+      }
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, [isMenuOpen]);
+
   return (
     <div className="App">
       {/* Navigation */}
@@ -19,11 +37,33 @@ function App() {
             </svg>
             <a href="/">LaunchSpace</a>
           </div>
-          <div className="nav-links">
+          
+          {/* Desktop Navigation */}
+          <div className="nav-links desktop-nav">
             <a href="/apps">Apps</a>
             <a href="/career">Careers</a>
             <a href="/contact">Contact</a>
           </div>
+
+          {/* Mobile Hamburger Menu */}
+          <div className="hamburger-menu">
+            <button 
+              className={`hamburger ${isMenuOpen ? 'active' : ''}`} 
+              onClick={toggleMenu}
+              aria-label="Toggle menu"
+            >
+              <span></span>
+              <span></span>
+              <span></span>
+            </button>
+          </div>
+        </div>
+
+        {/* Mobile Navigation Menu */}
+        <div className={`mobile-nav ${isMenuOpen ? 'active' : ''}`}>
+          <a href="/apps" onClick={() => setIsMenuOpen(false)}>Apps</a>
+          <a href="/career" onClick={() => setIsMenuOpen(false)}>Careers</a>
+          <a href="/contact" onClick={() => setIsMenuOpen(false)}>Contact</a>
         </div>
       </nav>
 
