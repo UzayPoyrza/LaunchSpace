@@ -134,20 +134,43 @@ body::before {
 /* Flashlight/Spotlight Cursor Effect */
 .flashlight-effect {
   position: fixed;
-  width: 500px;
-  height: 500px;
+  width: 700px;
+  height: 700px;
   background: radial-gradient(
     circle,
-    rgba(255, 255, 255, 0.08) 0%,
-    rgba(255, 255, 255, 0.04) 20%,
-    rgba(255, 255, 255, 0.02) 40%,
-    rgba(255, 255, 255, 0.01) 60%,
-    transparent 80%
+    rgba(255, 255, 255, 0.05) 0%,
+    rgba(255, 255, 255, 0.03) 15%,
+    rgba(255, 255, 255, 0.02) 30%,
+    rgba(255, 255, 255, 0.01) 50%,
+    rgba(255, 255, 255, 0.005) 70%,
+    transparent 90%
   );
   border-radius: 50%;
   pointer-events: none;
   z-index: 1;
   mix-blend-mode: screen;
+}
+
+/* Responsive flashlight sizing */
+@media (max-width: 1200px) {
+  .flashlight-effect {
+    width: 600px;
+    height: 600px;
+  }
+}
+
+@media (max-width: 768px) {
+  .flashlight-effect {
+    width: 500px;
+    height: 500px;
+  }
+}
+
+@media (max-width: 480px) {
+  .flashlight-effect {
+    width: 400px;
+    height: 400px;
+  }
 }
 
 /* Hide flashlight on mobile */

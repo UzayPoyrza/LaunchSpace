@@ -8,6 +8,7 @@ import BubbleBackground from './BubbleBackground';
 function AppContent() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const [flashlightSize, setFlashlightSize] = useState(350);
   const location = useLocation();
   const isHomePage = location.pathname === '/';
 
@@ -23,6 +24,25 @@ function AppContent() {
 
     window.addEventListener('mousemove', handleMouseMove);
     return () => window.removeEventListener('mousemove', handleMouseMove);
+  }, []);
+
+  // Update flashlight size based on screen width
+  useEffect(() => {
+    const updateFlashlightSize = () => {
+      if (window.innerWidth > 1200) {
+        setFlashlightSize(350);
+      } else if (window.innerWidth > 768) {
+        setFlashlightSize(300);
+      } else if (window.innerWidth > 480) {
+        setFlashlightSize(250);
+      } else {
+        setFlashlightSize(200);
+      }
+    };
+
+    updateFlashlightSize();
+    window.addEventListener('resize', updateFlashlightSize);
+    return () => window.removeEventListener('resize', updateFlashlightSize);
   }, []);
 
   // Close mobile menu when screen gets bigger
@@ -52,8 +72,8 @@ function AppContent() {
       <div 
         className="flashlight-effect"
         style={{
-          left: mousePosition.x - 250,
-          top: mousePosition.y - 250,
+          left: mousePosition.x - flashlightSize,
+          top: mousePosition.y - flashlightSize,
         }}
       />
       
