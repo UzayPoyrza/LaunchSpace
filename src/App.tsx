@@ -53,7 +53,7 @@ function AppContent() {
               <circle cx="16" cy="6" r="1" fill="currentColor" opacity="0.6"/>
               <circle cx="6" cy="16" r="0.8" fill="currentColor" opacity="0.7"/>
             </svg>
-            <Link to="/">LaunchSpace</Link>
+            <Link to="/" onClick={() => setIsMenuOpen(false)}>LaunchSpace</Link>
           </div>
           
                       {/* Desktop Navigation */}
