@@ -352,7 +352,7 @@ body::before {
 
 .mobile-nav.active {
   max-height: 200px;
-  padding: 16px 0;
+  padding: 0;
 }
 
 .mobile-nav a {
@@ -366,6 +366,11 @@ body::before {
   font-size: 16px;
   font-weight: 500;
   transition: background-color 0.2s ease;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.mobile-nav a:last-child {
+  border-bottom: none;
 }
 
 .mobile-nav a:hover {
@@ -376,6 +381,11 @@ body::before {
 /* Inverted mobile nav links for non-home pages */
 .navbar.inverted .mobile-nav a {
   color: rgba(0, 0, 0, 0.8);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.navbar.inverted .mobile-nav a:last-child {
+  border-bottom: none;
 }
 
 .navbar.inverted .mobile-nav a:hover {
