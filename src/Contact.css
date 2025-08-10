@@ -173,6 +173,26 @@
   box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
 }
 
+/* Error styles for validation */
+.form-group.error input,
+.form-group.error textarea {
+  border-color: rgba(244, 67, 54, 0.6);
+  background: rgba(244, 67, 54, 0.1);
+  box-shadow: 0 0 15px rgba(244, 67, 54, 0.2);
+}
+
+.form-group.error label {
+  color: rgba(244, 67, 54, 0.9);
+}
+
+.error-text {
+  display: block;
+  color: #F44336;
+  font-size: 12px;
+  margin-top: 4px;
+  text-shadow: 0 0 6px rgba(244, 67, 54, 0.4);
+}
+
 .form-group textarea {
   resize: vertical;
   min-height: 120px;

@@ -11,6 +11,7 @@ function Contact() {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
+  const [validationErrors, setValidationErrors] = useState<{[key: string]: boolean}>({});
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -18,10 +19,41 @@ function Contact() {
       ...prev,
       [name]: value
     }));
+    
+    // Clear validation error when user starts typing
+    if (validationErrors[name]) {
+      setValidationErrors(prev => ({
+        ...prev,
+        [name]: false
+      }));
+    }
+  };
+
+  const validateForm = () => {
+    const errors: {[key: string]: boolean} = {};
+    
+    if (!formData.name.trim()) {
+      errors.name = true;
+    }
+    if (!formData.email.trim()) {
+      errors.email = true;
+    }
+    if (!formData.message.trim()) {
+      errors.message = true;
+    }
+    
+    setValidationErrors(errors);
+    return Object.keys(errors).length === 0;
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    
+    // Validate form before submitting
+    if (!validateForm()) {
+      return;
+    }
+    
     setIsSubmitting(true);
     setSubmitStatus('idle');
 
@@ -46,6 +78,7 @@ function Contact() {
 
       setSubmitStatus('success');
       setFormData({ name: '', email: '', company: '', message: '' });
+      setValidationErrors({});
     } catch (error) {
       console.error('Email send error:', error);
       setSubmitStatus('error');
@@ -104,7 +137,7 @@ function Contact() {
           <form className="contact-form" onSubmit={handleSubmit}>
             <h3>Send us a message</h3>
             
-            <div className="form-group">
+            <div className={`form-group ${validationErrors.name ? 'error' : ''}`}>
               <label htmlFor="name">Name *</label>
               <input
                 type="text"
@@ -114,10 +147,14 @@ function Contact() {
                 onChange={handleChange}
                 required
                 placeholder="Your full name"
+                className={validationErrors.name ? 'error' : ''}
               />
+              {validationErrors.name && (
+                <span className="error-text">Name is required</span>
+              )}
             </div>
             
-            <div className="form-group">
+            <div className={`form-group ${validationErrors.email ? 'error' : ''}`}>
               <label htmlFor="email">Email *</label>
               <input
                 type="email"
@@ -127,7 +164,11 @@ function Contact() {
                 onChange={handleChange}
                 required
                 placeholder="your.email@example.com"
+                className={validationErrors.email ? 'error' : ''}
               />
+              {validationErrors.email && (
+                <span className="error-text">Email is required</span>
+              )}
             </div>
             
             <div className="form-group">
@@ -142,7 +183,7 @@ function Contact() {
               />
             </div>
             
-            <div className="form-group">
+            <div className={`form-group ${validationErrors.message ? 'error' : ''}`}>
               <label htmlFor="message">Message *</label>
               <textarea
                 id="message"
@@ -152,7 +193,11 @@ function Contact() {
                 required
                 placeholder="Tell us about your project..."
                 rows={5}
+                className={validationErrors.message ? 'error' : ''}
               />
+              {validationErrors.message && (
+                <span className="error-text">Message is required</span>
+              )}
             </div>
             
             <button 
