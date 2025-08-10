@@ -8,9 +8,21 @@
   z-index: -1;
   opacity: 0.6;
   filter: blur(0.5px);
+  -webkit-transform: translateZ(0); /* Force hardware acceleration on Safari */
+  transform: translateZ(0);
+}
+
+/* Safari-specific fixes for mobile */
+@supports (-webkit-touch-callout: none) {
+  .bubble-background {
+    opacity: 0.4; /* Reduce opacity on mobile Safari for better performance */
+    filter: blur(1px); /* Slightly more blur for better performance */
+  }
 }
 
 /* Ensure bubbles don't interfere with content */
 .bubble-background canvas {
   display: block;
+  -webkit-transform: translateZ(0); /* Force hardware acceleration on Safari */
+  transform: translateZ(0);
 } 

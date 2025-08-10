@@ -23,6 +23,21 @@ body {
   transition: background-color 0.3s ease;
 }
 
+/* Safari-specific fixes for mobile */
+@supports (-webkit-touch-callout: none) {
+  body {
+    background-attachment: scroll; /* Fix for iOS Safari */
+    -webkit-transform: translateZ(0); /* Force hardware acceleration */
+    transform: translateZ(0);
+  }
+  
+  /* Disable animations on mobile Safari for better performance */
+  .home-page::after,
+  .home-page::before {
+    animation: none;
+  }
+}
+
 /* Black background for non-home pages */
 body.black-bg {
   background-image: none;

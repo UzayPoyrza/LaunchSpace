@@ -69,14 +69,14 @@ function Contact() {
               <div className="info-icon">📧</div>
               <div>
                 <h4>Email</h4>
-                <p>hello@launchspace.com</p>
+                <p>uzay@launchspace.org</p>
               </div>
             </div>
             <div className="info-item">
               <div className="info-icon">📍</div>
               <div>
                 <h4>Location</h4>
-                <p>San Francisco, CA</p>
+                <p>Princeton, NJ</p>
               </div>
             </div>
             <div className="info-item">
