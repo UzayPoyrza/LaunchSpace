@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route, Link, useLocation } from 'react
 import './App.css';
 import Apps from './Apps';
 import Contact from './Contact';
+import BubbleBackground from './BubbleBackground';
 
 function AppContent() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -36,6 +37,9 @@ function AppContent() {
 
   return (
     <div className={`App ${isHomePage ? 'home-page' : ''}`}>
+      {/* Bubble Background for non-home pages */}
+      {!isHomePage && <BubbleBackground />}
+      
       {/* Navigation */}
       <nav className={`navbar ${!isHomePage ? 'inverted' : ''}`}>
         <div className="nav-container">
