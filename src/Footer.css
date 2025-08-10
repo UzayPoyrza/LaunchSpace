@@ -1,0 +1,344 @@
+.footer {
+  background: rgba(0, 0, 0, 0.9);
+  backdrop-filter: blur(20px);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 30px 0 20px;
+  margin-top: 40px;
+}
+
+/* Inverted footer for non-home pages */
+.inverted-footer {
+  background: rgba(255, 255, 255, 0.95);
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.inverted-footer .newsletter-section h3 {
+  color: #1a1a1a;
+  text-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.inverted-footer .email-input {
+  background: rgba(0, 0, 0, 0.05);
+  border: 2px solid rgba(0, 0, 0, 0.2);
+  color: #1a1a1a;
+}
+
+.inverted-footer .email-input::placeholder {
+  color: rgba(0, 0, 0, 0.6);
+}
+
+.inverted-footer .email-input:focus {
+  border-color: rgba(0, 0, 0, 0.4);
+  background: rgba(0, 0, 0, 0.08);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+.inverted-footer .subscribe-btn {
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.9), rgba(59, 130, 246, 0.7));
+  border: 2px solid rgba(59, 130, 246, 0.4);
+  color: white;
+}
+
+.inverted-footer .subscribe-btn:hover {
+  background: linear-gradient(135deg, rgba(59, 130, 246, 1), rgba(59, 130, 246, 0.8));
+  border-color: rgba(59, 130, 246, 0.6);
+  box-shadow: 0 8px 25px rgba(59, 130, 246, 0.4);
+}
+
+.inverted-footer .consent-text {
+  color: rgba(0, 0, 0, 0.7);
+  text-shadow: 0 0 6px rgba(0, 0, 0, 0.2);
+}
+
+.inverted-footer .social-icon {
+  background: rgba(0, 0, 0, 0.05);
+  border: 2px solid rgba(0, 0, 0, 0.2);
+  color: rgba(0, 0, 0, 0.8);
+}
+
+.inverted-footer .social-icon:hover {
+  background: rgba(0, 0, 0, 0.1);
+  border-color: rgba(0, 0, 0, 0.4);
+  color: #1a1a1a;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+}
+
+.inverted-footer .copyright-section {
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.inverted-footer .copyright-section p {
+  color: rgba(0, 0, 0, 0.6);
+  text-shadow: 0 0 6px rgba(0, 0, 0, 0.1);
+}
+
+.footer-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  text-align: center;
+}
+
+/* Newsletter Section */
+.newsletter-section {
+  margin-bottom: 30px;
+}
+
+.newsletter-section h3 {
+  font-size: 20px;
+  font-weight: 600;
+  color: white;
+  margin-bottom: 20px;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.6);
+}
+
+.newsletter-form {
+  margin-bottom: 15px;
+}
+
+.email-input-group {
+  display: flex;
+  max-width: 500px;
+  margin: 0 auto;
+  gap: 12px;
+}
+
+.email-input {
+  flex: 1;
+  padding: 14px 18px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-radius: 12px;
+  color: white;
+  font-size: 16px;
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+}
+
+.email-input::placeholder {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.email-input:focus {
+  outline: none;
+  border-color: rgba(255, 255, 255, 0.4);
+  background: rgba(255, 255, 255, 0.15);
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+}
+
+.subscribe-btn {
+  padding: 14px 28px;
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.8), rgba(59, 130, 246, 0.6));
+  border: 2px solid rgba(59, 130, 246, 0.3);
+  border-radius: 12px;
+  color: white;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+  white-space: nowrap;
+}
+
+.subscribe-btn:hover {
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.9), rgba(59, 130, 246, 0.7));
+  border-color: rgba(59, 130, 246, 0.5);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(59, 130, 246, 0.3);
+}
+
+.subscribe-btn:active {
+  transform: translateY(0);
+}
+
+.success-message {
+  color: #4CAF50;
+  font-size: 16px;
+  font-weight: 600;
+  margin: 8px 0;
+  text-shadow: 0 0 10px rgba(76, 175, 80, 0.4);
+}
+
+.consent-text {
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.7);
+  margin: 0;
+  text-shadow: 0 0 6px rgba(255, 255, 255, 0.3);
+}
+
+/* Social Media Section */
+.social-media-section {
+  margin-bottom: 25px;
+}
+
+.social-icons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.social-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 45px;
+  height: 45px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  color: rgba(255, 255, 255, 0.8);
+  text-decoration: none;
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+}
+
+.social-icon:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.4);
+  color: white;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(255, 255, 255, 0.2);
+}
+
+.social-icon svg {
+  width: 22px;
+  height: 22px;
+}
+
+/* Copyright Section */
+.copyright-section {
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding-top: 20px;
+}
+
+.copyright-section p {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.6);
+  margin: 0;
+  text-shadow: 0 0 6px rgba(255, 255, 255, 0.2);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .footer {
+    padding: 20px 0 12px;
+    margin-top: 25px;
+  }
+  
+  .footer-content {
+    padding: 0 16px;
+  }
+  
+  .newsletter-section {
+    margin-bottom: 20px;
+  }
+  
+  .newsletter-section h3 {
+    font-size: 16px;
+    margin-bottom: 15px;
+  }
+  
+  .email-input-group {
+    flex-direction: column;
+    gap: 8px;
+  }
+  
+  .email-input,
+  .subscribe-btn {
+    padding: 10px 14px;
+    font-size: 13px;
+  }
+  
+  .success-message {
+    font-size: 14px;
+    margin: 6px 0;
+  }
+  
+  .consent-text {
+    font-size: 12px;
+  }
+  
+  .social-media-section {
+    margin-bottom: 18px;
+  }
+  
+  .social-icons {
+    gap: 12px;
+  }
+  
+  .social-icon {
+    width: 35px;
+    height: 35px;
+  }
+  
+  .social-icon svg {
+    width: 16px;
+    height: 16px;
+  }
+  
+  .copyright-section {
+    padding-top: 15px;
+  }
+  
+  .copyright-section p {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .footer {
+    padding: 15px 0 10px;
+    margin-top: 20px;
+  }
+  
+  .newsletter-section {
+    margin-bottom: 15px;
+  }
+  
+  .newsletter-section h3 {
+    font-size: 15px;
+    margin-bottom: 12px;
+  }
+  
+  .email-input,
+  .subscribe-btn {
+    padding: 8px 12px;
+    font-size: 12px;
+  }
+  
+  .success-message {
+    font-size: 13px;
+    margin: 5px 0;
+  }
+  
+  .social-media-section {
+    margin-bottom: 15px;
+  }
+  
+  .social-icons {
+    gap: 10px;
+  }
+  
+  .social-icon {
+    width: 30px;
+    height: 30px;
+  }
+  
+  .social-icon svg {
+    width: 14px;
+    height: 14px;
+  }
+  
+  .copyright-section {
+    padding-top: 12px;
+  }
+  
+  .copyright-section p {
+    font-size: 11px;
+  }
+  
+  .consent-text {
+    font-size: 11px;
+  }
+} 

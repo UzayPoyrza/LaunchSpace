@@ -4,6 +4,7 @@ import './App.css';
 import Apps from './Apps';
 import Contact from './Contact';
 import BubbleBackground from './BubbleBackground';
+import Footer from './Footer';
 
 function AppContent() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -69,14 +70,21 @@ function AppContent() {
 
   // Update body background based on current page
   useEffect(() => {
-    if (!isHydrated) return;
+    if (!isHydrated) return; // Don't run on server-side
 
     if (isHomePage) {
       document.body.classList.remove('black-bg');
     } else {
       document.body.classList.add('black-bg');
     }
-  }, [isHomePage, isHydrated]);
+  }, [isHomePage, isHydrated]); // Dependency on isHydrated
+
+  // Scroll to top when location changes
+  useEffect(() => {
+    if (!isHydrated) return; // Don't run on server-side
+    
+    window.scrollTo(0, 0);
+  }, [location.pathname, isHydrated]); // Dependency on location and isHydrated
 
   return (
     <div className={`App ${isHomePage ? 'home-page' : ''}`}>
@@ -206,6 +214,7 @@ function AppContent() {
         } />
         <Route path="/contact" element={<Contact />} />
       </Routes>
+      <Footer isHomePage={isHomePage} />
     </div>
   );
 }
