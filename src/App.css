@@ -11,8 +11,88 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: white;
-  color: #333;
+  background-image: url('./images/background1.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  color: white;
+  position: relative;
+  overflow-x: hidden;
+  text-shadow: 0 0 6px rgba(255, 255, 255, 0.4);
+}
+
+/* Futuristic light animations */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(45deg, rgba(0,0,0,0.4), rgba(50,50,50,0.2));
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* Animated light rays */
+body::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: -100%;
+  width: 200%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.03), transparent);
+  animation: lightSweep 15s ease-in-out infinite;
+  pointer-events: none;
+  z-index: -1;
+  filter: brightness(0.1) contrast(0.1);
+}
+
+@keyframes lightSweep {
+  0% { left: -100%; }
+  50% { left: 100%; }
+  100% { left: -100%; }
+}
+
+/* Smooth gradient wave animation */
+.App::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    45deg,
+    transparent 30%,
+    rgba(255, 255, 255, 0.02) 50%,
+    transparent 70%
+  );
+  background-size: 400px 400px;
+  animation: wave 20s ease-in-out infinite;
+  pointer-events: none;
+  z-index: -1;
+}
+
+@keyframes wave {
+  0%, 100% { 
+    transform: translateX(-50%) translateY(-50%) rotate(0deg);
+    opacity: 0.3;
+  }
+  25% { 
+    transform: translateX(25%) translateY(-25%) rotate(90deg);
+    opacity: 0.5;
+  }
+  50% { 
+    transform: translateX(50%) translateY(0%) rotate(180deg);
+    opacity: 0.3;
+  }
+  75% { 
+    transform: translateX(25%) translateY(25%) rotate(270deg);
+    opacity: 0.5;
+  }
 }
 
 .App {
@@ -25,8 +105,9 @@ body {
   top: 0;
   left: 0;
   right: 0;
-  background: white;
-  border-bottom: 1px solid #e5e5e5;
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   z-index: 1000;
 }
 
@@ -49,13 +130,13 @@ body {
 .logo-icon {
   width: 24px;
   height: 24px;
-  color: #333;
+  color: white;
 }
 
 .nav-logo a {
   font-size: 20px;
   font-weight: 600;
-  color: #333;
+  color: white;
   text-decoration: none;
 }
 
@@ -65,7 +146,7 @@ body {
 }
 
 .nav-links a {
-  color: #666;
+  color: rgba(255, 255, 255, 0.95);
   text-decoration: none;
   font-size: 14px;
   font-weight: 500;
@@ -73,7 +154,7 @@ body {
 }
 
 .nav-links a:hover {
-  color: #333;
+  color: white;
 }
 
 /* Hamburger Menu */
@@ -95,7 +176,7 @@ body {
 .hamburger span {
   width: 24px;
   height: 2px;
-  background-color: #333;
+  background-color: white;
   transition: all 0.3s ease;
   transform-origin: center;
 }
@@ -114,8 +195,9 @@ body {
 /* Mobile Navigation */
 .mobile-nav {
   display: block;
-  background: white;
-  border-top: 1px solid #e5e5e5;
+  background: rgba(0, 0, 0, 0.9);
+  backdrop-filter: blur(10px);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
   padding: 0;
   max-height: 0;
   overflow: hidden;
@@ -128,9 +210,12 @@ body {
 }
 
 .mobile-nav a {
-  display: block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
   padding: 12px 20px;
-  color: #666;
+  color: rgba(255, 255, 255, 0.95);
   text-decoration: none;
   font-size: 16px;
   font-weight: 500;
@@ -138,8 +223,8 @@ body {
 }
 
 .mobile-nav a:hover {
-  background-color: #f5f5f5;
-  color: #333;
+  background-color: rgba(255, 255, 255, 0.1);
+  color: white;
 }
 
 /* Hero Section */
@@ -160,17 +245,19 @@ body {
 .hero-content h1 {
   font-size: 72px;
   font-weight: 300;
-  color: #333;
+  color: white;
   margin-bottom: 32px;
   line-height: 1.1;
+  text-shadow: 0 0 15px rgba(255, 255, 255, 0.8);
 }
 
 .hero-content p {
   font-size: 20px;
-  color: #666;
+  color: rgba(255, 255, 255, 0.95);
   line-height: 1.6;
   max-width: 600px;
   margin: 0 auto;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
 }
 
 /* Responsive Design */
@@ -203,9 +290,13 @@ body {
   
   .hero-content h1 {
     font-size: 36px;
+    color: white;
+    text-shadow: 0 0 15px rgba(255, 255, 255, 0.95);
   }
   
   .hero-content p {
     font-size: 16px;
+    color: white;
+    text-shadow: 0 0 15px rgba(255, 255, 255, 0.85);
   }
 }
