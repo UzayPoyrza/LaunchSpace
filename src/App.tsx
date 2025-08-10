@@ -10,14 +10,8 @@ function AppContent() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [flashlightSize, setFlashlightSize] = useState(350);
-  const [isHydrated, setIsHydrated] = useState(false);
   const location = useLocation();
   const isHomePage = location.pathname === '/';
-
-  // Handle hydration for React-Snap
-  useEffect(() => {
-    setIsHydrated(true);
-  }, []);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -25,8 +19,6 @@ function AppContent() {
 
   // Track mouse position for flashlight effect
   useEffect(() => {
-    if (!isHydrated) return; // Don't run on server-side
-
     const handleMouseMove = (e: MouseEvent) => {
       setMousePosition({ x: e.clientX, y: e.clientY });
     };
@@ -52,12 +44,10 @@ function AppContent() {
       window.removeEventListener('mousemove', handleMouseMove);
       window.removeEventListener('resize', updateFlashlightSize);
     };
-  }, [isHydrated]);
+  }, []);
 
   // Close mobile menu when screen gets bigger
   useEffect(() => {
-    if (!isHydrated) return;
-
     const handleResize = () => {
       if (window.innerWidth > 768 && isMenuOpen) {
         setIsMenuOpen(false);
@@ -66,38 +56,32 @@ function AppContent() {
 
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
-  }, [isMenuOpen, isHydrated]);
+  }, [isMenuOpen]);
 
   // Update body background based on current page
   useEffect(() => {
-    if (!isHydrated) return; // Don't run on server-side
-
     if (isHomePage) {
       document.body.classList.remove('black-bg');
     } else {
       document.body.classList.add('black-bg');
     }
-  }, [isHomePage, isHydrated]); // Dependency on isHydrated
+  }, [isHomePage]);
 
   // Scroll to top when location changes
   useEffect(() => {
-    if (!isHydrated) return; // Don't run on server-side
-    
     window.scrollTo(0, 0);
-  }, [location.pathname, isHydrated]); // Dependency on location and isHydrated
+  }, [location.pathname]);
 
   return (
     <div className={`App ${isHomePage ? 'home-page' : ''}`}>
-      {/* Flashlight/Spotlight Cursor Effect - Only show after hydration */}
-      {isHydrated && (
-        <div 
-          className="flashlight-effect"
-          style={{
-            left: mousePosition.x - flashlightSize,
-            top: mousePosition.y - flashlightSize,
-          }}
-        />
-      )}
+      {/* Flashlight/Spotlight Cursor Effect */}
+      <div 
+        className="flashlight-effect"
+        style={{
+          left: mousePosition.x - flashlightSize,
+          top: mousePosition.y - flashlightSize,
+        }}
+      />
       
       {/* Bubble Background for non-home pages */}
       {!isHomePage && <BubbleBackground />}
@@ -118,27 +102,27 @@ function AppContent() {
             <Link to="/" onClick={() => setIsMenuOpen(false)}>LaunchSpace</Link>
           </div>
           
-                      {/* Desktop Navigation */}
-            <div className="nav-links desktop-nav">
-              <Link 
-                to="/apps" 
-                className={location.pathname === '/apps' ? 'active' : ''}
-              >
-                Apps
-              </Link>
-              <Link 
-                to="/career" 
-                className={location.pathname === '/career' ? 'active' : ''}
-              >
-                Careers
-              </Link>
-              <Link 
-                to="/contact" 
-                className={location.pathname === '/contact' ? 'active' : ''}
-              >
-                Contact
-              </Link>
-            </div>
+          {/* Desktop Navigation */}
+          <div className="nav-links desktop-nav">
+            <Link 
+              to="/apps" 
+              className={location.pathname === '/apps' ? 'active' : ''}
+            >
+              Apps
+            </Link>
+            <Link 
+              to="/career" 
+              className={location.pathname === '/career' ? 'active' : ''}
+            >
+              Careers
+            </Link>
+            <Link 
+              to="/contact" 
+              className={location.pathname === '/contact' ? 'active' : ''}
+            >
+              Contact
+            </Link>
+          </div>
 
           {/* Mobile Hamburger Menu */}
           <div className="hamburger-menu">
@@ -154,43 +138,43 @@ function AppContent() {
           </div>
         </div>
 
-                  {/* Mobile Navigation Menu */}
-          <div className={`mobile-nav ${isMenuOpen ? 'active' : ''}`}>
-            <Link 
-              to="/apps" 
-              onClick={() => setIsMenuOpen(false)}
-              className={location.pathname === '/apps' ? 'active' : ''}
-            >
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <rect x="2" y="3" width="20" height="14" rx="2" ry="2" stroke="currentColor" strokeWidth="2" fill="none"/>
-                <line x1="8" y1="21" x2="16" y2="21" stroke="currentColor" strokeWidth="2"/>
-                <line x1="12" y1="17" x2="12" y2="21" stroke="currentColor" strokeWidth="2"/>
-              </svg>
-              Apps
-            </Link>
-            <Link 
-              to="/career" 
-              onClick={() => setIsMenuOpen(false)}
-              className={location.pathname === '/career' ? 'active' : ''}
-            >
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M20 7L10 17L5 12" stroke="currentColor" strokeWidth="2" fill="none"/>
-                <path d="M21 12V19C21 19.5304 20.7893 20.0391 20.4142 20.4142C20.0391 20.7893 19.5304 21 19 21H5C4.46957 21 3.96086 20.7893 3.58579 20.4142C3.21071 20.0391 3 19.5304 3 19V5C3 4.46957 3.21071 3.96086 3.58579 3.58579C3.96086 3.21071 4.46957 3 5 3H12" stroke="currentColor" strokeWidth="2" fill="none"/>
-              </svg>
-              Careers
-            </Link>
-            <Link 
-              to="/contact" 
-              onClick={() => setIsMenuOpen(false)}
-              className={location.pathname === '/contact' ? 'active' : ''}
-            >
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M4 4H20C21.1 4 22 4.9 22 6V18C22 19.1 21.1 20 20 20H4C2.9 20 2 19.1 2 18V6C2 4.9 2.9 4 4 4Z" stroke="currentColor" strokeWidth="2" fill="none"/>
-                <polyline points="22,6 12,13 2,6" stroke="currentColor" strokeWidth="2" fill="none"/>
-              </svg>
-              Contact
-            </Link>
-          </div>
+        {/* Mobile Navigation Menu */}
+        <div className={`mobile-nav ${isMenuOpen ? 'active' : ''}`}>
+          <Link 
+            to="/apps" 
+            onClick={() => setIsMenuOpen(false)}
+            className={location.pathname === '/apps' ? 'active' : ''}
+          >
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="2" y="3" width="20" height="14" rx="2" ry="2" stroke="currentColor" strokeWidth="2" fill="none"/>
+              <line x1="8" y1="21" x2="16" y2="21" stroke="currentColor" strokeWidth="2"/>
+              <line x1="12" y1="17" x2="12" y2="21" stroke="currentColor" strokeWidth="2"/>
+            </svg>
+            Apps
+          </Link>
+          <Link 
+            to="/career" 
+            onClick={() => setIsMenuOpen(false)}
+            className={location.pathname === '/career' ? 'active' : ''}
+          >
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M20 7L10 17L5 12" stroke="currentColor" strokeWidth="2" fill="none"/>
+              <path d="M21 12V19C21 19.5304 20.7893 20.0391 20.4142 20.4142C20.0391 20.7893 19.5304 21 19 21H5C4.46957 21 3.96086 20.7893 3.58579 20.4142C3.21071 20.0391 3 19.5304 3 19V5C3 4.46957 3.21071 3.96086 3.58579 3.58579C3.96086 3.21071 4.46957 3 5 3H12" stroke="currentColor" strokeWidth="2" fill="none"/>
+            </svg>
+            Careers
+          </Link>
+          <Link 
+            to="/contact" 
+            onClick={() => setIsMenuOpen(false)}
+            className={location.pathname === '/contact' ? 'active' : ''}
+          >
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M4 4H20C21.1 4 22 4.9 22 6V18C22 19.1 21.1 20 20 20H4C2.9 20 2 19.1 2 18V6C2 4.9 2.9 4 4 4Z" stroke="currentColor" strokeWidth="2" fill="none"/>
+              <polyline points="22,6 12,13 2,6" stroke="currentColor" strokeWidth="2" fill="none"/>
+            </svg>
+            Contact
+          </Link>
+        </div>
       </nav>
 
       {/* Routes */}

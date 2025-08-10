@@ -1,5 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
-import './BubbleBackground.css';
+import React, { useRef, useEffect, useState } from 'react';
 
 interface Bubble {
   id: number;
@@ -15,16 +14,8 @@ function BubbleBackground() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const bubblesRef = useRef<Bubble[]>([]);
   const animationRef = useRef<number | undefined>(undefined);
-  const [isHydrated, setIsHydrated] = useState(false);
-
-  // Handle hydration for React-Snap
-  useEffect(() => {
-    setIsHydrated(true);
-  }, []);
 
   useEffect(() => {
-    if (!isHydrated) return; // Don't run on server-side
-
     const canvas = canvasRef.current;
     if (!canvas) return;
 
@@ -74,38 +65,21 @@ function BubbleBackground() {
         bubble.y += bubble.speedY;
 
         // Bounce off edges
-        if (bubble.x - bubble.size / 2 <= 0 || bubble.x + bubble.size / 2 >= canvas.width) {
+        if (bubble.x <= 0 || bubble.x >= canvas.width) {
           bubble.speedX *= -1;
         }
-        if (bubble.y - bubble.size / 2 <= 0 || bubble.y + bubble.size / 2 >= canvas.height) {
+        if (bubble.y <= 0 || bubble.y >= canvas.height) {
           bubble.speedY *= -1;
         }
 
         // Keep bubbles within bounds
-        bubble.x = Math.max(bubble.size / 2, Math.min(canvas.width - bubble.size / 2, bubble.x));
-        bubble.y = Math.max(bubble.size / 2, Math.min(canvas.height - bubble.size / 2, bubble.y));
+        bubble.x = Math.max(0, Math.min(canvas.width, bubble.x));
+        bubble.y = Math.max(0, Math.min(canvas.height, bubble.y));
 
         // Draw bubble
         ctx.beginPath();
-        ctx.arc(bubble.x, bubble.y, bubble.size / 2, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(128, 128, 128, ${bubble.opacity})`;
-        ctx.fill();
-
-        // Add subtle gradient effect
-        const gradient = ctx.createRadialGradient(
-          bubble.x - bubble.size / 4, 
-          bubble.y - bubble.size / 4, 
-          0,
-          bubble.x, 
-          bubble.y, 
-          bubble.size / 2
-        );
-        gradient.addColorStop(0, `rgba(180, 180, 180, ${bubble.opacity * 0.8})`);
-        gradient.addColorStop(1, `rgba(80, 80, 80, ${bubble.opacity * 0.3})`);
-        
-        ctx.beginPath();
-        ctx.arc(bubble.x, bubble.y, bubble.size / 2, 0, Math.PI * 2);
-        ctx.fillStyle = gradient;
+        ctx.arc(bubble.x, bubble.y, bubble.size, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(255, 255, 255, ${bubble.opacity})`;
         ctx.fill();
       });
 
@@ -120,23 +94,22 @@ function BubbleBackground() {
         cancelAnimationFrame(animationRef.current);
       }
     };
-  }, [isHydrated]);
+  }, []);
 
   return (
     <canvas
       ref={canvasRef}
-      className="bubble-background"
       style={{
         position: 'fixed',
         top: 0,
         left: 0,
         width: '100%',
         height: '100%',
-        pointerEvents: 'none',
-        zIndex: -1
+        zIndex: -1,
+        pointerEvents: 'none'
       }}
     />
   );
 }
 
-export default BubbleBackground; 
+export default BubbleBackground;
