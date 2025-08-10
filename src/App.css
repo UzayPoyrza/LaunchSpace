@@ -131,6 +131,32 @@ body::before {
   min-height: 100vh;
 }
 
+/* Flashlight/Spotlight Cursor Effect */
+.flashlight-effect {
+  position: fixed;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.08) 0%,
+    rgba(255, 255, 255, 0.04) 20%,
+    rgba(255, 255, 255, 0.02) 40%,
+    rgba(255, 255, 255, 0.01) 60%,
+    transparent 80%
+  );
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 1;
+  mix-blend-mode: screen;
+}
+
+/* Hide flashlight on mobile */
+@media (max-width: 768px) {
+  .flashlight-effect {
+    display: none;
+  }
+}
+
 /* Navigation */
 .navbar {
   position: fixed;

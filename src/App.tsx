@@ -7,12 +7,23 @@ import BubbleBackground from './BubbleBackground';
 
 function AppContent() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const location = useLocation();
   const isHomePage = location.pathname === '/';
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
+
+  // Track mouse position for flashlight effect
+  useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      setMousePosition({ x: e.clientX, y: e.clientY });
+    };
+
+    window.addEventListener('mousemove', handleMouseMove);
+    return () => window.removeEventListener('mousemove', handleMouseMove);
+  }, []);
 
   // Close mobile menu when screen gets bigger
   useEffect(() => {
@@ -37,6 +48,15 @@ function AppContent() {
 
   return (
     <div className={`App ${isHomePage ? 'home-page' : ''}`}>
+      {/* Flashlight/Spotlight Cursor Effect */}
+      <div 
+        className="flashlight-effect"
+        style={{
+          left: mousePosition.x - 250,
+          top: mousePosition.y - 250,
+        }}
+      />
+      
       {/* Bubble Background for non-home pages */}
       {!isHomePage && <BubbleBackground />}
       

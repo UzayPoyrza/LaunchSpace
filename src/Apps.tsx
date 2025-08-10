@@ -3,6 +3,8 @@ import './Apps.css';
 
 function Apps() {
   const [clickedApp, setClickedApp] = useState<number | null>(null);
+  const [searchTerm, setSearchTerm] = useState('');
+  const [selectedCategory, setSelectedCategory] = useState<string>('all');
   
   const apps = [
     {
@@ -31,8 +33,47 @@ function Apps() {
       category: "Storage",
       website: "https://cloudsync.launchspace.org",
       appStore: "https://apps.apple.com/app/cloudsync"
+    },
+    {
+      id: 4,
+      name: "CodeFlow",
+      description: "Advanced code editor with AI assistance",
+      logo: "💻",
+      category: "Development",
+      website: "https://codeflow.launchspace.org",
+      appStore: "https://apps.apple.com/app/codeflow"
+    },
+    {
+      id: 5,
+      name: "DesignHub",
+      description: "Collaborative design and prototyping tool",
+      logo: "🎨",
+      category: "Design",
+      website: "https://designhub.launchspace.org",
+      appStore: "https://apps.apple.com/app/designhub"
+    },
+    {
+      id: 6,
+      name: "FinanceTracker",
+      description: "Personal finance management and budgeting",
+      logo: "💰",
+      category: "Finance",
+      website: "https://financetracker.launchspace.org",
+      appStore: "https://apps.apple.com/app/financetracker"
     }
   ];
+
+  // Get unique categories
+  const categories = ['all', ...Array.from(new Set(apps.map(app => app.category)))];
+
+  // Filter apps based on search term and category
+  const filteredApps = apps.filter(app => {
+    const matchesSearch = app.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                         app.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                         app.category.toLowerCase().includes(searchTerm.toLowerCase());
+    const matchesCategory = selectedCategory === 'all' || app.category === selectedCategory;
+    return matchesSearch && matchesCategory;
+  });
 
   const handleAppClick = (appId: number) => {
     if (window.innerWidth <= 768) {
@@ -81,8 +122,39 @@ function Apps() {
         <p>Discover our innovative web & AI applications</p>
       </div>
       
+      {/* Search and Filter Section */}
+      <div className="search-filter-section">
+        <div className="search-container">
+          <input
+            type="text"
+            placeholder="Search apps..."
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+            className="search-input"
+          />
+          <span className="search-icon">🔍</span>
+        </div>
+        
+        <div className="category-filters">
+          {categories.map(category => (
+            <button
+              key={category}
+              className={`category-filter-btn ${selectedCategory === category ? 'active' : ''}`}
+              onClick={() => setSelectedCategory(category)}
+            >
+              {category === 'all' ? 'All Apps' : category}
+            </button>
+          ))}
+        </div>
+      </div>
+      
+      {/* Results Count */}
+      <div className="results-info">
+        <p>Showing {filteredApps.length} of {apps.length} apps</p>
+      </div>
+      
       <div className="apps-grid">
-        {apps.map((app) => (
+        {filteredApps.map((app) => (
           <div 
             key={app.id} 
             className={`app-card ${clickedApp === app.id ? 'clicked' : ''}`}
@@ -139,6 +211,22 @@ function Apps() {
           </div>
         ))}
       </div>
+      
+      {/* No Results Message */}
+      {filteredApps.length === 0 && (
+        <div className="no-results">
+          <p>No apps found matching your search criteria.</p>
+          <button 
+            className="clear-filters-btn"
+            onClick={() => {
+              setSearchTerm('');
+              setSelectedCategory('all');
+            }}
+          >
+            Clear Filters
+          </button>
+        </div>
+      )}
     </div>
   );
 }
