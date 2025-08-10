@@ -22,8 +22,24 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "postbuild": "react-snap",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
+  },
+  "reactSnap": {
+    "include": ["/", "/apps", "/career", "/contact"],
+    "destination": "build",
+    "minifyHtml": {
+      "collapseWhitespace": false,
+      "removeComments": false
+    },
+    "inlineCss": true,
+    "sourceMaps": false,
+    "removeBlobs": true,
+    "removeScriptTags": false,
+    "fixWebpackChunksIssue": false,
+    "skipThirdPartyRequests": false,
+    "puppeteerArgs": ["--no-sandbox", "--disable-setuid-sandbox"]
   },
   "eslintConfig": {
     "extends": [
@@ -42,5 +58,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "react-snap": "^1.23.0"
   }
 }

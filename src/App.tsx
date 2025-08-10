@@ -9,8 +9,14 @@ function AppContent() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [flashlightSize, setFlashlightSize] = useState(350);
+  const [isHydrated, setIsHydrated] = useState(false);
   const location = useLocation();
   const isHomePage = location.pathname === '/';
+
+  // Handle hydration for React-Snap
+  useEffect(() => {
+    setIsHydrated(true);
+  }, []);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -18,16 +24,12 @@ function AppContent() {
 
   // Track mouse position for flashlight effect
   useEffect(() => {
+    if (!isHydrated) return; // Don't run on server-side
+
     const handleMouseMove = (e: MouseEvent) => {
       setMousePosition({ x: e.clientX, y: e.clientY });
     };
 
-    window.addEventListener('mousemove', handleMouseMove);
-    return () => window.removeEventListener('mousemove', handleMouseMove);
-  }, []);
-
-  // Update flashlight size based on screen width
-  useEffect(() => {
     const updateFlashlightSize = () => {
       if (window.innerWidth > 1200) {
         setFlashlightSize(350);
@@ -40,13 +42,21 @@ function AppContent() {
       }
     };
 
-    updateFlashlightSize();
+    window.addEventListener('mousemove', handleMouseMove);
     window.addEventListener('resize', updateFlashlightSize);
-    return () => window.removeEventListener('resize', updateFlashlightSize);
-  }, []);
+    
+    updateFlashlightSize();
+
+    return () => {
+      window.removeEventListener('mousemove', handleMouseMove);
+      window.removeEventListener('resize', updateFlashlightSize);
+    };
+  }, [isHydrated]);
 
   // Close mobile menu when screen gets bigger
   useEffect(() => {
+    if (!isHydrated) return;
+
     const handleResize = () => {
       if (window.innerWidth > 768 && isMenuOpen) {
         setIsMenuOpen(false);
@@ -55,27 +65,31 @@ function AppContent() {
 
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
-  }, [isMenuOpen]);
+  }, [isMenuOpen, isHydrated]);
 
   // Update body background based on current page
   useEffect(() => {
+    if (!isHydrated) return;
+
     if (isHomePage) {
       document.body.classList.remove('black-bg');
     } else {
       document.body.classList.add('black-bg');
     }
-  }, [isHomePage]);
+  }, [isHomePage, isHydrated]);
 
   return (
     <div className={`App ${isHomePage ? 'home-page' : ''}`}>
-      {/* Flashlight/Spotlight Cursor Effect */}
-      <div 
-        className="flashlight-effect"
-        style={{
-          left: mousePosition.x - flashlightSize,
-          top: mousePosition.y - flashlightSize,
-        }}
-      />
+      {/* Flashlight/Spotlight Cursor Effect - Only show after hydration */}
+      {isHydrated && (
+        <div 
+          className="flashlight-effect"
+          style={{
+            left: mousePosition.x - flashlightSize,
+            top: mousePosition.y - flashlightSize,
+          }}
+        />
+      )}
       
       {/* Bubble Background for non-home pages */}
       {!isHomePage && <BubbleBackground />}

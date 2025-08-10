@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import './BubbleBackground.css';
 
 interface Bubble {
@@ -15,8 +15,16 @@ function BubbleBackground() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const bubblesRef = useRef<Bubble[]>([]);
   const animationRef = useRef<number | undefined>(undefined);
+  const [isHydrated, setIsHydrated] = useState(false);
+
+  // Handle hydration for React-Snap
+  useEffect(() => {
+    setIsHydrated(true);
+  }, []);
 
   useEffect(() => {
+    if (!isHydrated) return; // Don't run on server-side
+
     const canvas = canvasRef.current;
     if (!canvas) return;
 
@@ -112,7 +120,7 @@ function BubbleBackground() {
         cancelAnimationFrame(animationRef.current);
       }
     };
-  }, []);
+  }, [isHydrated]);
 
   return (
     <canvas
