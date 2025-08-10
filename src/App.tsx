@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, Link, useLocation } from 'react-router-dom';
 import './App.css';
 import Apps from './Apps';
+import Contact from './Contact';
 
 function AppContent() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -24,10 +25,19 @@ function AppContent() {
     return () => window.removeEventListener('resize', handleResize);
   }, [isMenuOpen]);
 
+  // Update body background based on current page
+  useEffect(() => {
+    if (isHomePage) {
+      document.body.classList.remove('black-bg');
+    } else {
+      document.body.classList.add('black-bg');
+    }
+  }, [isHomePage]);
+
   return (
     <div className={`App ${isHomePage ? 'home-page' : ''}`}>
       {/* Navigation */}
-      <nav className="navbar">
+      <nav className={`navbar ${!isHomePage ? 'inverted' : ''}`}>
         <div className="nav-container">
           <div className="nav-logo">
             <svg className="logo-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -109,14 +119,7 @@ function AppContent() {
             </div>
           </section>
         } />
-        <Route path="/contact" element={
-          <section className="hero">
-            <div className="hero-content">
-              <h1>Contact</h1>
-              <p>Get in touch with us to discuss your next project.</p>
-            </div>
-          </section>
-        } />
+        <Route path="/contact" element={<Contact />} />
       </Routes>
     </div>
   );

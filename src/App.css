@@ -20,6 +20,13 @@ body {
   position: relative;
   overflow-x: hidden;
   text-shadow: 0 0 6px rgba(255, 255, 255, 0.4);
+  transition: background-color 0.3s ease;
+}
+
+/* Black background for non-home pages */
+body.black-bg {
+  background-image: none;
+  background-color: #000;
 }
 
 /* Futuristic light animations */
@@ -110,6 +117,13 @@ body::before {
   backdrop-filter: blur(10px);
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   z-index: 1000;
+  transition: all 0.3s ease;
+}
+
+/* Inverted navbar for non-home pages */
+.navbar.inverted {
+  background: rgba(255, 255, 255, 0.95);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 .nav-container {
@@ -132,6 +146,7 @@ body::before {
   width: 24px;
   height: 24px;
   color: white;
+  transition: color 0.3s ease;
 }
 
 .nav-logo a {
@@ -139,6 +154,16 @@ body::before {
   font-weight: 600;
   color: white;
   text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+/* Inverted colors for non-home pages */
+.navbar.inverted .logo-icon {
+  color: #333;
+}
+
+.navbar.inverted .nav-logo a {
+  color: #333;
 }
 
 .nav-links {
@@ -156,6 +181,15 @@ body::before {
 
 .nav-links a:hover {
   color: white;
+}
+
+/* Inverted colors for non-home pages */
+.navbar.inverted .nav-links a {
+  color: rgba(0, 0, 0, 0.8);
+}
+
+.navbar.inverted .nav-links a:hover {
+  color: #333;
 }
 
 /* Hamburger Menu */
@@ -182,6 +216,11 @@ body::before {
   transform-origin: center;
 }
 
+/* Inverted hamburger for non-home pages */
+.navbar.inverted .hamburger span {
+  background-color: #333;
+}
+
 .hamburger.active span:nth-child(1) {
   transform: rotate(45deg) translate(4px, 4px);
 }
@@ -205,6 +244,12 @@ body::before {
   transition: all 0.3s ease;
 }
 
+/* Inverted mobile nav for non-home pages */
+.navbar.inverted .mobile-nav {
+  background: rgba(255, 255, 255, 0.95);
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
 .mobile-nav.active {
   max-height: 200px;
   padding: 16px 0;
@@ -226,6 +271,16 @@ body::before {
 .mobile-nav a:hover {
   background-color: rgba(255, 255, 255, 0.1);
   color: white;
+}
+
+/* Inverted mobile nav links for non-home pages */
+.navbar.inverted .mobile-nav a {
+  color: rgba(0, 0, 0, 0.8);
+}
+
+.navbar.inverted .mobile-nav a:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+  color: #333;
 }
 
 /* Hero Section */
