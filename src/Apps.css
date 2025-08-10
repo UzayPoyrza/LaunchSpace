@@ -75,11 +75,19 @@
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
 }
 
+.app-card:hover .app-logo,
+.app-card:hover .app-info {
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+}
+
 .app-logo {
   display: flex;
   justify-content: center;
   align-items: center;
   margin-bottom: 24px;
+  transition: all 0.3s ease;
 }
 
 .app-icon {
@@ -94,6 +102,7 @@
 
 .app-info {
   text-align: center;
+  transition: all 0.3s ease;
 }
 
 .app-info h3 {
@@ -191,4 +200,230 @@
     color: white;
     text-shadow: 0 0 10px rgba(255, 255, 255, 0.6);
   }
-} 
+} /* Interactive App Actions */
+.app-actions-desktop {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.app-card:hover .app-actions-desktop {
+  opacity: 1;
+  visibility: visible;
+}
+
+.split-top {
+  flex: 1;
+  background: rgba(59, 130, 246, 0.15);
+  backdrop-filter: blur(15px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.split-bottom {
+  flex: 1;
+  background: rgba(16, 185, 129, 0.15);
+  backdrop-filter: blur(15px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.split-top:hover {
+  background: rgba(59, 130, 246, 0.25);
+}
+
+.split-bottom:hover {
+  background: rgba(16, 185, 129, 0.25);
+}
+
+/* Mobile touch feedback */
+@media (max-width: 768px) {
+  .split-top:active {
+    background: rgba(59, 130, 246, 0.35);
+    transition: background 0.1s ease;
+  }
+  
+  .split-bottom:active {
+    background: rgba(16, 185, 129, 0.35);
+    transition: background 0.1s ease;
+  }
+  
+  /* iOS Safari touch feedback */
+  @supports (-webkit-touch-callout: none) {
+    .split-top:active {
+      background: rgba(59, 130, 246, 0.35);
+      -webkit-transition: background 0.1s ease;
+      transition: background 0.1s ease;
+    }
+    
+    .split-bottom:active {
+      background: rgba(16, 185, 129, 0.35);
+      -webkit-transition: background 0.1s ease;
+      transition: background 0.1s ease;
+    }
+  }
+}
+
+.split-top .action-btn,
+.split-bottom .action-btn {
+  background: transparent;
+  border: none;
+  color: white;
+  padding: 0;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.6);
+}
+
+.split-top .action-btn:hover,
+.split-bottom .action-btn:hover {
+  background: transparent;
+  transform: none;
+  box-shadow: none;
+}
+
+.app-actions-mobile {
+  display: none;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.app-card.clicked .app-actions-mobile {
+  display: flex;
+}
+
+.action-btn {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: white;
+  padding: 12px 20px;
+  border-radius: 12px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 140px;
+  justify-content: center;
+}
+
+.action-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+.website-btn {
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.3), rgba(59, 130, 246, 0.1));
+  border-color: rgba(59, 130, 246, 0.3);
+}
+
+.website-btn:hover {
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.4), rgba(59, 130, 246, 0.2));
+}
+
+.appstore-btn {
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.3), rgba(16, 185, 129, 0.1));
+  border-color: rgba(16, 185, 129, 0.3);
+}
+
+.appstore-btn:hover {
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.4), rgba(16, 185, 129, 0.2));
+}
+
+.btn-icon {
+  font-size: 16px;
+}
+
+/* Mobile-specific styles */
+@media (max-width: 768px) {
+  .app-actions-desktop {
+    display: flex !important;
+    opacity: 0;
+    visibility: hidden;
+  }
+  
+  .app-card {
+    cursor: pointer;
+    position: relative;
+  }
+  
+  .app-card.clicked {
+    transform: scale(1.02);
+    background: rgba(255, 255, 255, 0.12);
+  }
+  
+  .app-card.clicked .app-actions-desktop {
+    opacity: 1;
+    visibility: visible;
+  }
+  
+  .app-card.clicked .app-logo,
+  .app-card.clicked .app-info {
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+  }
+  
+  .app-actions-mobile {
+    display: none !important;
+  }
+  
+  /* iOS Safari specific fixes */
+  @supports (-webkit-touch-callout: none) {
+    .app-card {
+      -webkit-transform: translateZ(0);
+      transform: translateZ(0);
+    }
+    
+    .app-card.clicked {
+      -webkit-transform: translateZ(0) scale(1.02);
+      transform: translateZ(0) scale(1.02);
+    }
+    
+    .app-actions-desktop {
+      -webkit-transform: translateZ(0);
+      transform: translateZ(0);
+    }
+  }
+}
+
+/* Desktop-specific styles */
+@media (min-width: 769px) {
+  .app-actions-mobile {
+    display: none;
+  }
+  
+  .app-card {
+    position: relative;
+  }
+}
