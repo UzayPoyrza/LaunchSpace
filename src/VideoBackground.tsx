@@ -56,7 +56,9 @@ function VideoBackground() {
           width: '100%',
           height: '100%',
           objectFit: 'cover',
-          objectPosition: 'center'
+          objectPosition: 'center',
+          filter: 'blur(2px) brightness(0.6) contrast(1.1)',
+          transform: 'scale(1.05)' // Slightly scale up to hide blur edges
         }}
         muted
         playsInline
@@ -69,18 +71,18 @@ function VideoBackground() {
         {/* Fallback: if video fails to load, show a gradient background */}
       </video>
       
-      {/* Fallback gradient overlay in case video doesn't load */}
+      {/* Dark overlay to further reduce brightness and improve readability */}
       <div style={{
         position: 'absolute',
         top: 0,
         left: 0,
         width: '100%',
         height: '100%',
-        background: 'linear-gradient(45deg, rgba(0,0,0,0.3), rgba(20,20,20,0.2))',
+        background: 'linear-gradient(45deg, rgba(0,0,0,0.4), rgba(10,10,10,0.3))',
         pointerEvents: 'none'
       }} />
     </div>
   );
 }
 
-export default VideoBackground; 
+export default VideoBackground;

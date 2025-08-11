@@ -31,6 +31,10 @@ function Career() {
     }
   ];
 
+  const handleApplyClick = () => {
+    window.open('https://uzaypoyrza.github.io/', '_blank');
+  };
+
   return (
     <div className="career-page">
       <div className="career-header">
@@ -76,7 +80,12 @@ function Career() {
                     </div>
                     <div className="job-department">{job.department}</div>
                     <p className="job-description">{job.description}</p>
-                    <button className="apply-btn">Apply Now</button>
+                    <button 
+                      className="apply-btn"
+                      onClick={handleApplyClick}
+                    >
+                      Apply Now
+                    </button>
                   </div>
                 ))}
               </div>
