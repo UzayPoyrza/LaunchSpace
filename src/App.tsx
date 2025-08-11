@@ -3,7 +3,8 @@ import { BrowserRouter as Router, Routes, Route, Link, useLocation } from 'react
 import './App.css';
 import Apps from './Apps';
 import Contact from './Contact';
-import BubbleBackground from './BubbleBackground';
+import Career from './Career';
+import VideoBackground from './VideoBackground';
 import Footer from './Footer';
 import LoadingScreen from './LoadingScreen';
 
@@ -99,11 +100,15 @@ function AppContent() {
 
   // Update body background based on current page
   useEffect(() => {
-    if (isHomePage) {
-      document.body.classList.remove('black-bg');
-    } else {
-      document.body.classList.add('black-bg');
-    }
+    const timer = setTimeout(() => {
+      if (isHomePage) {
+        document.body.classList.remove('black-bg');
+      } else {
+        document.body.classList.add('black-bg');
+      }
+    }, 100); // Small delay to prevent white flash
+
+    return () => clearTimeout(timer);
   }, [isHomePage]);
 
   // Scroll to top when location changes
@@ -127,8 +132,8 @@ function AppContent() {
         }}
       />
       
-      {/* Bubble Background for non-home pages */}
-      {!isHomePage && <BubbleBackground />}
+      {/* Video Background for non-home pages */}
+      {!isHomePage && <VideoBackground />}
       
       {/* Navigation */}
       <nav className={`navbar ${!isHomePage ? 'inverted' : ''} ${isNavVisible ? 'nav-visible' : 'nav-hidden'}`}>
@@ -232,14 +237,7 @@ function AppContent() {
           </section>
         } />
         <Route path="/apps" element={<Apps />} />
-        <Route path="/career" element={
-          <section className="hero">
-            <div className="hero-content">
-              <h1>Careers</h1>
-              <p>Join our team and build the future of web & AI applications.</p>
-            </div>
-          </section>
-        } />
+        <Route path="/career" element={<Career />} />
         <Route path="/contact" element={<Contact />} />
       </Routes>
       <Footer isHomePage={isHomePage} />
