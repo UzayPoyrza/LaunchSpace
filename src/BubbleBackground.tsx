@@ -79,7 +79,7 @@ function BubbleBackground() {
         // Draw bubble
         ctx.beginPath();
         ctx.arc(bubble.x, bubble.y, bubble.size, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(255, 255, 255, ${bubble.opacity})`;
+        ctx.fillStyle = `rgba(255, 255, 255, ${bubble.opacity * 2})`; // Make bubbles more visible
         ctx.fill();
       });
 
@@ -105,7 +105,7 @@ function BubbleBackground() {
         left: 0,
         width: '100%',
         height: '100%',
-        zIndex: -1,
+        zIndex: 0,
         pointerEvents: 'none'
       }}
     />

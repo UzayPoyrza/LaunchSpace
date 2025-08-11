@@ -99,11 +99,15 @@ function AppContent() {
 
   // Update body background based on current page
   useEffect(() => {
-    if (isHomePage) {
-      document.body.classList.remove('black-bg');
-    } else {
-      document.body.classList.add('black-bg');
-    }
+    const timer = setTimeout(() => {
+      if (isHomePage) {
+        document.body.classList.remove('black-bg');
+      } else {
+        document.body.classList.add('black-bg');
+      }
+    }, 100); // Small delay to prevent white flash
+
+    return () => clearTimeout(timer);
   }, [isHomePage]);
 
   // Scroll to top when location changes
