@@ -68,10 +68,15 @@ function Apps() {
 
   // Filter apps based on search term and category
   const filteredApps = apps.filter(app => {
-    const matchesSearch = app.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                         app.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                         app.category.toLowerCase().includes(searchTerm.toLowerCase());
+    const searchTermLower = searchTerm.toLowerCase();
+    
+    // Only search at the beginning of app names and descriptions, not categories
+    const nameMatch = app.name.toLowerCase().startsWith(searchTermLower);
+    const descriptionMatch = app.description.toLowerCase().startsWith(searchTermLower);
+    
+    const matchesSearch = nameMatch || descriptionMatch;
     const matchesCategory = selectedCategory === 'all' || app.category === selectedCategory;
+    
     return matchesSearch && matchesCategory;
   });
 
