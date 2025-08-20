@@ -87,6 +87,11 @@
   transition: all 0.3s ease;
 }
 
+.email-input::placeholder {
+  color: #9ca3af;
+  opacity: 0.7;
+}
+
 .email-input:focus {
   outline: none;
   border-color: #3b82f6;
