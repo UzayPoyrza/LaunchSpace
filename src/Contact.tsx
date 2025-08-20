@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import emailjs from 'emailjs-com';
 import './Contact.css';
 
 function Contact() {
@@ -58,29 +57,35 @@ function Contact() {
     setSubmitStatus('idle');
 
     try {
-      // Initialize EmailJS with your public key
-      emailjs.init('YOUR_PUBLIC_KEY'); // You'll need to replace this with your actual EmailJS public key
+      // Send email using Brevo API
+      const apiUrl = process.env.NODE_ENV === 'production' 
+        ? '/api/send-email'  // In production, use relative URL (same domain)
+        : 'http://localhost:3001/api/send-email';  // In development, use localhost
+      
+      const response = await fetch(apiUrl, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          to: 'contact@launchspace.org',
+          from: formData.email,
+          name: formData.name,
+          company: formData.company,
+          message: formData.message,
+        }),
+      });
 
-      const templateParams = {
-        to_email: 'upoyrazlol@gmail.com',
-        from_name: formData.name,
-        from_email: formData.email,
-        company: formData.company,
-        message: formData.message,
-        reply_to: formData.email
-      };
-
-      await emailjs.send(
-        'YOUR_SERVICE_ID', // You'll need to replace this with your EmailJS service ID
-        'YOUR_TEMPLATE_ID', // You'll need to replace this with your EmailJS template ID
-        templateParams
-      );
+      if (!response.ok) {
+        throw new Error('Failed to send email');
+      }
 
       setSubmitStatus('success');
       setFormData({ name: '', email: '', company: '', message: '' });
       setValidationErrors({});
     } catch (error) {
       console.error('Email send error:', error);
+      console.error('Error details:', error instanceof Error ? error.message : 'Unknown error');
       setSubmitStatus('error');
     } finally {
       setIsSubmitting(false);
@@ -102,7 +107,7 @@ function Contact() {
               <div className="info-icon">📧</div>
               <div>
                 <h4>Email</h4>
-                <p>uzay@launchspace.org</p>
+                <p>contact@launchspace.org</p>
               </div>
             </div>
             <div className="info-item">
