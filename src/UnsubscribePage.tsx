@@ -76,9 +76,15 @@ function UnsubscribePage() {
       <div className="unsubscribe-container">
         <div className="logo-section">
           <div className="logo-icon">
-            <div className="logo-circle">
-              <div className="logo-inner-circle"></div>
-            </div>
+            <svg className="logo-svg" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="12" cy="12" r="10" fill="currentColor" opacity="0.1"/>
+              <circle cx="12" cy="12" r="8" stroke="currentColor" strokeWidth="1.5"/>
+              <circle cx="12" cy="12" r="6" stroke="currentColor" strokeWidth="1" opacity="0.6"/>
+              <circle cx="12" cy="12" r="4" stroke="currentColor" strokeWidth="0.5" opacity="0.4"/>
+              <circle cx="8" cy="8" r="1.5" fill="currentColor" opacity="0.8"/>
+              <circle cx="16" cy="6" r="1" fill="currentColor" opacity="0.6"/>
+              <circle cx="6" cy="16" r="0.8" fill="currentColor" opacity="0.7"/>
+            </svg>
           </div>
           <h1 className="logo-text">LaunchSpace</h1>
         </div>
@@ -155,9 +161,7 @@ function UnsubscribePage() {
           )}
         </div>
 
-        <div className="footer">
-          <p>&copy; 2025 LaunchSpace LLC. All rights reserved.</p>
-        </div>
+
       </div>
     </div>
   );

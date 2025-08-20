@@ -222,11 +222,15 @@ body::before {
   gap: 8px;
 }
 
-.logo-icon {
+.nav-logo .logo-icon {
   width: 24px;
   height: 24px;
   color: white;
   transition: color 0.3s ease;
+  flex-shrink: 0;
+  padding: 0;
+  margin: 0;
+  display: block;
 }
 
 .nav-logo a {
@@ -238,7 +242,7 @@ body::before {
 }
 
 /* Inverted colors for non-home pages */
-.navbar.inverted .logo-icon {
+.navbar.inverted .nav-logo .logo-icon {
   color: #333;
 }
 

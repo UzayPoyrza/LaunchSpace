@@ -129,6 +129,13 @@
   transition: all 0.3s ease;
 }
 
+/* Ensure text is visible on home page */
+.home-footer .email-input {
+  background: rgba(255, 255, 255, 0.15);
+  color: white;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
 .email-input::placeholder {
   color: rgba(255, 255, 255, 0.6);
 }
@@ -138,6 +145,13 @@
   border-color: rgba(255, 255, 255, 0.4);
   background: rgba(255, 255, 255, 0.15);
   box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+}
+
+/* Enhanced focus state for home page */
+.home-footer .email-input:focus {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.5);
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
 }
 
 .subscribe-btn {
