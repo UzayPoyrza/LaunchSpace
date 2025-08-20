@@ -1,4 +1,8 @@
-# Getting Started with Create React App
+# LaunchSpace
+
+A modern web application built with React and TypeScript, featuring a contact form with email functionality.
+
+## Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
@@ -44,3 +48,36 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
 To learn React, check out the [React documentation](https://reactjs.org/).
+
+## Environment Variables
+
+To enable email functionality, you need to set up the following environment variables:
+
+### For Local Development
+Create a `.env.local` file in the root directory:
+```
+BREVO_API_KEY=your_brevo_api_key_here
+```
+
+### For Vercel Deployment
+1. Go to your Vercel dashboard
+2. Select your project
+3. Go to Settings > Environment Variables
+4. Add the following variable:
+   - Name: `BREVO_API_KEY`
+   - Value: Your Brevo API key
+   - Environment: Production (and Preview if you want to test)
+
+## Deployment
+
+This project is configured for deployment on Vercel with serverless functions for the email API.
+
+### Local Development
+```bash
+npm start
+```
+
+### Production Build
+```bash
+npm run build
+```

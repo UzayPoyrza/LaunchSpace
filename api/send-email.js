@@ -58,10 +58,7 @@ module.exports = async (req, res) => {
       `
     };
 
-    console.log('Sending email data to Brevo:', JSON.stringify(emailData, null, 2));
-    console.log('Environment variables available:', Object.keys(process.env).filter(key => key.includes('BREVO')));
-    console.log('Using API key:', process.env.BREVO_API_KEY ? `Present (starts with: ${process.env.BREVO_API_KEY.substring(0, 10)}...)` : 'Missing');
-    console.log('API key length:', process.env.BREVO_API_KEY ? process.env.BREVO_API_KEY.length : 0);
+    console.log('Sending email via Brevo API');
 
     const response = await fetch(brevoUrl, {
       method: 'POST',
@@ -76,9 +73,6 @@ module.exports = async (req, res) => {
     if (!response.ok) {
       const errorData = await response.json();
       console.error('Brevo API error:', errorData);
-      console.error('Response status:', response.status);
-      console.error('Response headers:', response.headers);
-      console.error('Full error response:', JSON.stringify(errorData, null, 2));
       throw new Error(`Failed to send email via Brevo: ${response.status} - ${JSON.stringify(errorData)}`);
     }
 
