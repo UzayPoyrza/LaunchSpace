@@ -1,9 +1,17 @@
 .footer {
   background: rgba(0, 0, 0, 0.9);
   backdrop-filter: blur(20px);
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
   padding: 30px 0 20px;
   margin-top: 40px;
+}
+
+/* Home footer specific styling */
+.home-footer {
+  border-top: none !important;
+}
+
+.home-footer .copyright-section {
+  border-top: none !important;
 }
 
 /* Inverted footer for non-home pages */
@@ -278,7 +286,6 @@
 
 /* Copyright Section */
 .copyright-section {
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
   padding-top: 20px;
 }
 
