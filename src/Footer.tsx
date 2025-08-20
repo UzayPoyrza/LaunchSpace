@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import './Footer.css';
 
 interface FooterProps {
@@ -11,6 +12,14 @@ function Footer({ isHomePage = false }: FooterProps) {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState('');
   const [alreadySubscribed, setAlreadySubscribed] = useState(false);
+  const location = useLocation();
+
+  // Clear error messages when navigating to a different page
+  useEffect(() => {
+    setError('');
+    setAlreadySubscribed(false);
+    setIsSubscribed(false);
+  }, [location.pathname]);
 
   const handleSubscribe = async (e: React.FormEvent) => {
     e.preventDefault();
