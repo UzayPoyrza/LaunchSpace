@@ -26,6 +26,11 @@ function Contact() {
         [name]: false
       }));
     }
+    
+    // Reset submit status when user starts typing (allows multiple submissions)
+    if (submitStatus !== 'idle') {
+      setSubmitStatus('idle');
+    }
   };
 
   const validateForm = () => {
