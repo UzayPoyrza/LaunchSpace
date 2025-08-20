@@ -8,16 +8,40 @@ interface FooterProps {
 function Footer({ isHomePage = false }: FooterProps) {
   const [email, setEmail] = useState('');
   const [isSubscribed, setIsSubscribed] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState('');
 
-  const handleSubscribe = (e: React.FormEvent) => {
+  const handleSubscribe = async (e: React.FormEvent) => {
     e.preventDefault();
     if (email.trim()) {
-      // Here you would typically send the email to your newsletter service
-      console.log('Subscribing email:', email);
-      setIsSubscribed(true);
-      setEmail('');
-      // Reset subscription status after 3 seconds
-      setTimeout(() => setIsSubscribed(false), 3000);
+      setIsLoading(true);
+      setError('');
+      
+      try {
+        const response = await fetch('/api/subscribe', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ email: email.trim() }),
+        });
+
+        const data = await response.json();
+
+        if (response.ok) {
+          setIsSubscribed(true);
+          setEmail('');
+          // Reset subscription status after 5 seconds
+          setTimeout(() => setIsSubscribed(false), 5000);
+        } else {
+          setError(data.error || 'Failed to subscribe. Please try again.');
+        }
+      } catch (err) {
+        console.error('Subscription error:', err);
+        setError('Network error. Please check your connection and try again.');
+      } finally {
+        setIsLoading(false);
+      }
     }
   };
 
@@ -36,16 +60,27 @@ function Footer({ isHomePage = false }: FooterProps) {
                 onChange={(e) => setEmail(e.target.value)}
                 required
                 className="email-input"
+                disabled={isLoading}
               />
-              <button type="submit" className="subscribe-btn">
-                Subscribe
+              <button 
+                type="submit" 
+                className="subscribe-btn"
+                disabled={isLoading}
+              >
+                {isLoading ? 'Subscribing...' : 'Subscribe'}
               </button>
             </div>
           </form>
           
           {isSubscribed && (
             <div className="success-message">
-              Thanks for subscribing! 🚀
+              Thanks for subscribing! 🚀 Welcome email sent!
+            </div>
+          )}
+          
+          {error && (
+            <div className="error-message">
+              {error}
             </div>
           )}
           

@@ -50,6 +50,13 @@
   text-shadow: 0 0 6px rgba(0, 0, 0, 0.2);
 }
 
+.inverted-footer .error-message {
+  color: #d32f2f;
+  text-shadow: 0 0 6px rgba(211, 47, 47, 0.3);
+  background: rgba(211, 47, 47, 0.1);
+  border: 1px solid rgba(211, 47, 47, 0.3);
+}
+
 .inverted-footer .social-icon {
   background: rgba(0, 0, 0, 0.05);
   border: 2px solid rgba(0, 0, 0, 0.2);
@@ -151,12 +158,42 @@
   transform: translateY(0);
 }
 
+.subscribe-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.subscribe-btn:disabled:hover {
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.8), rgba(59, 130, 246, 0.6));
+  border-color: rgba(59, 130, 246, 0.3);
+  transform: none;
+  box-shadow: none;
+}
+
+.email-input:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
 .success-message {
   color: #4CAF50;
   font-size: 16px;
   font-weight: 600;
   margin: 8px 0;
   text-shadow: 0 0 10px rgba(76, 175, 80, 0.4);
+}
+
+.error-message {
+  color: #f44336;
+  font-size: 14px;
+  font-weight: 500;
+  margin: 8px 0;
+  text-shadow: 0 0 10px rgba(244, 67, 54, 0.4);
+  background: rgba(244, 67, 54, 0.1);
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: 1px solid rgba(244, 67, 54, 0.3);
 }
 
 .consent-text {
