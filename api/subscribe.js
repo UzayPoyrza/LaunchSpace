@@ -98,8 +98,8 @@ module.exports = async (req, res) => {
     if (!isExistingContact) {
       const welcomeEmailUrl = 'https://api.brevo.com/v3/smtp/email';
 
-      // Create unsubscribe link (you'll need to set up an unsubscribe endpoint)
-      const unsubscribeLink = `https://launchspace.org/unsubscribe?email=${encodeURIComponent(email.trim())}`;
+      // Create unsubscribe link
+      const unsubscribeLink = `${process.env.NODE_ENV === 'production' ? 'https://launchspace.org' : 'http://localhost:3000'}/unsubscribe?email=${encodeURIComponent(email.trim())}`;
 
       const welcomeEmailData = {
         sender: {

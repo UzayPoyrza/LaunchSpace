@@ -7,6 +7,7 @@ import Career from './Career';
 import VideoBackground from './VideoBackground';
 import Footer from './Footer';
 import LoadingScreen from './LoadingScreen';
+import UnsubscribePage from './UnsubscribePage';
 
 function AppContent() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -239,6 +240,7 @@ function AppContent() {
         <Route path="/apps" element={<Apps />} />
         <Route path="/career" element={<Career />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/unsubscribe" element={<UnsubscribePage />} />
       </Routes>
       <Footer isHomePage={isHomePage} />
     </div>

@@ -131,29 +131,41 @@ module.exports = async (req, res) => {
 
     console.log('Sending unsubscribe confirmation email to:', email);
 
-    const emailResponse = await fetch(confirmationEmailUrl, {
-      method: 'POST',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json',
-        'api-key': process.env.BREVO_API_KEY
-      },
-      body: JSON.stringify(confirmationEmailData)
-    });
+    let emailSent = false;
+    let emailError = null;
 
-    if (!emailResponse.ok) {
-      const errorData = await emailResponse.json();
-      console.error('Brevo email API error:', errorData);
-      // Don't throw error for email sending failure, just log it
-      console.log('Failed to send unsubscribe confirmation email, but unsubscribe was successful');
-    } else {
-      console.log('Unsubscribe confirmation email sent successfully');
+    try {
+      const emailResponse = await fetch(confirmationEmailUrl, {
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+          'api-key': process.env.BREVO_API_KEY
+        },
+        body: JSON.stringify(confirmationEmailData)
+      });
+
+      if (!emailResponse.ok) {
+        const errorData = await emailResponse.json();
+        console.error('Brevo email API error:', errorData);
+        emailError = `Email sending failed: ${emailResponse.status} - ${JSON.stringify(errorData)}`;
+      } else {
+        console.log('Unsubscribe confirmation email sent successfully');
+        emailSent = true;
+      }
+    } catch (emailErr) {
+      console.error('Email sending error:', emailErr);
+      emailError = `Email sending error: ${emailErr.message}`;
     }
 
-    // Return success response
+    // Return success response with email status
     res.json({ 
       success: true, 
-      message: 'Successfully unsubscribed from newsletter. Confirmation email sent.' 
+      message: emailSent 
+        ? 'Successfully unsubscribed from newsletter. Confirmation email sent.' 
+        : 'Successfully unsubscribed from newsletter. Confirmation email could not be sent.',
+      emailSent: emailSent,
+      emailError: emailError
     });
 
   } catch (error) {
