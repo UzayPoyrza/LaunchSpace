@@ -4,6 +4,6 @@ Disallow:
 
 # Allow favicon access
 Allow: /favicon.ico
-Allow: /favicon-*.png
+Allow: /favicon-32x32.png
 Allow: /apple-touch-icon.png
 Allow: /logo*.png
