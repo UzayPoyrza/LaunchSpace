@@ -131,7 +131,7 @@ module.exports = async (req, res) => {
             <p style="color: #666;">Thank you for being part of our community!</p>
             <p style="color: #999; font-size: 14px; margin-top: 20px;">
               If you have any questions, feel free to reach out to us at 
-              <a href="mailto:uzay@launchspace.org" style="color: #007bff;">uzay@launchspace.org</a>
+              <a href="mailto:contact@launchspace.org" style="color: #007bff;">contact@launchspace.org</a>
             </p>
           </div>
           
@@ -153,7 +153,7 @@ module.exports = async (req, res) => {
         
         Thank you for being part of our community!
         
-        If you have any questions, feel free to reach out to us at uzay@launchspace.org
+        If you have any questions, feel free to reach out to us at contact@launchspace.org
         
         © 2025 LaunchSpace LLC. All rights reserved.
       `
