@@ -595,3 +595,65 @@
     position: relative;
   }
 }
+
+/* Coming Soon card styling */
+.app-card.coming-soon {
+  cursor: default;
+  pointer-events: none;
+}
+
+.app-card.coming-soon:hover {
+  transform: none !important;
+  box-shadow: none !important;
+  background: inherit !important;
+  backdrop-filter: inherit !important;
+}
+
+.coming-soon-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  text-align: center;
+  padding: 20px;
+}
+
+.coming-soon-content h3 {
+  font-size: 24px;
+  font-weight: 600;
+  color: white;
+  margin-bottom: 16px;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.6);
+}
+
+.coming-soon-content .app-category {
+  background: rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.8);
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+}
+
+/* Disable all mobile interactions for coming soon cards */
+@media (max-width: 768px) {
+  .app-card.coming-soon {
+    pointer-events: none !important;
+  }
+  
+  .app-card.coming-soon:hover,
+  .app-card.coming-soon:active,
+  .app-card.coming-soon:focus {
+    transform: none !important;
+    background: inherit !important;
+    backdrop-filter: inherit !important;
+    opacity: 1 !important;
+  }
+}
+
+

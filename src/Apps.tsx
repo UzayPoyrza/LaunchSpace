@@ -1,65 +1,54 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import './Apps.css';
 
 function Apps() {
-  const [clickedApp, setClickedApp] = useState<number | null>(null);
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
   
   const apps = [
     {
       id: 1,
-      name: "TaskFlow Pro",
-      description: "AI-powered task management and productivity app",
-      logo: "📱",
+      name: "Neurotype",
+      description: "A science based meditation app, designed to help especially neurodivergent people",
+      logo: "🧠",
       category: "Productivity",
-      website: "https://taskflow.launchspace.org",
-      appStore: "https://apps.apple.com/app/taskflow-pro"
+      website: "https://neurotype.launchspace.org",
+      appStore: "https://apps.apple.com/app/neurotype"
     },
     {
       id: 2,
-      name: "DataViz Studio",
-      description: "Interactive data visualization and analytics platform",
-      logo: "📊",
-      category: "Analytics",
-      website: "https://dataviz.launchspace.org",
-      appStore: "https://apps.apple.com/app/dataviz-studio"
+      name: "Coming Soon",
+      description: "",
+      logo: "",
+      category: "Analytics"
     },
     {
       id: 3,
-      name: "CloudSync",
-      description: "Secure cloud storage and file synchronization",
-      logo: "☁️",
-      category: "Storage",
-      website: "https://cloudsync.launchspace.org",
-      appStore: "https://apps.apple.com/app/cloudsync"
+      name: "Coming Soon",
+      description: "",
+      logo: "",
+      category: "Storage"
     },
     {
       id: 4,
-      name: "CodeFlow",
-      description: "Advanced code editor with AI assistance",
-      logo: "💻",
-      category: "Development",
-      website: "https://codeflow.launchspace.org",
-      appStore: "https://apps.apple.com/app/codeflow"
+      name: "Coming Soon",
+      description: "",
+      logo: "",
+      category: "Development"
     },
     {
       id: 5,
-      name: "DesignHub",
-      description: "Collaborative design and prototyping tool",
-      logo: "🎨",
-      category: "Design",
-      website: "https://designhub.launchspace.org",
-      appStore: "https://apps.apple.com/app/designhub"
+      name: "Coming Soon",
+      description: "",
+      logo: "",
+      category: "Design"
     },
     {
       id: 6,
-      name: "FinanceTracker",
-      description: "Personal finance management and budgeting",
-      logo: "💰",
-      category: "Finance",
-      website: "https://financetracker.launchspace.org",
-      appStore: "https://apps.apple.com/app/financetracker"
+      name: "Coming Soon",
+      description: "",
+      logo: "",
+      category: "Finance"
     }
   ];
 
@@ -80,45 +69,7 @@ function Apps() {
     return matchesSearch && matchesCategory;
   });
 
-  const handleAppClick = (appId: number) => {
-    if (window.innerWidth <= 768) {
-      // On mobile, toggle the clicked state
-      setClickedApp(clickedApp === appId ? null : appId);
-    }
-  };
 
-  const handleWebsiteClick = (e: React.MouseEvent, url: string) => {
-    e.stopPropagation();
-    window.open(url, '_blank');
-    // Close mobile menu after clicking
-    if (window.innerWidth <= 768) {
-      setClickedApp(null);
-    }
-  };
-
-  const handleAppStoreClick = (e: React.MouseEvent, url: string) => {
-    e.stopPropagation();
-    window.open(url, '_blank');
-    // Close mobile menu after clicking
-    if (window.innerWidth <= 768) {
-      setClickedApp(null);
-    }
-  };
-
-  // Close mobile menu when clicking outside
-  useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
-      if (window.innerWidth <= 768 && clickedApp !== null) {
-        const target = event.target as Element;
-        if (!target.closest('.app-card')) {
-          setClickedApp(null);
-        }
-      }
-    };
-
-    document.addEventListener('click', handleClickOutside);
-    return () => document.removeEventListener('click', handleClickOutside);
-  }, [clickedApp]);
 
   return (
     <div className="apps-page">
@@ -162,57 +113,84 @@ function Apps() {
         {filteredApps.map((app) => (
           <div 
             key={app.id} 
-            className={`app-card ${clickedApp === app.id ? 'clicked' : ''}`}
-            onClick={() => handleAppClick(app.id)}
+            className={`app-card ${app.name === "Coming Soon" ? "coming-soon" : ""}`}
           >
-            <div className="app-logo">
-              <span className="app-icon">{app.logo}</span>
-            </div>
-            <div className="app-info">
-              <h3>{app.name}</h3>
-              <p className="app-description">{app.description}</p>
-              <span className="app-category">{app.category}</span>
-            </div>
-            
-            {/* Desktop Hover Actions - Split Design */}
-            <div className="app-actions-desktop">
-              <div className="split-top">
-                <button 
-                  className="action-btn website-btn"
-                  onClick={(e) => handleWebsiteClick(e, app.website)}
-                >
-                  <span className="btn-icon">🌐</span>
-                  Visit Website
-                </button>
+            {app.name === "Coming Soon" ? (
+              // Coming Soon card layout
+              <div className="coming-soon-content">
+                <h3>{app.name}</h3>
+                <span className="app-category">{app.category}</span>
               </div>
-              <div className="split-bottom">
-                <button 
-                  className="action-btn appstore-btn"
-                  onClick={(e) => handleAppStoreClick(e, app.appStore)}
-                >
-                  <span className="btn-icon">📱</span>
-                  Visit in App Store
-                </button>
-              </div>
-            </div>
+            ) : (
+              // Regular app card layout
+              <>
+                <div className="app-logo">
+                  <span className="app-icon">{app.logo}</span>
+                </div>
+                <div className="app-info">
+                  <h3>{app.name}</h3>
+                  <p className="app-description">{app.description}</p>
+                  <span className="app-category">{app.category}</span>
+                </div>
+              </>
+            )}
             
-            {/* Mobile Click Actions */}
-            <div className="app-actions-mobile">
-              <button 
-                className="action-btn website-btn"
-                onClick={(e) => handleWebsiteClick(e, app.website)}
-              >
-                <span className="btn-icon">🌐</span>
-                Visit Website
-              </button>
-              <button 
-                className="action-btn appstore-btn"
-                onClick={(e) => handleAppStoreClick(e, app.appStore)}
-              >
-                <span className="btn-icon">📱</span>
-                Visit in App Store
-              </button>
-            </div>
+            {/* Action buttons only for non-coming soon apps */}
+            {app.name !== "Coming Soon" && (
+              <>
+                {/* Desktop Hover Actions - Split Design */}
+                <div className="app-actions-desktop">
+                  <div className="split-top">
+                    <button 
+                      className="action-btn website-btn"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        window.open(app.website, '_blank');
+                      }}
+                    >
+                      <span className="btn-icon">🌐</span>
+                      Visit Website
+                    </button>
+                  </div>
+                  <div className="split-bottom">
+                    <button 
+                      className="action-btn appstore-btn"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        window.open(app.appStore, '_blank');
+                      }}
+                    >
+                      <span className="btn-icon">📱</span>
+                      Visit in App Store
+                    </button>
+                  </div>
+                </div>
+                
+                {/* Mobile Click Actions */}
+                <div className="app-actions-mobile">
+                  <button 
+                    className="action-btn website-btn"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      window.open(app.website, '_blank');
+                    }}
+                  >
+                    <span className="btn-icon">🌐</span>
+                    Visit Website
+                  </button>
+                  <button 
+                    className="action-btn appstore-btn"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      window.open(app.appStore, '_blank');
+                    }}
+                  >
+                    <span className="btn-icon">📱</span>
+                    Visit in App Store
+                  </button>
+                </div>
+              </>
+            )}
           </div>
         ))}
       </div>
