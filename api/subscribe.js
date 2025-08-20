@@ -94,8 +94,8 @@ module.exports = async (req, res) => {
       throw new Error(`Failed to add contact to Brevo: ${contactResponse.status} - ${JSON.stringify(errorData)}`);
     }
 
-    // Step 3: Send welcome email (only for new subscribers)
-    if (!isExistingContact) {
+    // Step 3: Send welcome email (for new subscribers and resubscribers)
+    if (!isExistingContact || (isExistingContact && !isInList)) {
       const welcomeEmailUrl = 'https://api.brevo.com/v3/smtp/email';
 
       // Create unsubscribe link
