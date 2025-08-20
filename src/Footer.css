@@ -57,6 +57,13 @@
   border: 1px solid rgba(211, 47, 47, 0.3);
 }
 
+.inverted-footer .info-message {
+  color: #1976d2;
+  text-shadow: 0 0 6px rgba(25, 118, 210, 0.3);
+  background: rgba(25, 118, 210, 0.1);
+  border: 1px solid rgba(25, 118, 210, 0.3);
+}
+
 .inverted-footer .social-icon {
   background: rgba(0, 0, 0, 0.05);
   border: 2px solid rgba(0, 0, 0, 0.2);
@@ -182,6 +189,18 @@
   font-weight: 600;
   margin: 8px 0;
   text-shadow: 0 0 10px rgba(76, 175, 80, 0.4);
+}
+
+.info-message {
+  color: #2196F3;
+  font-size: 14px;
+  font-weight: 500;
+  margin: 8px 0;
+  text-shadow: 0 0 10px rgba(33, 150, 243, 0.4);
+  background: rgba(33, 150, 243, 0.1);
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: 1px solid rgba(33, 150, 243, 0.3);
 }
 
 .error-message {

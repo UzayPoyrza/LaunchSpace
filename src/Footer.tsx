@@ -10,12 +10,14 @@ function Footer({ isHomePage = false }: FooterProps) {
   const [isSubscribed, setIsSubscribed] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState('');
+  const [alreadySubscribed, setAlreadySubscribed] = useState(false);
 
   const handleSubscribe = async (e: React.FormEvent) => {
     e.preventDefault();
     if (email.trim()) {
       setIsLoading(true);
       setError('');
+      setAlreadySubscribed(false);
       
       try {
         const response = await fetch('/api/subscribe', {
@@ -33,6 +35,12 @@ function Footer({ isHomePage = false }: FooterProps) {
           setEmail('');
           // Reset subscription status after 5 seconds
           setTimeout(() => setIsSubscribed(false), 5000);
+        } else if (response.status === 409 && data.alreadySubscribed) {
+          // Handle already subscribed case
+          setAlreadySubscribed(true);
+          setEmail('');
+          // Reset already subscribed status after 5 seconds
+          setTimeout(() => setAlreadySubscribed(false), 5000);
         } else {
           setError(data.error || 'Failed to subscribe. Please try again.');
         }
@@ -75,6 +83,12 @@ function Footer({ isHomePage = false }: FooterProps) {
           {isSubscribed && (
             <div className="success-message">
               Thanks for subscribing! 🚀 Welcome email sent!
+            </div>
+          )}
+          
+          {alreadySubscribed && (
+            <div className="info-message">
+              This email is already subscribed to our newsletter! 📧
             </div>
           )}
           
