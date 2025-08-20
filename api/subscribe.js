@@ -45,6 +45,7 @@ module.exports = async (req, res) => {
     });
 
     let isExistingContact = false;
+    let isInList = false;
     
     if (checkResponse.ok) {
       const contactData = await checkResponse.json();
@@ -53,7 +54,7 @@ module.exports = async (req, res) => {
       
       // Check if they're already in the newsletter list
       const listId = parseInt(process.env.BREVO_LIST_ID) || 2;
-      const isInList = contactData.listIds && contactData.listIds.includes(listId);
+      isInList = contactData.listIds && contactData.listIds.includes(listId);
       
       if (isInList) {
         return res.status(409).json({ 
@@ -95,7 +96,7 @@ module.exports = async (req, res) => {
     }
 
     // Step 3: Send welcome email (for new subscribers and resubscribers)
-    if (!isExistingContact || (isExistingContact && !isInList)) {
+    if (!isExistingContact || !isInList) {
       const welcomeEmailUrl = 'https://api.brevo.com/v3/smtp/email';
 
       // Create unsubscribe link

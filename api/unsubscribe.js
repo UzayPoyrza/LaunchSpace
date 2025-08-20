@@ -34,8 +34,38 @@ module.exports = async (req, res) => {
 
     console.log('Processing unsubscribe request for:', email);
 
-    // Remove contact from the newsletter list
+    // First, check if the contact exists and is subscribed
+    const checkContactUrl = `https://api.brevo.com/v3/contacts/${encodeURIComponent(email.trim())}`;
+    
+    console.log('Checking if contact is subscribed:', email);
+
+    const checkResponse = await fetch(checkContactUrl, {
+      method: 'GET',
+      headers: {
+        'Accept': 'application/json',
+        'api-key': process.env.BREVO_API_KEY
+      }
+    });
+
+    if (!checkResponse.ok) {
+      return res.status(404).json({ 
+        error: 'Email address not found in our system.' 
+      });
+    }
+
+    const contactData = await checkResponse.json();
     const listId = parseInt(process.env.BREVO_LIST_ID) || 2;
+    const isInList = contactData.listIds && contactData.listIds.includes(listId);
+
+    if (!isInList) {
+      return res.status(400).json({ 
+        error: 'This email address is not currently subscribed to our newsletter.' 
+      });
+    }
+
+    console.log('Contact is subscribed, proceeding with unsubscribe');
+
+    // Remove contact from the newsletter list
     const removeFromListUrl = `https://api.brevo.com/v3/contacts/lists/${listId}/contacts/remove`;
 
     const removeData = {
