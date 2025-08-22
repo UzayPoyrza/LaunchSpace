@@ -2,6 +2,8 @@
 
 Website for LaunchSpace built primarily with React and TypeScript.
 
+[Live Website](https://launchspace.org)
+
 ## Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
