@@ -1,6 +1,6 @@
 # LaunchSpace
 
-A modern web application built with React and TypeScript, featuring a contact form with email functionality.
+Website for LaunchSpace built primarily with React and TypeScript.
 
 ## Getting Started with Create React App
 
