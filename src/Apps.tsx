@@ -12,7 +12,7 @@ function Apps() {
       description: "A science based meditation app, designed to help especially neurodivergent people",
       logo: "🧠",
       category: "Productivity",
-      website: "https://neurotype.launchspace.org",
+      website: "https://neurotypeapp.com",
       appStore: "https://apps.apple.com/app/neurotype"
     },
     {
