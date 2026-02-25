@@ -109,21 +109,36 @@ function Contact() {
           <div className="info-section">
             <h3>Contact Information</h3>
             <div className="info-item">
-              <div className="info-icon">📧</div>
+              <div className="info-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                  <polyline points="22,6 12,13 2,6" />
+                </svg>
+              </div>
               <div>
                 <h4>Email</h4>
                 <p>contact@launchspace.org</p>
               </div>
             </div>
             <div className="info-item">
-              <div className="info-icon">📍</div>
+              <div className="info-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+                  <circle cx="12" cy="10" r="3" />
+                </svg>
+              </div>
               <div>
                 <h4>Location</h4>
                 <p>Princeton, NJ</p>
               </div>
             </div>
             <div className="info-item">
-              <div className="info-icon">⏰</div>
+              <div className="info-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <circle cx="12" cy="12" r="10" />
+                  <polyline points="12 6 12 12 16 14" />
+                </svg>
+              </div>
               <div>
                 <h4>Response Time</h4>
                 <p>Within 24 hours</p>
