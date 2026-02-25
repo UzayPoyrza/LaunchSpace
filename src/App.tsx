@@ -3,7 +3,6 @@ import { BrowserRouter as Router, Routes, Route, Link, useLocation } from 'react
 import './App.css';
 import Apps from './Apps';
 import Contact from './Contact';
-import Career from './Career';
 import VideoBackground from './VideoBackground';
 import Footer from './Footer';
 import LoadingScreen from './LoadingScreen';
@@ -160,13 +159,7 @@ function AppContent() {
             >
               Apps
             </Link>
-            <Link 
-              to="/career" 
-              className={location.pathname === '/career' ? 'active' : ''}
-            >
-              Careers
-            </Link>
-            <Link 
+<Link 
               to="/contact" 
               className={location.pathname === '/contact' ? 'active' : ''}
             >
@@ -203,17 +196,6 @@ function AppContent() {
             Apps
           </Link>
           <Link 
-            to="/career" 
-            onClick={() => setIsMenuOpen(false)}
-            className={location.pathname === '/career' ? 'active' : ''}
-          >
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M20 7L10 17L5 12" stroke="currentColor" strokeWidth="2" fill="none"/>
-              <path d="M21 12V19C21 19.5304 20.7893 20.0391 20.4142 20.4142C20.0391 20.7893 19.5304 21 19 21H5C4.46957 21 3.96086 20.7893 3.58579 20.4142C3.21071 20.0391 3 19.5304 3 19V5C3 4.46957 3.21071 3.96086 3.58579 3.58579C3.96086 3.21071 4.46957 3 5 3H12" stroke="currentColor" strokeWidth="2" fill="none"/>
-            </svg>
-            Careers
-          </Link>
-          <Link 
             to="/contact" 
             onClick={() => setIsMenuOpen(false)}
             className={location.pathname === '/contact' ? 'active' : ''}
@@ -238,7 +220,6 @@ function AppContent() {
           </section>
         } />
         <Route path="/apps" element={<Apps />} />
-        <Route path="/career" element={<Career />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/unsubscribe" element={<UnsubscribePage />} />
       </Routes>
