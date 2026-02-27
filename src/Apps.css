@@ -80,7 +80,7 @@
   flex-shrink: 0;
 }
 
-.neurotype-icon {
+.featured-icon {
   width: 160px;
   height: 160px;
   border-radius: 36px;
@@ -89,7 +89,7 @@
   transition: transform 0.3s ease, filter 0.3s ease;
 }
 
-.featured-app:hover .neurotype-icon {
+.featured-app:hover .featured-icon {
   transform: scale(1.05);
   filter: drop-shadow(0 0 30px rgba(255, 255, 255, 0.3));
 }
@@ -287,7 +287,7 @@
     margin-bottom: 60px;
   }
 
-  .neurotype-icon {
+  .featured-icon {
     width: 120px;
     height: 120px;
     border-radius: 28px;
@@ -347,7 +347,7 @@
     gap: 24px;
   }
 
-  .neurotype-icon {
+  .featured-icon {
     width: 100px;
     height: 100px;
     border-radius: 24px;
