@@ -23,7 +23,12 @@ function Apps() {
           <img
             src="/images/neurotype-icon.png"
             alt="Neurotype"
-            className="featured-icon"
+            className="featured-icon icon-light"
+          />
+          <img
+            src="/images/neurotype-icon-dark.png"
+            alt=""
+            className="featured-icon icon-dark"
           />
         </div>
         <div className="featured-app-details">
@@ -68,7 +73,12 @@ function Apps() {
           <img
             src="/images/volo-icon.png"
             alt="Volo"
-            className="featured-icon"
+            className="featured-icon icon-light"
+          />
+          <img
+            src="/images/volo-icon-dark.png"
+            alt=""
+            className="featured-icon icon-dark"
           />
         </div>
         <div className="featured-app-details">

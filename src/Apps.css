@@ -78,6 +78,9 @@
 /* Icon */
 .featured-app-icon {
   flex-shrink: 0;
+  position: relative;
+  width: 160px;
+  height: 160px;
 }
 
 .featured-icon {
@@ -86,12 +89,29 @@
   border-radius: 36px;
   object-fit: cover;
   filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.2));
-  transition: transform 0.3s ease, filter 0.3s ease;
+  transition: transform 0.4s ease, filter 0.4s ease, opacity 0.4s ease;
+}
+
+.featured-icon.icon-light {
+  position: relative;
+  z-index: 1;
+}
+
+.featured-icon.icon-dark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  opacity: 0;
 }
 
 .featured-app:hover .featured-icon {
   transform: scale(1.05);
   filter: drop-shadow(0 0 30px rgba(255, 255, 255, 0.3));
+}
+
+.featured-app:hover .featured-icon.icon-dark {
+  opacity: 1;
 }
 
 /* Details */
@@ -287,6 +307,11 @@
     margin-bottom: 60px;
   }
 
+  .featured-app-icon {
+    width: 120px;
+    height: 120px;
+  }
+
   .featured-icon {
     width: 120px;
     height: 120px;
@@ -345,6 +370,11 @@
   .featured-app {
     padding: 24px 20px;
     gap: 24px;
+  }
+
+  .featured-app-icon {
+    width: 100px;
+    height: 100px;
   }
 
   .featured-icon {
