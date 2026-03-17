@@ -8,8 +8,7 @@ function Contact() {
     company: '',
     message: ''
   });
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
+  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success'>('idle');
   const [validationErrors, setValidationErrors] = useState<{[key: string]: boolean}>({});
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -50,7 +49,7 @@ function Contact() {
     return Object.keys(errors).length === 0;
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     
     // Validate form before submitting
@@ -58,43 +57,16 @@ function Contact() {
       return;
     }
     
-    setIsSubmitting(true);
-    setSubmitStatus('idle');
+    const subject = encodeURIComponent(`Contact Form: ${formData.name}${formData.company ? ` (${formData.company})` : ''}`);
+    const body = encodeURIComponent(
+      `Name: ${formData.name}\nEmail: ${formData.email}\nCompany: ${formData.company || 'Not provided'}\n\nMessage:\n${formData.message}`
+    );
 
-    try {
-      // Send email using Brevo API
-      const apiUrl = process.env.NODE_ENV === 'production' 
-        ? '/api/send-email'  // In production, use relative URL (same domain)
-        : 'http://localhost:3001/api/send-email';  // In development, use localhost
-      
-      const response = await fetch(apiUrl, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          to: 'contact@launchspace.org',
-          from: formData.email,
-          name: formData.name,
-          company: formData.company,
-          message: formData.message,
-        }),
-      });
+    window.location.href = `mailto:contact@launchspace.org?subject=${subject}&body=${body}`;
 
-      if (!response.ok) {
-        throw new Error('Failed to send email');
-      }
-
-      setSubmitStatus('success');
-      setFormData({ name: '', email: '', company: '', message: '' });
-      setValidationErrors({});
-    } catch (error) {
-      console.error('Email send error:', error);
-      console.error('Error details:', error instanceof Error ? error.message : 'Unknown error');
-      setSubmitStatus('error');
-    } finally {
-      setIsSubmitting(false);
-    }
+    setSubmitStatus('success');
+    setFormData({ name: '', email: '', company: '', message: '' });
+    setValidationErrors({});
   };
 
   return (
@@ -225,26 +197,16 @@ function Contact() {
               )}
             </div>
             
-            <button 
-              type="submit" 
-              className={`submit-btn ${isSubmitting ? 'submitting' : ''} ${submitStatus === 'success' ? 'success' : ''} ${submitStatus === 'error' ? 'error' : ''}`}
-              disabled={isSubmitting}
+            <button
+              type="submit"
+              className={`submit-btn ${submitStatus === 'success' ? 'success' : ''}`}
             >
-              {isSubmitting ? 'Sending...' : 
-               submitStatus === 'success' ? 'Message Sent!' :
-               submitStatus === 'error' ? 'Send Failed - Try Again' :
-               'Send Message'}
+              {submitStatus === 'success' ? 'Opening Email Client...' : 'Send Message'}
             </button>
-            
+
             {submitStatus === 'success' && (
               <div className="success-message">
-                Thank you for your message! We'll get back to you soon.
-              </div>
-            )}
-            
-            {submitStatus === 'error' && (
-              <div className="error-message">
-                Sorry, there was an error sending your message. Please try again.
+                Your email client should have opened with the message pre-filled. Just hit send!
               </div>
             )}
           </form>

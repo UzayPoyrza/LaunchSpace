@@ -30,6 +30,10 @@ module.exports = async (req, res) => {
 
     const emailData = {
       sender: {
+        name: 'LaunchSpace Contact Form',
+        email: 'contact@launchspace.org'
+      },
+      replyTo: {
         name: name,
         email: from
       },
