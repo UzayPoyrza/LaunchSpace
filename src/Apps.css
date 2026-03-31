@@ -108,6 +108,39 @@
   backdrop-filter: blur(10px);
 }
 
+/* ========== Platform Tag ========== */
+.platform-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 4px 12px;
+  border-radius: 8px;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  margin-bottom: 18px;
+  border: 1px solid;
+}
+
+.platform-mobile-app {
+  color: rgba(96, 165, 250, 0.9);
+  background: rgba(59, 130, 246, 0.1);
+  border-color: rgba(59, 130, 246, 0.2);
+}
+
+.platform-web-app {
+  color: rgba(167, 139, 250, 0.9);
+  background: rgba(139, 92, 246, 0.1);
+  border-color: rgba(139, 92, 246, 0.2);
+}
+
+.platform-cli-tool {
+  color: rgba(52, 211, 153, 0.9);
+  background: rgba(16, 185, 129, 0.1);
+  border-color: rgba(16, 185, 129, 0.2);
+}
+
 /* ========== App Card Icon ========== */
 .app-card-icon {
   position: relative;

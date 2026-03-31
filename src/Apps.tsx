@@ -4,6 +4,7 @@ import './Apps.css';
 interface AppData {
   name: string;
   category: string;
+  platform: string;
   description: string;
   icon: string;
   iconDark: string;
@@ -17,6 +18,7 @@ function Apps() {
     {
       name: 'Neurotype',
       category: 'Wellness',
+      platform: 'Mobile App',
       description:
         'A science-based meditation app, designed to help especially neurodivergent people. Grounded in research, shaped by real needs.',
       icon: '/images/neurotype-icon.png',
@@ -27,6 +29,7 @@ function Apps() {
     {
       name: 'Volo',
       category: 'Aviation',
+      platform: 'Mobile App',
       description:
         'Your pilot companion & toolbox. Essential tools and resources for pilots, all in one app.',
       icon: '/images/volo-icon.png',
@@ -37,6 +40,7 @@ function Apps() {
     {
       name: 'Incraft',
       category: 'AI',
+      platform: 'Web App',
       description:
         'Generate studio-quality guided meditation in one prompt. Natural voice narration, timed pauses, tailored scripts.',
       icon: '/images/incraft-icon.png',
@@ -46,6 +50,7 @@ function Apps() {
     {
       name: 'Myro',
       category: 'Education',
+      platform: 'CLI Tool',
       description:
         'An adaptive competitive programming trainer. The shortest path to red.',
       icon: '/images/myro-icon.png',
@@ -78,6 +83,28 @@ function Apps() {
             {app.comingSoon && (
               <span className="coming-soon-badge">Coming Soon</span>
             )}
+            <span className={`platform-tag platform-${app.platform.toLowerCase().replace(' ', '-')}`}>
+              {app.platform === 'Mobile App' && (
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <rect x="5" y="2" width="14" height="20" rx="2" ry="2" />
+                  <line x1="12" y1="18" x2="12.01" y2="18" />
+                </svg>
+              )}
+              {app.platform === 'Web App' && (
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <circle cx="12" cy="12" r="10" />
+                  <line x1="2" y1="12" x2="22" y2="12" />
+                  <path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z" />
+                </svg>
+              )}
+              {app.platform === 'CLI Tool' && (
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <polyline points="4 17 10 11 4 5" />
+                  <line x1="12" y1="19" x2="20" y2="19" />
+                </svg>
+              )}
+              {app.platform}
+            </span>
             <div className="app-card-icon">
               <img
                 src={app.icon}
