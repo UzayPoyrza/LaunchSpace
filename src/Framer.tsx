@@ -324,7 +324,18 @@ const Framer: React.FC = () => {
     <div className="nitro-page">
       <motion.nav className={`nitro-nav ${scrolled ? 'nitro-nav--scrolled' : ''}`} initial={{ y: -80 }} animate={{ y: 0 }} transition={{ duration: 0.6, ease }}>
         <div className="nitro-nav__inner">
-          <Link to="/framer" className="nitro-nav__logo">LaunchSpace</Link>
+          <Link to="/framer" className="nitro-nav__logo">
+            <svg className="nitro-nav__logo-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="12" cy="12" r="10" fill="currentColor" opacity="0.1"/>
+              <circle cx="12" cy="12" r="8" stroke="currentColor" strokeWidth="1.5"/>
+              <circle cx="12" cy="12" r="6" stroke="currentColor" strokeWidth="1" opacity="0.6"/>
+              <circle cx="12" cy="12" r="4" stroke="currentColor" strokeWidth="0.5" opacity="0.4"/>
+              <circle cx="8" cy="8" r="1.5" fill="currentColor" opacity="0.8"/>
+              <circle cx="16" cy="6" r="1" fill="currentColor" opacity="0.6"/>
+              <circle cx="6" cy="16" r="0.8" fill="currentColor" opacity="0.7"/>
+            </svg>
+            LaunchSpace
+          </Link>
           <div className="nitro-nav__links">{navContent}</div>
           <button className={`nitro-hamburger ${menuOpen ? 'active' : ''}`} onClick={() => setMenuOpen(!menuOpen)} aria-label="Toggle menu">
             <span /><span /><span />

@@ -151,6 +151,15 @@ body.nitro-body {
   font-weight: 600;
   color: var(--text-1);
   letter-spacing: -0.02em;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.nitro-nav__logo-icon {
+  width: 22px;
+  height: 22px;
+  flex-shrink: 0;
 }
 
 .nitro-nav__links {
