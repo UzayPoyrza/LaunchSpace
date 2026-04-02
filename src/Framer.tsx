@@ -191,8 +191,8 @@ const TerminalShowcase: React.FC<{ title: string; castFile: string }> = ({ title
 
   const handleRestart = (e: React.MouseEvent) => {
     e.stopPropagation();
-    playerRef.current?.dispose();
-    createPlayer();
+    playerRef.current?.seek(0);
+    playerRef.current?.play();
   };
 
   return (
