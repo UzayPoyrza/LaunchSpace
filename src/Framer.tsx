@@ -51,7 +51,7 @@ const socialLinks = [
   { platform: 'github', handle: '@launchspace', url: 'https://github.com/launchspace' },
   { platform: 'linkedin', handle: 'LaunchSpace LLC', url: 'https://linkedin.com/company/launchspace' },
   { platform: 'x', handle: '@launchspace', url: 'https://x.com/launchspace' },
-  { platform: 'email', handle: 'hello@launchspace.org', url: 'mailto:hello@launchspace.org' },
+  { platform: 'email', handle: 'contact@launchspace.org', url: 'mailto:contact@launchspace.org' },
 ];
 
 /* ─── data ─── */
@@ -209,7 +209,7 @@ const ContactPage: React.FC = () => {
   const [form, setForm] = useState({ name: '', email: '', message: '' });
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    window.location.href = `mailto:hello@launchspace.org?subject=Project inquiry from ${form.name}&body=${encodeURIComponent(form.message)}%0A%0AFrom: ${form.name} (${form.email})`;
+    window.location.href = `mailto:contact@launchspace.org?subject=Project inquiry from ${form.name}&body=${encodeURIComponent(form.message)}%0A%0AFrom: ${form.name} (${form.email})`;
   };
 
   return (
