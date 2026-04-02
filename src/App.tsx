@@ -34,8 +34,10 @@ function AppContent() {
     setIsMenuOpen(!isMenuOpen);
   };
 
-  // Track mouse position for flashlight effect
+  // Track mouse position for flashlight effect (skip on Framer pages where it's not used)
   useEffect(() => {
+    if (isFramerPage) return;
+
     const handleMouseMove = (e: MouseEvent) => {
       setMousePosition({ x: e.clientX, y: e.clientY });
     };
@@ -54,14 +56,14 @@ function AppContent() {
 
     window.addEventListener('mousemove', handleMouseMove);
     window.addEventListener('resize', updateFlashlightSize);
-    
+
     updateFlashlightSize();
 
     return () => {
       window.removeEventListener('mousemove', handleMouseMove);
       window.removeEventListener('resize', updateFlashlightSize);
     };
-  }, []);
+  }, [isFramerPage]);
 
   // Handle scroll-based navigation visibility
   useEffect(() => {

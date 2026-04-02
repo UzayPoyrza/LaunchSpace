@@ -292,6 +292,14 @@ const NitroFooter: React.FC = () => (
 );
 
 /* ═══════════════════════════════════════
+   NAV LINK (stable identity — must be outside Framer to avoid remounts)
+   ═══════════════════════════════════════ */
+const NavLink: React.FC<{ to?: string; onClick?: () => void; onNavigate?: () => void; active?: boolean; children: React.ReactNode }> = ({ to, onClick, onNavigate, active, children }) => {
+  if (to) return <Link to={to} className={active ? 'active' : ''} onClick={onNavigate}>{children}</Link>;
+  return <button className={active ? 'active' : ''} onClick={onClick}>{children}</button>;
+};
+
+/* ═══════════════════════════════════════
    MAIN SHELL
    ═══════════════════════════════════════ */
 const Framer: React.FC = () => {
@@ -330,15 +338,12 @@ const Framer: React.FC = () => {
     document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
   };
 
-  const NavLink: React.FC<{ to?: string; onClick?: () => void; active?: boolean; children: React.ReactNode }> = ({ to, onClick, active, children }) => {
-    if (to) return <Link to={to} className={active ? 'active' : ''} onClick={() => setMenuOpen(false)}>{children}</Link>;
-    return <button className={active ? 'active' : ''} onClick={onClick}>{children}</button>;
-  };
+  const closeMenu = () => setMenuOpen(false);
 
   const navContent = (
     <>
-      <NavLink to="/framer/projects" active={currentPage === 'projects'}>projects</NavLink>
-      <NavLink to="/framer/contact" active={currentPage === 'contact'}>contact</NavLink>
+      <NavLink to="/framer/projects" active={currentPage === 'projects'} onNavigate={closeMenu}>projects</NavLink>
+      <NavLink to="/framer/contact" active={currentPage === 'contact'} onNavigate={closeMenu}>contact</NavLink>
     </>
   );
 
