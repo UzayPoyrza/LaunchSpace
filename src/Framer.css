@@ -440,12 +440,12 @@ body.nitro-body {
 .nitro-projects-stack {
   display: flex;
   flex-direction: column;
-  gap: 144px;
+  gap: 40px;
 }
 
 .nitro-project-sticky-wrap {
   position: sticky;
-  top: 160px;
+  top: 100px;
 }
 
 .nitro-project-card {
@@ -460,11 +460,11 @@ body.nitro-body {
   overflow: hidden;
   cursor: pointer;
   transition: box-shadow 0.4s ease, border-color 0.4s ease;
-  box-shadow: 0px -4px 20px -0.3px rgba(0, 0, 0, 0.15);
+  box-shadow: 0px -8px 30px 0px rgba(0, 0, 0, 0.4);
 }
 
 .nitro-project-card:hover {
-  box-shadow: 0 30px 80px -20px rgba(0, 0, 0, 0.45),
+  box-shadow: 0px -8px 40px 0px rgba(0, 0, 0, 0.6),
               0 0 1px 0 rgba(255, 255, 255, 0.06);
 }
 
@@ -695,7 +695,7 @@ body.nitro-body {
 }
 
 .nitro-project-card--list {
-  height: 75vh;
+  height: 55vh;
 }
 
 .nitro-project-detailed__info {
@@ -1000,7 +1000,7 @@ body.nitro-body {
   }
 
   .nitro-projects-stack {
-    gap: 100px;
+    gap: 30px;
   }
 
 }
@@ -1055,7 +1055,7 @@ body.nitro-body {
   }
 
   .nitro-projects-stack {
-    gap: 60px;
+    gap: 20px;
   }
 
   .nitro-project-sticky-wrap {
