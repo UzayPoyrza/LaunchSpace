@@ -109,7 +109,7 @@ const HomePage: React.FC = () => (
     <section className="nitro-section nitro-section--projects" id="projects">
       <div className="nitro-projects-stack">
         {projects.map((p, i) => (
-          <motion.div key={p.name} className="nitro-project-sticky-wrap" style={{ zIndex: i + 1, top: 100 + i * 15 }} initial={{ opacity: 0, y: 150 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: '-80px' }} transition={{ duration: 0.7, delay: 0.05, ease }}>
+          <motion.div key={p.name} className="nitro-project-sticky-wrap" style={{ zIndex: i + 1, top: 100 + i * 15 }} initial={{ opacity: 1, y: 0 }} animate={{ opacity: 1, y: 0 }}>
             <ProjectCard p={p} />
           </motion.div>
         ))}
@@ -131,7 +131,7 @@ const HomePage: React.FC = () => (
       </motion.div>
     </section>
 
-    <section className="nitro-section nitro-section--contact" id="contact">
+    <section className="nitro-section nitro-section--contact nitro-section--contact-centered" id="contact">
       <motion.div initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: '-100px' }} transition={{ duration: 0.8, ease }}>
         <div className="nitro-label-row">
           <span className="nitro-label">.say hello</span>

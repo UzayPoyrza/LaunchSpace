@@ -55,27 +55,32 @@ body.nitro-body {
   z-index: 0;
   pointer-events: none;
   background-image:
-    radial-gradient(1px 1px at 10% 15%, rgba(255,255,255,0.2), transparent),
-    radial-gradient(1px 1px at 25% 35%, rgba(255,255,255,0.15), transparent),
-    radial-gradient(1px 1px at 40% 8%, rgba(255,255,255,0.25), transparent),
-    radial-gradient(1px 1px at 55% 42%, rgba(255,255,255,0.12), transparent),
-    radial-gradient(1px 1px at 70% 20%, rgba(255,255,255,0.18), transparent),
-    radial-gradient(1px 1px at 85% 55%, rgba(255,255,255,0.2), transparent),
-    radial-gradient(1px 1px at 15% 60%, rgba(255,255,255,0.1), transparent),
-    radial-gradient(1px 1px at 35% 75%, rgba(255,255,255,0.15), transparent),
-    radial-gradient(1px 1px at 60% 65%, rgba(255,255,255,0.22), transparent),
-    radial-gradient(1px 1px at 80% 80%, rgba(255,255,255,0.12), transparent),
-    radial-gradient(1px 1px at 5% 85%, rgba(255,255,255,0.15), transparent),
-    radial-gradient(1px 1px at 48% 90%, rgba(255,255,255,0.1), transparent),
-    radial-gradient(1px 1px at 92% 12%, rgba(255,255,255,0.18), transparent),
-    radial-gradient(1px 1px at 20% 48%, rgba(255,255,255,0.08), transparent),
-    radial-gradient(1px 1px at 75% 38%, rgba(255,255,255,0.15), transparent),
-    radial-gradient(1px 1px at 50% 25%, rgba(255,255,255,0.1), transparent),
-    radial-gradient(1px 1px at 30% 92%, rgba(255,255,255,0.2), transparent),
-    radial-gradient(1px 1px at 65% 52%, rgba(255,255,255,0.08), transparent),
-    radial-gradient(1px 1px at 88% 70%, rgba(255,255,255,0.12), transparent),
-    radial-gradient(1px 1px at 42% 5%, rgba(255,255,255,0.15), transparent);
-  background-size: 250px 250px;
+    radial-gradient(1px 1px at 10% 15%, rgba(255,255,255,0.5), transparent),
+    radial-gradient(1px 1px at 25% 35%, rgba(255,255,255,0.35), transparent),
+    radial-gradient(1.5px 1.5px at 40% 8%, rgba(255,255,255,0.6), transparent),
+    radial-gradient(1px 1px at 55% 42%, rgba(255,255,255,0.3), transparent),
+    radial-gradient(1px 1px at 70% 20%, rgba(255,255,255,0.4), transparent),
+    radial-gradient(1.5px 1.5px at 85% 55%, rgba(255,255,255,0.5), transparent),
+    radial-gradient(1px 1px at 15% 60%, rgba(255,255,255,0.25), transparent),
+    radial-gradient(1px 1px at 35% 75%, rgba(255,255,255,0.35), transparent),
+    radial-gradient(1.5px 1.5px at 60% 65%, rgba(255,255,255,0.55), transparent),
+    radial-gradient(1px 1px at 80% 80%, rgba(255,255,255,0.3), transparent),
+    radial-gradient(1px 1px at 5% 85%, rgba(255,255,255,0.35), transparent),
+    radial-gradient(1px 1px at 48% 90%, rgba(255,255,255,0.25), transparent),
+    radial-gradient(1.5px 1.5px at 92% 12%, rgba(255,255,255,0.45), transparent),
+    radial-gradient(1px 1px at 20% 48%, rgba(255,255,255,0.2), transparent),
+    radial-gradient(1px 1px at 75% 38%, rgba(255,255,255,0.35), transparent),
+    radial-gradient(1px 1px at 50% 25%, rgba(255,255,255,0.25), transparent),
+    radial-gradient(1.5px 1.5px at 30% 92%, rgba(255,255,255,0.5), transparent),
+    radial-gradient(1px 1px at 65% 52%, rgba(255,255,255,0.2), transparent),
+    radial-gradient(1px 1px at 88% 70%, rgba(255,255,255,0.3), transparent),
+    radial-gradient(1px 1px at 42% 5%, rgba(255,255,255,0.35), transparent),
+    radial-gradient(1px 1px at 3% 40%, rgba(255,255,255,0.4), transparent),
+    radial-gradient(1px 1px at 58% 18%, rgba(255,255,255,0.25), transparent),
+    radial-gradient(1.5px 1.5px at 95% 45%, rgba(255,255,255,0.45), transparent),
+    radial-gradient(1px 1px at 33% 55%, rgba(255,255,255,0.2), transparent),
+    radial-gradient(1px 1px at 78% 95%, rgba(255,255,255,0.35), transparent);
+  background-size: 200px 200px;
 }
 
 /* Shooting stars */
@@ -404,7 +409,7 @@ body.nitro-body {
 }
 
 .nitro-section--projects {
-  padding: 0 48px 120px;
+  padding: 120px 48px 120px;
 }
 
 /* Label row with decorative line */
@@ -584,6 +589,17 @@ body.nitro-body {
 
 .nitro-contact-btn-wrap {
   margin-top: 44px;
+}
+
+/* Centered contact CTA (home page) */
+.nitro-section--contact-centered .nitro-contact-heading {
+  text-align: center;
+  margin: 0 auto;
+}
+
+.nitro-section--contact-centered .nitro-contact-btn-wrap {
+  display: flex;
+  justify-content: center;
 }
 
 .nitro-contact-btn {
