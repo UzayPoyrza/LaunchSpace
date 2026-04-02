@@ -822,41 +822,8 @@ body.nitro-body {
   color: rgba(255, 255, 255, 0.35);
 }
 
-.terminal-showcase__content-wrap {
-  position: relative;
-}
-
 .terminal-showcase__content {
   position: relative;
-}
-
-.terminal-showcase__play {
-  all: unset;
-  position: absolute;
-  inset: 0;
-  z-index: 10;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  background: rgba(0, 0, 0, 0.5);
-  backdrop-filter: blur(4px);
-  transition: background 0.3s ease;
-}
-
-.terminal-showcase__play svg {
-  color: rgba(255, 255, 255, 0.8);
-  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.4));
-  transition: color 0.2s ease, transform 0.2s ease;
-}
-
-.terminal-showcase__play:hover {
-  background: rgba(0, 0, 0, 0.4);
-}
-
-.terminal-showcase__play:hover svg {
-  color: #fff;
-  transform: scale(1.1);
 }
 
 /* Override asciinema-player styles to fit the card */
@@ -877,6 +844,7 @@ body.nitro-body {
 .terminal-showcase__content .ap-control-bar {
   background: rgba(0, 0, 0, 0.3) !important;
   border-top: 1px solid rgba(255, 255, 255, 0.05) !important;
+  opacity: 1 !important;
 }
 
 /* ─────────────────────────────────────────

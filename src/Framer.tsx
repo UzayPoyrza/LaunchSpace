@@ -170,16 +170,14 @@ const WebShowcase: React.FC<{ screenshots: string[]; title: string; url?: string
 const TerminalShowcase: React.FC<{ title: string; castFile: string }> = ({ title, castFile }) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const wrapRef = useRef<HTMLDivElement>(null);
-  const playerRef = useRef<any>(null);
-  const [playing, setPlaying] = useState(false);
-  const [ready, setReady] = useState(false);
   const [scale, setScale] = useState(1);
+  const [ready, setReady] = useState(false);
 
   useEffect(() => {
     import('asciinema-player').then((AsciinemaPlayer) => {
       if (!containerRef.current) return;
       containerRef.current.innerHTML = '';
-      const p = AsciinemaPlayer.create(castFile, containerRef.current, {
+      AsciinemaPlayer.create(castFile, containerRef.current, {
         autoPlay: false,
         loop: true,
         speed: 1.5,
@@ -187,10 +185,8 @@ const TerminalShowcase: React.FC<{ title: string; castFile: string }> = ({ title
         fit: 'width',
         terminalFontFamily: "ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace",
       });
-      playerRef.current = p;
       setReady(true);
     });
-    return () => { playerRef.current?.dispose(); };
   }, [castFile]);
 
   // Scale the terminal to fit when the card is short
@@ -210,15 +206,8 @@ const TerminalShowcase: React.FC<{ title: string; castFile: string }> = ({ title
     return () => ro.disconnect();
   }, [ready]);
 
-  const handlePlay = () => {
-    if (playerRef.current) {
-      playerRef.current.play();
-      setPlaying(true);
-    }
-  };
-
   return (
-    <div className="terminal-showcase" ref={wrapRef} style={{ transform: scale < 1 ? `scale(${scale})` : undefined, transformOrigin: 'top center' }}>
+    <div className="terminal-showcase" ref={wrapRef} style={{ transform: scale < 1 ? `scale(${scale})` : undefined, transformOrigin: 'top center' }} onClick={(e) => e.stopPropagation()}>
       <div className="terminal-showcase__chrome">
         <div className="terminal-showcase__bar">
           <div className="web-showcase__dots">
@@ -228,14 +217,7 @@ const TerminalShowcase: React.FC<{ title: string; castFile: string }> = ({ title
           </div>
           <span className="terminal-showcase__title">{title.toLowerCase()} — ~/competitive</span>
         </div>
-        <div className="terminal-showcase__content-wrap">
-          <div className="terminal-showcase__content" ref={containerRef} />
-          {ready && !playing && (
-            <button className="terminal-showcase__play" onClick={handlePlay} aria-label="Play recording">
-              <svg viewBox="0 0 24 24" fill="currentColor" width="48" height="48"><path d="M8 5v14l11-7z" /></svg>
-            </button>
-          )}
-        </div>
+        <div className="terminal-showcase__content" ref={containerRef} />
       </div>
     </div>
   );
@@ -254,34 +236,30 @@ const services = ['WEB APPS', 'MOBILE', 'AI / ML', 'API DESIGN', 'UI / UX', 'CLO
 /* ─── Project Card ─── */
 const openUrl = (url: string) => window.open(url, '_blank', 'noopener,noreferrer');
 
-const ProjectCard: React.FC<{ p: typeof projects[0]; variant?: 'stack' | 'list' }> = ({ p, variant = 'stack' }) => {
-  const isTerminal = p.showcase === 'terminal';
-
-  return (
-    <div
-      className={`nitro-project-card ${variant === 'list' ? 'nitro-project-card--list' : ''}`}
-      style={{ backgroundColor: p.bg, color: p.textColor }}
-      onClick={isTerminal ? undefined : () => openUrl(p.url)}
-    >
-      <div className="nitro-project-card__top" onClick={isTerminal ? () => openUrl(p.url) : undefined}>
-        <div className="nitro-project-card__meta">
-          <span>{p.year}</span>
-          <span>{p.cat}</span>
-        </div>
-        <div className="nitro-project-card__divider" style={{ backgroundColor: p.dividerColor }} />
-        <div className="nitro-project-card__title-row">
-          <h2 className="nitro-project-card__name">{p.name} <span className="nitro-project-card__dot">·</span> <span className="nitro-project-card__url" style={{ color: p.linkColor }}>{p.url.replace('https://', '')}</span></h2>
-          <ArrowIcon className="nitro-project-card__arrow" />
-        </div>
+const ProjectCard: React.FC<{ p: typeof projects[0]; variant?: 'stack' | 'list' }> = ({ p, variant = 'stack' }) => (
+  <div
+    className={`nitro-project-card ${variant === 'list' ? 'nitro-project-card--list' : ''}`}
+    style={{ backgroundColor: p.bg, color: p.textColor }}
+    onClick={() => openUrl(p.url)}
+  >
+    <div className="nitro-project-card__top">
+      <div className="nitro-project-card__meta">
+        <span>{p.year}</span>
+        <span>{p.cat}</span>
       </div>
-      <div className="nitro-project-card__image" onClick={isTerminal ? (e) => e.stopPropagation() : undefined}>
-        {p.showcase === 'phone' && <PhoneShowcase screenshots={p.screenshots} title={p.name} />}
-        {p.showcase === 'web' && <WebShowcase screenshots={p.screenshots} title={p.name} url={p.url.replace('https://', '')} pages={(p as any).webPages} />}
-        {p.showcase === 'terminal' && <TerminalShowcase title={p.name} castFile={(p as any).castFile || ''} />}
+      <div className="nitro-project-card__divider" style={{ backgroundColor: p.dividerColor }} />
+      <div className="nitro-project-card__title-row">
+        <h2 className="nitro-project-card__name">{p.name} <span className="nitro-project-card__dot">·</span> <span className="nitro-project-card__url" style={{ color: p.linkColor }}>{p.url.replace('https://', '')}</span></h2>
+        <ArrowIcon className="nitro-project-card__arrow" />
       </div>
     </div>
-  );
-};
+    <div className="nitro-project-card__image">
+      {p.showcase === 'phone' && <PhoneShowcase screenshots={p.screenshots} title={p.name} />}
+      {p.showcase === 'web' && <WebShowcase screenshots={p.screenshots} title={p.name} url={p.url.replace('https://', '')} pages={(p as any).webPages} />}
+      {p.showcase === 'terminal' && <TerminalShowcase title={p.name} castFile={(p as any).castFile || ''} />}
+    </div>
+  </div>
+);
 
 /* ═══════════════════════════════════════
    HOME PAGE
