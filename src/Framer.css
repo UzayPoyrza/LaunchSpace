@@ -473,7 +473,7 @@ body.nitro-body {
   gap: 8px;
   width: 100%;
   height: calc(100vh - 200px);
-  min-height: 500px;
+  min-height: 380px;
   padding: 24px;
   border-radius: var(--radius);
   border: 1px solid var(--border);
