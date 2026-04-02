@@ -575,13 +575,10 @@ body.nitro-body {
 
 .nitro-project-card__image img {
   display: block;
-  width: 30%;
-  max-width: 280px;
-  min-width: 120px;
-  aspect-ratio: 1;
+  max-width: 80%;
+  max-height: 90%;
   object-fit: contain;
-  border-radius: 28%;
-  filter: drop-shadow(0 24px 80px rgba(0, 0, 0, 0.4));
+  filter: drop-shadow(0 16px 48px rgba(0, 0, 0, 0.3));
 }
 
 /* ─────────────────────────────────────────
