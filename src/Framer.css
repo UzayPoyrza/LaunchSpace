@@ -1413,6 +1413,30 @@ body.nitro-body {
   }
 }
 
+@media (max-width: 571px) {
+  .web-showcase {
+    width: 90%;
+    min-width: 280px;
+  }
+
+  .terminal-showcase {
+    max-width: 100%;
+  }
+
+  .web-showcase__bar {
+    padding: 8px 10px;
+  }
+
+  .web-showcase__dot {
+    width: 8px;
+    height: 8px;
+  }
+
+  .web-showcase__url span {
+    font-size: 9px;
+  }
+}
+
 @media (max-width: 480px) {
   .nitro-page { padding-left: 20px; padding-right: 20px; }
   .nitro-hero {

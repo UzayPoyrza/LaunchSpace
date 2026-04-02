@@ -75,12 +75,25 @@ const PhoneShowcase: React.FC<{ screenshots: string[]; title: string }> = ({ scr
   const [hovered, setHovered] = useState<number | null>(null);
   const ref = useRef<HTMLDivElement>(null);
   const inView = useInView(ref, { once: true, margin: '-80px' });
+  const [small, setSmall] = useState(window.innerWidth <= 571);
 
-  const phones = [
-    { img: screenshots[1] || screenshots[0], rotate: -8, x: -75, z: 1, w: 179, wHover: 240, delay: '0.15s' },
-    { img: screenshots[0],                    rotate: 0,  x: 0,   z: 10, w: 210, wHover: 260, delay: '0s' },
-    { img: screenshots[2] || screenshots[0], rotate: 8,  x: 75,  z: 1, w: 179, wHover: 240, delay: '0.2s' },
-  ];
+  useEffect(() => {
+    const fn = () => setSmall(window.innerWidth <= 571);
+    window.addEventListener('resize', fn);
+    return () => window.removeEventListener('resize', fn);
+  }, []);
+
+  const phones = small
+    ? [
+        { img: screenshots[1] || screenshots[0], rotate: -8, x: -50, z: 1, w: 120, wHover: 150, delay: '0.15s' },
+        { img: screenshots[0],                    rotate: 0,  x: 0,   z: 10, w: 145, wHover: 175, delay: '0s' },
+        { img: screenshots[2] || screenshots[0], rotate: 8,  x: 50,  z: 1, w: 120, wHover: 150, delay: '0.2s' },
+      ]
+    : [
+        { img: screenshots[1] || screenshots[0], rotate: -8, x: -75, z: 1, w: 179, wHover: 240, delay: '0.15s' },
+        { img: screenshots[0],                    rotate: 0,  x: 0,   z: 10, w: 210, wHover: 260, delay: '0s' },
+        { img: screenshots[2] || screenshots[0], rotate: 8,  x: 75,  z: 1, w: 179, wHover: 240, delay: '0.2s' },
+      ];
 
   return (
     <div ref={ref} className="phone-showcase" onMouseLeave={() => setHovered(null)}>
