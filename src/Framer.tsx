@@ -162,23 +162,34 @@ const WebShowcase: React.FC<{ screenshots: string[]; title: string; url?: string
 /* ─── Terminal Showcase (asciinema player) ─── */
 const TerminalShowcase: React.FC<{ title: string; castFile: string }> = ({ title, castFile }) => {
   const containerRef = useRef<HTMLDivElement>(null);
+  const playerRef = useRef<any>(null);
+  const [playing, setPlaying] = useState(false);
+  const [ready, setReady] = useState(false);
 
   useEffect(() => {
-    let player: any;
     import('asciinema-player').then((AsciinemaPlayer) => {
       if (!containerRef.current) return;
       containerRef.current.innerHTML = '';
-      player = AsciinemaPlayer.create(castFile, containerRef.current, {
-        autoPlay: true,
+      const p = AsciinemaPlayer.create(castFile, containerRef.current, {
+        autoPlay: false,
         loop: true,
         speed: 1.5,
         idleTimeLimit: 2,
         fit: 'width',
         terminalFontFamily: "ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace",
       });
+      playerRef.current = p;
+      setReady(true);
     });
-    return () => { player?.dispose(); };
+    return () => { playerRef.current?.dispose(); };
   }, [castFile]);
+
+  const handlePlay = () => {
+    if (playerRef.current) {
+      playerRef.current.play();
+      setPlaying(true);
+    }
+  };
 
   return (
     <div className="terminal-showcase">
@@ -191,7 +202,14 @@ const TerminalShowcase: React.FC<{ title: string; castFile: string }> = ({ title
           </div>
           <span className="terminal-showcase__title">{title.toLowerCase()} — ~/competitive</span>
         </div>
-        <div className="terminal-showcase__content" ref={containerRef} />
+        <div className="terminal-showcase__content-wrap">
+          <div className="terminal-showcase__content" ref={containerRef} />
+          {ready && !playing && (
+            <button className="terminal-showcase__play" onClick={handlePlay} aria-label="Play recording">
+              <svg viewBox="0 0 24 24" fill="currentColor" width="48" height="48"><path d="M8 5v14l11-7z" /></svg>
+            </button>
+          )}
+        </div>
       </div>
     </div>
   );
