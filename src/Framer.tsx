@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Routes, Route, Link, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence, useScroll, useTransform, useInView } from 'framer-motion';
 import './Framer.css';
+import WeatherPrivacy from './WeatherPrivacy';
 import 'asciinema-player/dist/bundle/asciinema-player.css';
 
 const ease = [0.22, 1, 0.36, 1] as const;
@@ -443,7 +444,7 @@ const NitroFooter: React.FC = () => (
         <Link to="/projects">projects</Link>
         <Link to="/contact">contact</Link>
       </div>
-      <span className="nitro-footer__credit">© 2024 LaunchSpace LLC</span>
+      <span className="nitro-footer__credit">© 2025 LaunchSpace LLC</span>
     </div>
   </footer>
 );
@@ -536,6 +537,7 @@ const Framer: React.FC = () => {
         <Route index element={<HomePage />} />
         <Route path="projects" element={<ProjectsPage />} />
         <Route path="contact" element={<ContactPage />} />
+        <Route path="weatherprivacy" element={<WeatherPrivacy />} />
         <Route path="*" element={<HomePage />} />
       </Routes>
 
