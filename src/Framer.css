@@ -794,10 +794,7 @@ body.nitro-body {
   cursor: pointer;
   width: 100%;
   max-width: 600px;
-  max-height: 100%;
   margin: 0 auto;
-  display: flex;
-  flex-direction: column;
 }
 
 .terminal-showcase__chrome {
@@ -806,9 +803,6 @@ body.nitro-body {
   background: #0d1117;
   box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
   overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  max-height: 100%;
 }
 
 .terminal-showcase__bar {
@@ -829,19 +823,10 @@ body.nitro-body {
 
 .terminal-showcase__content-wrap {
   position: relative;
-  flex: 1 1 0;
-  min-height: 0;
-  overflow: hidden;
 }
 
 .terminal-showcase__content {
   position: relative;
-  height: 100%;
-}
-
-.terminal-showcase__content .ap-wrapper,
-.terminal-showcase__content .ap-player {
-  height: 100% !important;
 }
 
 .terminal-showcase__play {
