@@ -252,26 +252,36 @@ const projects = [
 const services = ['WEB APPS', 'MOBILE', 'AI / ML', 'API DESIGN', 'UI / UX', 'CLOUD', 'CONSULTING', 'PROTOTYPING'];
 
 /* ─── Project Card ─── */
-const ProjectCard: React.FC<{ p: typeof projects[0]; variant?: 'stack' | 'list' }> = ({ p, variant = 'stack' }) => (
-  <div className={`nitro-project-card ${variant === 'list' ? 'nitro-project-card--list' : ''}`} style={{ backgroundColor: p.bg, color: p.textColor }}>
-    <div className="nitro-project-card__top">
-      <div className="nitro-project-card__meta">
-        <span>{p.year}</span>
-        <span>{p.cat}</span>
+const openUrl = (url: string) => window.open(url, '_blank', 'noopener,noreferrer');
+
+const ProjectCard: React.FC<{ p: typeof projects[0]; variant?: 'stack' | 'list' }> = ({ p, variant = 'stack' }) => {
+  const isPhone = p.showcase === 'phone';
+
+  return (
+    <div
+      className={`nitro-project-card ${variant === 'list' ? 'nitro-project-card--list' : ''}`}
+      style={{ backgroundColor: p.bg, color: p.textColor }}
+      onClick={isPhone ? () => openUrl(p.url) : undefined}
+    >
+      <div className="nitro-project-card__top" onClick={!isPhone ? () => openUrl(p.url) : undefined}>
+        <div className="nitro-project-card__meta">
+          <span>{p.year}</span>
+          <span>{p.cat}</span>
+        </div>
+        <div className="nitro-project-card__divider" style={{ backgroundColor: p.dividerColor }} />
+        <div className="nitro-project-card__title-row">
+          <h2 className="nitro-project-card__name">{p.name} <span className="nitro-project-card__dot">·</span> <span className="nitro-project-card__url" style={{ color: p.linkColor }}>{p.url.replace('https://', '')}</span></h2>
+          <ArrowIcon className="nitro-project-card__arrow" />
+        </div>
       </div>
-      <div className="nitro-project-card__divider" style={{ backgroundColor: p.dividerColor }} />
-      <div className="nitro-project-card__title-row">
-        <h2 className="nitro-project-card__name">{p.name} <span className="nitro-project-card__dot">·</span> <span className="nitro-project-card__url" style={{ color: p.linkColor }}>{p.url.replace('https://', '')}</span></h2>
-        <ArrowIcon className="nitro-project-card__arrow" />
+      <div className="nitro-project-card__image" onClick={isPhone ? undefined : (e) => e.stopPropagation()}>
+        {p.showcase === 'phone' && <PhoneShowcase screenshots={p.screenshots} title={p.name} />}
+        {p.showcase === 'web' && <WebShowcase screenshots={p.screenshots} title={p.name} url={p.url.replace('https://', '')} pages={(p as any).webPages} />}
+        {p.showcase === 'terminal' && <TerminalShowcase title={p.name} castFile={(p as any).castFile || ''} />}
       </div>
     </div>
-    <div className="nitro-project-card__image">
-      {p.showcase === 'phone' && <PhoneShowcase screenshots={p.screenshots} title={p.name} />}
-      {p.showcase === 'web' && <WebShowcase screenshots={p.screenshots} title={p.name} url={p.url.replace('https://', '')} pages={(p as any).webPages} />}
-      {p.showcase === 'terminal' && <TerminalShowcase title={p.name} castFile={(p as any).castFile || ''} />}
-    </div>
-  </div>
-);
+  );
+};
 
 /* ═══════════════════════════════════════
    HOME PAGE
