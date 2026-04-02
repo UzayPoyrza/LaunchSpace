@@ -626,9 +626,8 @@ body.nitro-body {
 .phone-showcase__slot {
   position: absolute;
   top: 0;
-  bottom: 0;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
 }
 
 .phone-showcase__phone {
