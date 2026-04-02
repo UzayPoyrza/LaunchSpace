@@ -475,7 +475,7 @@ body.nitro-body {
   height: calc(100vh - 200px);
   padding: 24px;
   border-radius: var(--radius);
-  border: 1px solid var(--border);
+  border: 1px solid rgba(255, 255, 255, 0.06);
   overflow: hidden;
   cursor: pointer;
   transition: box-shadow 0.4s ease, border-color 0.4s ease;
@@ -483,8 +483,8 @@ body.nitro-body {
 }
 
 .nitro-project-card:hover {
-  box-shadow: 0px -8px 40px 0px rgba(0, 0, 0, 0.6),
-              0 0 1px 0 rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.12);
+  box-shadow: 0px -8px 50px 0px rgba(0, 0, 0, 0.6);
 }
 
 .nitro-project-card__top {
@@ -575,6 +575,7 @@ body.nitro-body {
 /* Full-bleed photo cards */
 .nitro-project-card--photo .nitro-project-card__image {
   background: none;
+  padding: 8px;
 }
 
 .nitro-project-card--photo .nitro-project-card__image::before {
@@ -587,10 +588,10 @@ body.nitro-body {
   max-width: none;
   min-width: 0;
   aspect-ratio: auto;
-  object-fit: cover;
-  object-position: center;
-  border-radius: inherit;
-  filter: none;
+  object-fit: contain;
+  object-position: center bottom;
+  border-radius: 6px;
+  filter: drop-shadow(0 8px 32px rgba(0, 0, 0, 0.3));
 }
 
 /* ─────────────────────────────────────────
