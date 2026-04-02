@@ -92,8 +92,7 @@ const HomePage: React.FC = () => (
       <div className="nitro-hero__inner">
         <motion.div className="nitro-hero__top-meta" initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.2, ease }}>
           <p className="nitro-hero__greeting">Hey, I'm Nick</p>
-          <span className="nitro-dot" />
-          <p className="nitro-hero__availability">available for new projects</p>
+          <p className="nitro-hero__availability"><span className="nitro-dot" /> available for new projects</p>
         </motion.div>
         <motion.div className="nitro-hero__heading-wrap" initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.5, ease }}>
           <h1 className="nitro-hero__headline">
