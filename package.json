@@ -11,6 +11,7 @@
     "@types/node": "^16.18.126",
     "@types/react": "^19.1.9",
     "@types/react-dom": "^19.1.7",
+    "asciinema-player": "^3.15.1",
     "framer-motion": "^12.38.0",
     "node-fetch": "^2.7.0",
     "playwright": "^1.59.1",

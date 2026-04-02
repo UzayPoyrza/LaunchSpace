@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Routes, Route, Link, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence, useScroll, useTransform, useInView } from 'framer-motion';
 import './Framer.css';
+import 'asciinema-player/dist/bundle/asciinema-player.css';
 
 const ease = [0.22, 1, 0.36, 1] as const;
 
@@ -123,7 +124,7 @@ const WebShowcase: React.FC<{ screenshots: string[]; title: string; url?: string
   const go = (dir: number) => setCurrent((p) => (p + dir + pages.length) % pages.length);
 
   return (
-    <div className="web-showcase" style={{ width: hovered ? '115%' : '100%', marginLeft: hovered ? '-7.5%' : '0' }}
+    <div className="web-showcase"
       onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)}>
       <div className="web-showcase__chrome">
         <div className="web-showcase__bar">
@@ -158,45 +159,29 @@ const WebShowcase: React.FC<{ screenshots: string[]; title: string; url?: string
   );
 };
 
-/* ─── Terminal Showcase ─── */
-interface TerminalLine { text: string; prompt?: boolean; accent?: boolean; bold?: boolean; dim?: boolean; }
-const terminalScreens = [
-  { label: 'startup', lines: [
-    { text: 'myro', prompt: true }, { text: '' },
-    { text: '  ┌──────────────────────────────────────┐', dim: true }, { text: '  │            myro v0.1.0               │', dim: true },
-    { text: '  │    competitive programming coach     │', dim: true }, { text: '  └──────────────────────────────────────┘', dim: true },
-    { text: '' }, { text: '  Fetching problem...', accent: true }, { text: '  CF-1842E  Tenzing and His Animal Friends', bold: true },
-    { text: '  Rating: 2200  |  Tags: graphs, greedy', dim: true }, { text: '' }, { text: 'ready — press enter to begin ▊', prompt: true },
-  ]},
-  { label: 'hint', lines: [
-    { text: 'myro solve', prompt: true }, { text: '' }, { text: '  ⏱  Timer started', dim: true }, { text: '' },
-    { text: '  Observation 1/3', accent: true }, { text: '  Think about what happens when you model' }, { text: '  friendships as edges in a graph.' },
-    { text: '' }, { text: '  What property must the graph have for', dim: true }, { text: '  all animals to coexist in two groups?', dim: true },
-    { text: '' }, { text: 'type your answer or enter for next hint ▊', prompt: true },
-  ]},
-  { label: 'progress', lines: [
-    { text: 'myro stats', prompt: true }, { text: '' }, { text: '  Your Progress', accent: true },
-    { text: '  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━', dim: true }, { text: '  Problems solved    47 / 200' },
-    { text: '  Current streak     12 days' }, { text: '  Avg solve time     18m → 14m  ↓', bold: true },
-    { text: '  Rating estimate    1847 → 1923', accent: true }, { text: '' }, { text: '  Weak topics: segment trees, dp on trees', dim: true },
-    { text: '  Next session: dp optimization', dim: true }, { text: '' }, { text: '▊', prompt: true },
-  ]},
-];
-
-const TerminalShowcase: React.FC<{ title: string }> = ({ title }) => {
-  const [current, setCurrent] = useState(0);
-  const [hovered, setHovered] = useState(false);
+/* ─── Terminal Showcase (asciinema player) ─── */
+const TerminalShowcase: React.FC<{ title: string; castFile: string }> = ({ title, castFile }) => {
+  const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (hovered) return;
-    const timer = setInterval(() => setCurrent((p) => (p + 1) % terminalScreens.length), 4000);
-    return () => clearInterval(timer);
-  }, [hovered]);
-
-  const go = (dir: number) => setCurrent((p) => (p + dir + terminalScreens.length) % terminalScreens.length);
+    let player: any;
+    import('asciinema-player').then((AsciinemaPlayer) => {
+      if (!containerRef.current) return;
+      containerRef.current.innerHTML = '';
+      player = AsciinemaPlayer.create(castFile, containerRef.current, {
+        autoPlay: true,
+        loop: true,
+        speed: 1.5,
+        idleTimeLimit: 2,
+        fit: 'width',
+        terminalFontFamily: "ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace",
+      });
+    });
+    return () => { player?.dispose(); };
+  }, [castFile]);
 
   return (
-    <div className="terminal-showcase" onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)}>
+    <div className="terminal-showcase">
       <div className="terminal-showcase__chrome">
         <div className="terminal-showcase__bar">
           <div className="web-showcase__dots">
@@ -206,30 +191,7 @@ const TerminalShowcase: React.FC<{ title: string }> = ({ title }) => {
           </div>
           <span className="terminal-showcase__title">{title.toLowerCase()} — ~/competitive</span>
         </div>
-        <div className="terminal-showcase__content">
-          {terminalScreens.map((screen, i) => (
-            <div key={i} className="terminal-showcase__screen" style={{ opacity: i === current ? 1 : 0, pointerEvents: i === current ? 'auto' : 'none' }}>
-              {screen.lines.map((line, j) => (
-                <div key={j} className={`terminal-line ${line.prompt ? 'terminal-line--prompt' : line.accent ? 'terminal-line--accent' : line.bold ? 'terminal-line--bold' : line.dim ? 'terminal-line--dim' : ''}`}
-                  style={{ minHeight: line.text === '' ? '1.2em' : undefined }}>
-                  {line.prompt && <span className="terminal-line__chevron">❯ </span>}
-                  {line.text}
-                </div>
-              ))}
-            </div>
-          ))}
-          <button className="web-showcase__arrow web-showcase__arrow--left" onClick={() => go(-1)} aria-label="Previous">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="15 18 9 12 15 6" /></svg>
-          </button>
-          <button className="web-showcase__arrow web-showcase__arrow--right" onClick={() => go(1)} aria-label="Next">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="9 18 15 12 9 6" /></svg>
-          </button>
-        </div>
-      </div>
-      <div className="web-showcase__indicators">
-        {terminalScreens.map((s, i) => (
-          <button key={i} className={`web-showcase__indicator ${i === current ? 'active' : ''}`} onClick={() => setCurrent(i)} aria-label={s.label} />
-        ))}
+        <div className="terminal-showcase__content" ref={containerRef} />
       </div>
     </div>
   );
@@ -240,7 +202,7 @@ const projects = [
   { year: '2024', cat: 'Wellness · iOS', name: 'Neurotype', bg: '#7C3AED', textColor: '#fff', dividerColor: 'rgba(255,255,255,0.2)', linkColor: '#c4b5fd', showcase: 'phone' as const, screenshots: ['/images/neurotype-screen.png', '/images/projects/neurotype_progress.png', '/images/projects/neurotype_session.png'], desc: 'A science-based meditation app designed to help neurodivergent people. Grounded in research, shaped by real needs.', url: 'https://neurotypeapp.com' },
   { year: '2024', cat: 'Aviation · iOS', name: 'Volo', bg: '#0284C7', textColor: '#fff', dividerColor: 'rgba(255,255,255,0.2)', linkColor: '#7dd3fc', showcase: 'phone' as const, screenshots: ['/images/volo-screen.png', '/images/projects/volo_ops.png', '/images/projects/volo_nat.png'], desc: 'Your pilot companion & toolbox. Essential tools and resources for pilots, all in one app.', url: 'https://volopilot.app' },
   { year: '2025', cat: 'AI · Web', name: 'Incraft', bg: '#EA580C', textColor: '#fff', dividerColor: 'rgba(255,255,255,0.2)', linkColor: '#fdba74', showcase: 'web' as const, screenshots: ['/images/incraft-screen.png', '/images/projects/incraft_create.png', '/images/projects/incraft_studio.png'], webPages: [{ label: 'Home', path: '' }, { label: 'Create', path: '/create' }, { label: 'Studio', path: '/studio' }], desc: 'Generate studio-quality guided meditation in one prompt. Natural voice narration, timed pauses, tailored scripts.', url: 'https://incraft.io' },
-  { year: '2025', cat: 'Education · CLI', name: 'Myro', bg: '#059669', textColor: '#fff', dividerColor: 'rgba(255,255,255,0.2)', linkColor: '#6ee7b7', showcase: 'terminal' as const, screenshots: [], desc: 'An adaptive competitive programming trainer. The shortest path to red.', url: 'https://myro.coach' },
+  { year: '2025', cat: 'Education · CLI', name: 'Myro', bg: '#059669', textColor: '#fff', dividerColor: 'rgba(255,255,255,0.2)', linkColor: '#6ee7b7', showcase: 'terminal' as const, screenshots: [], castFile: '/recordings/myro.cast', desc: 'An adaptive competitive programming trainer. The shortest path to red.', url: 'https://myro.coach' },
 ];
 
 const services = ['WEB APPS', 'MOBILE', 'AI / ML', 'API DESIGN', 'UI / UX', 'CLOUD', 'CONSULTING', 'PROTOTYPING'];
@@ -262,7 +224,7 @@ const ProjectCard: React.FC<{ p: typeof projects[0]; variant?: 'stack' | 'list' 
     <div className="nitro-project-card__image">
       {p.showcase === 'phone' && <PhoneShowcase screenshots={p.screenshots} title={p.name} />}
       {p.showcase === 'web' && <WebShowcase screenshots={p.screenshots} title={p.name} url={p.url.replace('https://', '')} pages={(p as any).webPages} />}
-      {p.showcase === 'terminal' && <TerminalShowcase title={p.name} />}
+      {p.showcase === 'terminal' && <TerminalShowcase title={p.name} castFile={(p as any).castFile || ''} />}
     </div>
   </div>
 );
