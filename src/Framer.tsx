@@ -169,21 +169,31 @@ const WebShowcase: React.FC<{ screenshots: string[]; title: string; url?: string
 /* ─── Terminal Showcase (asciinema player) ─── */
 const TerminalShowcase: React.FC<{ title: string; castFile: string }> = ({ title, castFile }) => {
   const containerRef = useRef<HTMLDivElement>(null);
+  const playerRef = useRef<any>(null);
 
-  useEffect(() => {
+  const createPlayer = () => {
     import('asciinema-player').then((AsciinemaPlayer) => {
       if (!containerRef.current) return;
       containerRef.current.innerHTML = '';
-      AsciinemaPlayer.create(castFile, containerRef.current, {
-        autoPlay: false,
+      playerRef.current = AsciinemaPlayer.create(castFile, containerRef.current, {
+        autoPlay: true,
         loop: true,
         speed: 1.5,
         idleTimeLimit: 2,
         fit: 'width',
+        controls: false,
         terminalFontFamily: "ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace",
       });
     });
-  }, [castFile]);
+  };
+
+  useEffect(() => { createPlayer(); }, [castFile]);
+
+  const handleRestart = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    playerRef.current?.dispose();
+    createPlayer();
+  };
 
   return (
     <div className="terminal-showcase">
@@ -195,6 +205,12 @@ const TerminalShowcase: React.FC<{ title: string; castFile: string }> = ({ title
             <span className="web-showcase__dot web-showcase__dot--green" />
           </div>
           <span className="terminal-showcase__title">{title.toLowerCase()} — ~/competitive</span>
+          <button className="terminal-showcase__restart" onClick={handleRestart} aria-label="Restart">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" width="14" height="14">
+              <polyline points="1 4 1 10 7 10" />
+              <path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10" />
+            </svg>
+          </button>
         </div>
         <div className="terminal-showcase__content" ref={containerRef} />
       </div>

@@ -822,6 +822,24 @@ body.nitro-body {
   color: rgba(255, 255, 255, 0.35);
 }
 
+.terminal-showcase__restart {
+  all: unset;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 4px;
+  color: rgba(255, 255, 255, 0.35);
+  cursor: pointer;
+  transition: color 0.2s ease, background 0.2s ease;
+}
+
+.terminal-showcase__restart:hover {
+  color: rgba(255, 255, 255, 0.8);
+  background: rgba(255, 255, 255, 0.08);
+}
+
 .terminal-showcase__content {
   position: relative;
 }
@@ -841,17 +859,8 @@ body.nitro-body {
   padding: 12px 16px !important;
 }
 
-.terminal-showcase__content .ap-control-bar {
-  background: rgba(0, 0, 0, 0.3) !important;
-  border-top: 1px solid rgba(255, 255, 255, 0.05) !important;
-  opacity: 1 !important;
-  pointer-events: auto !important;
-  position: relative !important;
-  z-index: 20 !important;
-}
-
 .terminal-showcase__content .ap-overlay {
-  pointer-events: auto !important;
+  display: none !important;
 }
 
 /* ─────────────────────────────────────────
