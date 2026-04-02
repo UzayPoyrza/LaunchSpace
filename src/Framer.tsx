@@ -109,7 +109,7 @@ const HomePage: React.FC = () => (
     <section className="nitro-section nitro-section--projects" id="projects">
       <div className="nitro-projects-stack">
         {projects.map((p, i) => (
-          <motion.div key={p.name} className="nitro-project-sticky-wrap" style={{ zIndex: i + 1 }} initial={{ opacity: 0, y: 150 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: '-80px' }} transition={{ duration: 0.7, delay: 0.05, ease }}>
+          <motion.div key={p.name} className="nitro-project-sticky-wrap" style={{ zIndex: i + 1, top: 100 + i * 15 }} initial={{ opacity: 0, y: 150 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: '-80px' }} transition={{ duration: 0.7, delay: 0.05, ease }}>
             <ProjectCard p={p} />
           </motion.div>
         ))}
