@@ -56,9 +56,9 @@ const socialLinks = [
 
 /* ─── data ─── */
 const projects = [
-  { year: '2024', cat: 'Wellness · iOS', name: 'Neurotype', bg: '#7C3AED', textColor: '#fff', dividerColor: 'rgba(255,255,255,0.2)', icon: '/images/neurotype-icon.png', desc: 'A science-based meditation app designed to help neurodivergent people. Grounded in research, shaped by real needs.', url: 'https://neurotypeapp.com' },
-  { year: '2024', cat: 'Aviation · iOS', name: 'Volo', bg: '#0284C7', textColor: '#fff', dividerColor: 'rgba(255,255,255,0.2)', icon: '/images/volo-icon.png', desc: 'Your pilot companion & toolbox. Essential tools and resources for pilots, all in one app.', url: 'https://volopilot.app' },
-  { year: '2025', cat: 'AI · Web', name: 'Incraft', bg: '#EA580C', textColor: '#fff', dividerColor: 'rgba(255,255,255,0.2)', icon: '/images/incraft-icon.png', desc: 'Generate studio-quality guided meditation in one prompt. Natural voice narration, timed pauses, tailored scripts.', url: 'https://incraft.io' },
+  { year: '2024', cat: 'Wellness · iOS', name: 'Neurotype', bg: '#7C3AED', textColor: '#fff', dividerColor: 'rgba(255,255,255,0.2)', icon: '/images/neurotype-icon.png', img: '/images/neurotype-card.png', desc: 'A science-based meditation app designed to help neurodivergent people. Grounded in research, shaped by real needs.', url: 'https://neurotypeapp.com' },
+  { year: '2024', cat: 'Aviation · iOS', name: 'Volo', bg: '#0284C7', textColor: '#fff', dividerColor: 'rgba(255,255,255,0.2)', icon: '/images/volo-icon.png', img: '/images/volo-card.png', desc: 'Your pilot companion & toolbox. Essential tools and resources for pilots, all in one app.', url: 'https://volopilot.app' },
+  { year: '2025', cat: 'AI · Web', name: 'Incraft', bg: '#EA580C', textColor: '#fff', dividerColor: 'rgba(255,255,255,0.2)', icon: '/images/incraft-icon.png', img: '/images/incraft-card.png', desc: 'Generate studio-quality guided meditation in one prompt. Natural voice narration, timed pauses, tailored scripts.', url: 'https://incraft.io' },
   { year: '2025', cat: 'Education · CLI', name: 'Myro', bg: '#059669', textColor: '#fff', dividerColor: 'rgba(255,255,255,0.2)', icon: '/images/myro-icon.png', desc: 'An adaptive competitive programming trainer. The shortest path to red.', url: 'https://myro.coach' },
 ];
 
@@ -66,7 +66,7 @@ const services = ['WEB APPS', 'MOBILE', 'AI / ML', 'API DESIGN', 'UI / UX', 'CLO
 
 /* ─── Project Card ─── */
 const ProjectCard: React.FC<{ p: typeof projects[0]; variant?: 'stack' | 'list' }> = ({ p, variant = 'stack' }) => (
-  <div className={`nitro-project-card ${variant === 'list' ? 'nitro-project-card--list' : ''}`} style={{ backgroundColor: p.bg, color: p.textColor }}>
+  <div className={`nitro-project-card ${variant === 'list' ? 'nitro-project-card--list' : ''} ${p.img ? 'nitro-project-card--photo' : ''}`} style={{ backgroundColor: p.bg, color: p.textColor }}>
     <div className="nitro-project-card__top">
       <div className="nitro-project-card__meta">
         <span>{p.year}</span>
@@ -79,7 +79,7 @@ const ProjectCard: React.FC<{ p: typeof projects[0]; variant?: 'stack' | 'list' 
       </div>
     </div>
     <div className="nitro-project-card__image">
-      <img src={p.icon} alt={p.name} loading="lazy" decoding="async" />
+      <img src={p.img || p.icon} alt={p.name} loading="lazy" decoding="async" />
     </div>
   </div>
 );

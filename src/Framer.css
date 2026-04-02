@@ -572,6 +572,27 @@ body.nitro-body {
   filter: drop-shadow(0 24px 80px rgba(0, 0, 0, 0.4));
 }
 
+/* Full-bleed photo cards */
+.nitro-project-card--photo .nitro-project-card__image {
+  background: none;
+}
+
+.nitro-project-card--photo .nitro-project-card__image::before {
+  display: none;
+}
+
+.nitro-project-card--photo .nitro-project-card__image img {
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  min-width: 0;
+  aspect-ratio: auto;
+  object-fit: cover;
+  object-position: center;
+  border-radius: inherit;
+  filter: none;
+}
+
 /* ─────────────────────────────────────────
    About
    ───────────────────────────────────────── */
