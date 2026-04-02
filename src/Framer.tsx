@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { Routes, Route, Link, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence, useScroll, useTransform, useInView } from 'framer-motion';
 import './Framer.css';
@@ -172,7 +172,7 @@ const TerminalShowcase: React.FC<{ title: string; castFile: string }> = ({ title
   const containerRef = useRef<HTMLDivElement>(null);
   const playerRef = useRef<any>(null);
 
-  const createPlayer = () => {
+  const createPlayer = useCallback(() => {
     import('asciinema-player').then((AsciinemaPlayer) => {
       if (!containerRef.current) return;
       containerRef.current.innerHTML = '';
@@ -186,9 +186,9 @@ const TerminalShowcase: React.FC<{ title: string; castFile: string }> = ({ title
         terminalFontFamily: "ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace",
       });
     });
-  };
+  }, [castFile]);
 
-  useEffect(() => { createPlayer(); }, [castFile]);
+  useEffect(() => { createPlayer(); }, [castFile, createPlayer]);
 
   const handleRestart = (e: React.MouseEvent) => {
     e.stopPropagation();
