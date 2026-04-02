@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Routes, Route, Link, useLocation } from 'react-router-dom';
-import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion';
+import { motion, AnimatePresence, useScroll, useTransform, useInView } from 'framer-motion';
 import './Framer.css';
 
 const ease = [0.22, 1, 0.36, 1] as const;
@@ -54,12 +54,193 @@ const socialLinks = [
   { platform: 'email', handle: 'contact@launchspace.org', url: 'mailto:contact@launchspace.org' },
 ];
 
+/* ─── Phone Mockup ─── */
+const PhoneMockup: React.FC<{ screenshot: string; title: string }> = ({ screenshot, title }) => (
+  <div className="phone-mockup">
+    <div className="phone-mockup__buttons">
+      <div className="phone-mockup__btn phone-mockup__btn--1" />
+      <div className="phone-mockup__btn phone-mockup__btn--2" />
+      <div className="phone-mockup__btn phone-mockup__btn--3" />
+      <div className="phone-mockup__btn phone-mockup__btn--r" />
+    </div>
+    <div className="phone-mockup__frame">
+      <img src={screenshot} alt={title} className="phone-mockup__screen" draggable={false} />
+    </div>
+  </div>
+);
+
+/* ─── Phone Showcase (3 phones with hover) ─── */
+const PhoneShowcase: React.FC<{ screenshots: string[]; title: string }> = ({ screenshots, title }) => {
+  const [hovered, setHovered] = useState<number | null>(null);
+  const ref = useRef<HTMLDivElement>(null);
+  const inView = useInView(ref, { once: true, margin: '-80px' });
+
+  const phones = [
+    { img: screenshots[1] || screenshots[0], rotate: -8, x: -75, z: 1, w: 179, wHover: 240, delay: '0.15s' },
+    { img: screenshots[0],                    rotate: 0,  x: 0,   z: 10, w: 210, wHover: 260, delay: '0s' },
+    { img: screenshots[2] || screenshots[0], rotate: 8,  x: 75,  z: 1, w: 179, wHover: 240, delay: '0.2s' },
+  ];
+
+  return (
+    <div ref={ref} className="phone-showcase" onMouseLeave={() => setHovered(null)}>
+      {phones.map((phone, i) => {
+        const isActive = hovered === i;
+        const isDimmed = hovered !== null && !isActive;
+        const currentW = isActive ? phone.wHover : phone.w;
+        return (
+          <div key={i} className="phone-showcase__slot" style={{
+            left: `calc(50% + ${phone.x}px - ${currentW / 2}px)`,
+            zIndex: isActive ? 20 : phone.z,
+            transition: 'left 0.5s cubic-bezier(0.16, 1, 0.3, 1)',
+          }}>
+            <div className="phone-showcase__phone" style={{
+              width: currentW,
+              opacity: !inView ? 0 : isDimmed ? 0.5 : 1,
+              transform: !isActive && phone.rotate !== 0 ? `rotate(${phone.rotate}deg)` : 'none',
+              transition: 'width 0.5s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease, transform 0.5s cubic-bezier(0.16, 1, 0.3, 1)',
+            }} onMouseEnter={() => setHovered(i)}>
+              <PhoneMockup screenshot={phone.img} title={title} />
+            </div>
+          </div>
+        );
+      })}
+    </div>
+  );
+};
+
+/* ─── Web Showcase (browser with auto-cycling) ─── */
+const WebShowcase: React.FC<{ screenshots: string[]; title: string; url?: string; pages?: { label: string; path: string }[] }> = ({ screenshots, title, url, pages: pagesList }) => {
+  const [current, setCurrent] = useState(0);
+  const [hovered, setHovered] = useState(false);
+  const pages = pagesList || screenshots.map((_, i) => ({ label: `Page ${i + 1}`, path: '' }));
+
+  useEffect(() => {
+    if (hovered || screenshots.length <= 1) return;
+    const timer = setInterval(() => setCurrent((p) => (p + 1) % pages.length), 4000);
+    return () => clearInterval(timer);
+  }, [hovered, pages.length, screenshots.length]);
+
+  const go = (dir: number) => setCurrent((p) => (p + dir + pages.length) % pages.length);
+
+  return (
+    <div className="web-showcase" style={{ width: hovered ? '115%' : '100%', marginLeft: hovered ? '-7.5%' : '0' }}
+      onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)}>
+      <div className="web-showcase__chrome">
+        <div className="web-showcase__bar">
+          <div className="web-showcase__dots">
+            <span className="web-showcase__dot web-showcase__dot--red" />
+            <span className="web-showcase__dot web-showcase__dot--yellow" />
+            <span className="web-showcase__dot web-showcase__dot--green" />
+          </div>
+          {url && <div className="web-showcase__url"><span>{url}{pages[current]?.path || ''}</span></div>}
+        </div>
+        <div className="web-showcase__viewport">
+          {screenshots.map((src, i) => (
+            <img key={i} src={src} alt={`${title} ${pages[i]?.label || ''}`} className="web-showcase__page" style={{ opacity: i === current ? 1 : 0 }} draggable={false} />
+          ))}
+          {screenshots.length > 1 && <>
+            <button className="web-showcase__arrow web-showcase__arrow--left" onClick={() => go(-1)} aria-label="Previous">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="15 18 9 12 15 6" /></svg>
+            </button>
+            <button className="web-showcase__arrow web-showcase__arrow--right" onClick={() => go(1)} aria-label="Next">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="9 18 15 12 9 6" /></svg>
+            </button>
+            <div className="web-showcase__label"><span>{pages[current]?.label}</span></div>
+          </>}
+        </div>
+      </div>
+      {screenshots.length > 1 && <div className="web-showcase__indicators">
+        {pages.map((_, i) => (
+          <button key={i} className={`web-showcase__indicator ${i === current ? 'active' : ''}`} onClick={() => setCurrent(i)} aria-label={`Page ${i + 1}`} />
+        ))}
+      </div>}
+    </div>
+  );
+};
+
+/* ─── Terminal Showcase ─── */
+interface TerminalLine { text: string; prompt?: boolean; accent?: boolean; bold?: boolean; dim?: boolean; }
+const terminalScreens = [
+  { label: 'startup', lines: [
+    { text: 'myro', prompt: true }, { text: '' },
+    { text: '  ┌──────────────────────────────────────┐', dim: true }, { text: '  │            myro v0.1.0               │', dim: true },
+    { text: '  │    competitive programming coach     │', dim: true }, { text: '  └──────────────────────────────────────┘', dim: true },
+    { text: '' }, { text: '  Fetching problem...', accent: true }, { text: '  CF-1842E  Tenzing and His Animal Friends', bold: true },
+    { text: '  Rating: 2200  |  Tags: graphs, greedy', dim: true }, { text: '' }, { text: 'ready — press enter to begin ▊', prompt: true },
+  ]},
+  { label: 'hint', lines: [
+    { text: 'myro solve', prompt: true }, { text: '' }, { text: '  ⏱  Timer started', dim: true }, { text: '' },
+    { text: '  Observation 1/3', accent: true }, { text: '  Think about what happens when you model' }, { text: '  friendships as edges in a graph.' },
+    { text: '' }, { text: '  What property must the graph have for', dim: true }, { text: '  all animals to coexist in two groups?', dim: true },
+    { text: '' }, { text: 'type your answer or enter for next hint ▊', prompt: true },
+  ]},
+  { label: 'progress', lines: [
+    { text: 'myro stats', prompt: true }, { text: '' }, { text: '  Your Progress', accent: true },
+    { text: '  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━', dim: true }, { text: '  Problems solved    47 / 200' },
+    { text: '  Current streak     12 days' }, { text: '  Avg solve time     18m → 14m  ↓', bold: true },
+    { text: '  Rating estimate    1847 → 1923', accent: true }, { text: '' }, { text: '  Weak topics: segment trees, dp on trees', dim: true },
+    { text: '  Next session: dp optimization', dim: true }, { text: '' }, { text: '▊', prompt: true },
+  ]},
+];
+
+const TerminalShowcase: React.FC<{ title: string }> = ({ title }) => {
+  const [current, setCurrent] = useState(0);
+  const [hovered, setHovered] = useState(false);
+
+  useEffect(() => {
+    if (hovered) return;
+    const timer = setInterval(() => setCurrent((p) => (p + 1) % terminalScreens.length), 4000);
+    return () => clearInterval(timer);
+  }, [hovered]);
+
+  const go = (dir: number) => setCurrent((p) => (p + dir + terminalScreens.length) % terminalScreens.length);
+
+  return (
+    <div className="terminal-showcase" onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)}>
+      <div className="terminal-showcase__chrome">
+        <div className="terminal-showcase__bar">
+          <div className="web-showcase__dots">
+            <span className="web-showcase__dot web-showcase__dot--red" />
+            <span className="web-showcase__dot web-showcase__dot--yellow" />
+            <span className="web-showcase__dot web-showcase__dot--green" />
+          </div>
+          <span className="terminal-showcase__title">{title.toLowerCase()} — ~/competitive</span>
+        </div>
+        <div className="terminal-showcase__content">
+          {terminalScreens.map((screen, i) => (
+            <div key={i} className="terminal-showcase__screen" style={{ opacity: i === current ? 1 : 0, pointerEvents: i === current ? 'auto' : 'none' }}>
+              {screen.lines.map((line, j) => (
+                <div key={j} className={`terminal-line ${line.prompt ? 'terminal-line--prompt' : line.accent ? 'terminal-line--accent' : line.bold ? 'terminal-line--bold' : line.dim ? 'terminal-line--dim' : ''}`}
+                  style={{ minHeight: line.text === '' ? '1.2em' : undefined }}>
+                  {line.prompt && <span className="terminal-line__chevron">❯ </span>}
+                  {line.text}
+                </div>
+              ))}
+            </div>
+          ))}
+          <button className="web-showcase__arrow web-showcase__arrow--left" onClick={() => go(-1)} aria-label="Previous">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="15 18 9 12 15 6" /></svg>
+          </button>
+          <button className="web-showcase__arrow web-showcase__arrow--right" onClick={() => go(1)} aria-label="Next">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="9 18 15 12 9 6" /></svg>
+          </button>
+        </div>
+      </div>
+      <div className="web-showcase__indicators">
+        {terminalScreens.map((s, i) => (
+          <button key={i} className={`web-showcase__indicator ${i === current ? 'active' : ''}`} onClick={() => setCurrent(i)} aria-label={s.label} />
+        ))}
+      </div>
+    </div>
+  );
+};
+
 /* ─── data ─── */
 const projects = [
-  { year: '2024', cat: 'Wellness · iOS', name: 'Neurotype', bg: '#7C3AED', textColor: '#fff', dividerColor: 'rgba(255,255,255,0.2)', icon: '/images/neurotype-mockup.png', linkColor: '#c4b5fd', desc: 'A science-based meditation app designed to help neurodivergent people. Grounded in research, shaped by real needs.', url: 'https://neurotypeapp.com' },
-  { year: '2024', cat: 'Aviation · iOS', name: 'Volo', bg: '#0284C7', textColor: '#fff', dividerColor: 'rgba(255,255,255,0.2)', icon: '/images/volo-mockup.png', linkColor: '#7dd3fc', desc: 'Your pilot companion & toolbox. Essential tools and resources for pilots, all in one app.', url: 'https://volopilot.app' },
-  { year: '2025', cat: 'AI · Web', name: 'Incraft', bg: '#EA580C', textColor: '#fff', dividerColor: 'rgba(255,255,255,0.2)', icon: '/images/incraft-mockup.png', linkColor: '#fdba74', desc: 'Generate studio-quality guided meditation in one prompt. Natural voice narration, timed pauses, tailored scripts.', url: 'https://incraft.io' },
-  { year: '2025', cat: 'Education · CLI', name: 'Myro', bg: '#059669', textColor: '#fff', dividerColor: 'rgba(255,255,255,0.2)', icon: '/images/myro-icon.png', linkColor: '#6ee7b7', desc: 'An adaptive competitive programming trainer. The shortest path to red.', url: 'https://myro.coach' },
+  { year: '2024', cat: 'Wellness · iOS', name: 'Neurotype', bg: '#7C3AED', textColor: '#fff', dividerColor: 'rgba(255,255,255,0.2)', linkColor: '#c4b5fd', showcase: 'phone' as const, screenshots: ['/images/neurotype-screen.png', '/images/projects/neurotype_progress.png', '/images/projects/neurotype_session.png'], desc: 'A science-based meditation app designed to help neurodivergent people. Grounded in research, shaped by real needs.', url: 'https://neurotypeapp.com' },
+  { year: '2024', cat: 'Aviation · iOS', name: 'Volo', bg: '#0284C7', textColor: '#fff', dividerColor: 'rgba(255,255,255,0.2)', linkColor: '#7dd3fc', showcase: 'phone' as const, screenshots: ['/images/volo-screen.png', '/images/projects/volo_ops.png', '/images/projects/volo_nat.png'], desc: 'Your pilot companion & toolbox. Essential tools and resources for pilots, all in one app.', url: 'https://volopilot.app' },
+  { year: '2025', cat: 'AI · Web', name: 'Incraft', bg: '#EA580C', textColor: '#fff', dividerColor: 'rgba(255,255,255,0.2)', linkColor: '#fdba74', showcase: 'web' as const, screenshots: ['/images/incraft-screen.png', '/images/projects/incraft_create.png', '/images/projects/incraft_studio.png'], webPages: [{ label: 'Home', path: '' }, { label: 'Create', path: '/create' }, { label: 'Studio', path: '/studio' }], desc: 'Generate studio-quality guided meditation in one prompt. Natural voice narration, timed pauses, tailored scripts.', url: 'https://incraft.io' },
+  { year: '2025', cat: 'Education · CLI', name: 'Myro', bg: '#059669', textColor: '#fff', dividerColor: 'rgba(255,255,255,0.2)', linkColor: '#6ee7b7', showcase: 'terminal' as const, screenshots: [], desc: 'An adaptive competitive programming trainer. The shortest path to red.', url: 'https://myro.coach' },
 ];
 
 const services = ['WEB APPS', 'MOBILE', 'AI / ML', 'API DESIGN', 'UI / UX', 'CLOUD', 'CONSULTING', 'PROTOTYPING'];
@@ -79,7 +260,9 @@ const ProjectCard: React.FC<{ p: typeof projects[0]; variant?: 'stack' | 'list' 
       </div>
     </div>
     <div className="nitro-project-card__image">
-      <img src={p.icon} alt={p.name} loading="lazy" decoding="async" />
+      {p.showcase === 'phone' && <PhoneShowcase screenshots={p.screenshots} title={p.name} />}
+      {p.showcase === 'web' && <WebShowcase screenshots={p.screenshots} title={p.name} url={p.url.replace('https://', '')} pages={(p as any).webPages} />}
+      {p.showcase === 'terminal' && <TerminalShowcase title={p.name} />}
     </div>
   </div>
 );
