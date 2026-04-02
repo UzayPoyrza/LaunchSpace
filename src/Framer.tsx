@@ -169,45 +169,24 @@ const WebShowcase: React.FC<{ screenshots: string[]; title: string; url?: string
 /* ─── Terminal Showcase (asciinema player) ─── */
 const TerminalShowcase: React.FC<{ title: string; castFile: string }> = ({ title, castFile }) => {
   const containerRef = useRef<HTMLDivElement>(null);
-  const wrapRef = useRef<HTMLDivElement>(null);
-  const [scale, setScale] = useState(1);
-  const [ready, setReady] = useState(false);
 
   useEffect(() => {
     import('asciinema-player').then((AsciinemaPlayer) => {
       if (!containerRef.current) return;
       containerRef.current.innerHTML = '';
       AsciinemaPlayer.create(castFile, containerRef.current, {
-        autoPlay: true,
+        autoPlay: false,
         loop: true,
         speed: 1.5,
         idleTimeLimit: 2,
         fit: 'width',
         terminalFontFamily: "ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace",
       });
-      setReady(true);
     });
   }, [castFile]);
 
-  // Scale the terminal to fit when the card is short
-  useEffect(() => {
-    const el = wrapRef.current;
-    if (!el) return;
-    const check = () => {
-      const parent = el.closest('.nitro-project-card__image') as HTMLElement;
-      if (!parent) return;
-      const available = parent.clientHeight;
-      const natural = el.scrollHeight;
-      setScale(natural > available ? available / natural : 1);
-    };
-    const ro = new ResizeObserver(check);
-    ro.observe(el);
-    if (el.closest('.nitro-project-card__image')) ro.observe(el.closest('.nitro-project-card__image')!);
-    return () => ro.disconnect();
-  }, [ready]);
-
   return (
-    <div className="terminal-showcase" ref={wrapRef} style={{ transform: scale < 1 ? `scale(${scale})` : undefined, transformOrigin: 'top center' }} onClick={(e) => e.stopPropagation()}>
+    <div className="terminal-showcase" onClick={(e) => e.stopPropagation()}>
       <div className="terminal-showcase__chrome">
         <div className="terminal-showcase__bar">
           <div className="web-showcase__dots">
