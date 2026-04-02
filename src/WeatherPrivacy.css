@@ -2,45 +2,54 @@
   min-height: 100vh;
   display: flex;
   justify-content: center;
-  padding: 120px 20px 60px;
+  padding: 120px 48px 60px;
   position: relative;
   z-index: 1;
+  background: #000;
+  font-family: 'Inter', -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
 }
 
 .weather-privacy-container {
   max-width: 720px;
   width: 100%;
-  color: rgba(255, 255, 255, 0.9);
+  color: rgba(255, 255, 255, 0.7);
 }
 
 .weather-privacy-container h1 {
-  font-size: 32px;
+  font-family: 'Manrope', -apple-system, sans-serif;
+  font-size: 36px;
   font-weight: 700;
   color: #fff;
   margin-bottom: 8px;
+  letter-spacing: -0.03em;
 }
 
 .weather-privacy-container .last-updated {
-  color: rgba(255, 255, 255, 0.5);
-  font-size: 14px;
-  margin-bottom: 40px;
+  color: rgba(255, 255, 255, 0.35);
+  font-size: 13px;
+  margin-bottom: 48px;
+  font-family: 'DM Mono', monospace;
 }
 
 .weather-privacy-container section {
-  margin-bottom: 32px;
+  margin-bottom: 36px;
 }
 
 .weather-privacy-container h2 {
+  font-family: 'Manrope', -apple-system, sans-serif;
   font-size: 20px;
   font-weight: 600;
   color: #fff;
   margin-bottom: 12px;
+  letter-spacing: -0.02em;
 }
 
 .weather-privacy-container p {
-  line-height: 1.7;
-  color: rgba(255, 255, 255, 0.8);
+  line-height: 1.75;
+  color: rgba(255, 255, 255, 0.6);
   margin-bottom: 12px;
+  font-size: 15px;
 }
 
 .weather-privacy-container ul {
@@ -50,33 +59,34 @@
 }
 
 .weather-privacy-container li {
-  line-height: 1.7;
-  color: rgba(255, 255, 255, 0.8);
+  line-height: 1.75;
+  color: rgba(255, 255, 255, 0.6);
   margin-bottom: 6px;
+  font-size: 15px;
 }
 
 .weather-privacy-container strong {
-  color: #fff;
+  color: rgba(255, 255, 255, 0.9);
 }
 
 .weather-privacy-container a {
-  color: #60a5fa;
+  color: #00ff77;
   text-decoration: none;
   transition: color 0.2s ease;
 }
 
 .weather-privacy-container a:hover {
-  color: #93bbfd;
+  color: #b3ffcb;
   text-decoration: underline;
 }
 
 @media (max-width: 600px) {
   .weather-privacy-page {
-    padding: 100px 16px 40px;
+    padding: 100px 20px 40px;
   }
 
   .weather-privacy-container h1 {
-    font-size: 26px;
+    font-size: 28px;
   }
 
   .weather-privacy-container h2 {
