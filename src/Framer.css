@@ -1,0 +1,1147 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=Inter:wght@300;400;500;600&family=Manrope:wght@300;400;500;600;700;800&display=swap');
+
+/* ─────────────────────────────────────────
+   Reset & Base
+   ───────────────────────────────────────── */
+body.nitro-body {
+  background: #111113 !important;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+.nitro-page {
+  --bg: #111113;
+  --bg-card: #111;
+  --text-1: #ffffff;
+  --text-2: rgba(255, 255, 255, 0.5);
+  --text-3: rgba(255, 255, 255, 0.25);
+  --border: rgba(255, 255, 255, 0.1);
+  --accent: #00ff77;
+  --accent-light: #b3ffcb;
+  --font-heading: 'Manrope', -apple-system, sans-serif;
+  --font-body: 'Inter', -apple-system, sans-serif;
+  --font-mono: 'DM Mono', 'SF Mono', monospace;
+  --radius: 8px;
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+
+  min-height: 100vh;
+  background: var(--bg);
+  color: var(--text-1);
+  font-family: var(--font-body);
+  position: relative;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.nitro-page *,
+.nitro-page *::before,
+.nitro-page *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.nitro-page a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Vertical grid lines */
+.nitro-page::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image: repeating-linear-gradient(
+    to right,
+    rgba(255, 255, 255, 0.05) 0px,
+    rgba(255, 255, 255, 0.05) 1px,
+    transparent 1px,
+    transparent
+  );
+  background-size: calc(100% / 10) 100%;
+}
+
+.nitro-page > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* ─────────────────────────────────────────
+   Navigation
+   ───────────────────────────────────────── */
+.nitro-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  padding: 0 48px;
+  height: 72px;
+  display: flex;
+  align-items: center;
+  transition: background 0.4s ease, border-color 0.4s ease, backdrop-filter 0.4s ease;
+  border-bottom: 1px solid transparent;
+}
+
+.nitro-nav--scrolled {
+  background: rgba(17, 17, 19, 0.82);
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  border-bottom-color: var(--border);
+}
+
+.nitro-nav__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 1920px;
+  margin: 0 auto;
+}
+
+.nitro-nav__logo {
+  font-family: var(--font-mono);
+  font-size: 18px;
+  font-weight: 500;
+  color: var(--text-1);
+  letter-spacing: -0.02em;
+  cursor: default;
+  user-select: none;
+}
+
+.nitro-nav__links {
+  display: flex;
+  gap: 36px;
+}
+
+.nitro-nav__links button {
+  all: unset;
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--text-2);
+  cursor: pointer;
+  transition: color 0.25s ease;
+  letter-spacing: -0.01em;
+  position: relative;
+}
+
+.nitro-nav__links button::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: var(--text-1);
+  transition: width 0.35s var(--ease);
+}
+
+.nitro-nav__links button:hover {
+  color: var(--text-1);
+}
+
+.nitro-nav__links button:hover::after {
+  width: 100%;
+}
+
+.nitro-nav__cta {
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--accent);
+  background: none;
+  padding: 0;
+  border-radius: 0;
+  text-decoration: none;
+  transition: opacity 0.25s ease;
+  letter-spacing: -0.01em;
+}
+
+.nitro-nav__cta:hover {
+  opacity: 0.7;
+}
+
+/* Progress bar */
+.nitro-progress-bar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.25);
+  max-width: 1920px;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+.nitro-progress-bar__fill {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.25) 0%, #fff 100%);
+  transform-origin: 0% 50%;
+}
+
+/* Hamburger */
+.nitro-hamburger {
+  all: unset;
+  display: none;
+  cursor: pointer;
+  width: 24px;
+  height: 18px;
+  position: relative;
+}
+
+.nitro-hamburger span {
+  display: block;
+  width: 100%;
+  height: 2px;
+  background: var(--text-1);
+  border-radius: 2px;
+  transition: all 0.35s var(--ease);
+  position: absolute;
+  left: 0;
+}
+
+.nitro-hamburger span:nth-child(1) { top: 0; }
+.nitro-hamburger span:nth-child(2) { top: 50%; transform: translateY(-50%); }
+.nitro-hamburger span:nth-child(3) { bottom: 0; }
+
+.nitro-hamburger.active span:nth-child(1) {
+  top: 50%;
+  transform: translateY(-50%) rotate(45deg);
+}
+.nitro-hamburger.active span:nth-child(2) { opacity: 0; }
+.nitro-hamburger.active span:nth-child(3) {
+  bottom: 50%;
+  transform: translateY(50%) rotate(-45deg);
+}
+
+/* Mobile menu */
+.nitro-mobile-menu {
+  position: fixed;
+  top: 72px;
+  left: 0;
+  right: 0;
+  z-index: 99;
+  background: rgba(17, 17, 19, 0.96);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  padding: 28px 48px;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  border-bottom: 1px solid var(--border);
+}
+
+.nitro-mobile-menu button {
+  all: unset;
+  font-family: var(--font-body);
+  font-size: 20px;
+  color: var(--text-2);
+  cursor: pointer;
+  transition: color 0.25s ease;
+}
+
+.nitro-mobile-menu button:hover {
+  color: var(--text-1);
+}
+
+/* ─────────────────────────────────────────
+   Hero
+   ───────────────────────────────────────── */
+.nitro-hero {
+  display: flex;
+  align-items: flex-start;
+  padding: 100px 48px 0;
+  position: relative;
+  overflow: visible;
+}
+
+.nitro-hero__glow {
+  position: absolute;
+  top: 15%;
+  left: -5%;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(0, 255, 119, 0.06) 0%, transparent 70%);
+  pointer-events: none;
+  filter: blur(100px);
+}
+
+.nitro-hero__inner {
+  max-width: 1920px;
+  margin: 0 auto;
+  width: 100%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 180px;
+}
+
+/* Top meta row: greeting · dot · availability */
+.nitro-hero__top-meta {
+  display: flex;
+  flex-flow: row;
+  align-items: center;
+  gap: 4px;
+  width: 100%;
+  overflow: hidden;
+}
+
+.nitro-hero__greeting {
+  font-family: var(--font-body);
+  font-size: 18px;
+  color: var(--text-2);
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  flex: 1;
+  text-align: left;
+}
+
+.nitro-hero__availability {
+  font-family: var(--font-body);
+  font-size: 18px;
+  color: var(--text-2);
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  flex: 1;
+  text-align: right;
+}
+
+.nitro-dot {
+  width: 8px;
+  height: 8px;
+  background: var(--accent);
+  border-radius: 50%;
+  display: inline-block;
+  animation: nitro-pulse 2s ease-in-out infinite;
+  flex-shrink: 0;
+}
+
+@keyframes nitro-pulse {
+  0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(0, 255, 119, 0.4); }
+  50% { opacity: 0.5; box-shadow: 0 0 0 6px rgba(0, 255, 119, 0); }
+}
+
+/* Heading with rotating text */
+.nitro-hero__heading-wrap {
+  width: 100%;
+}
+
+.nitro-hero__headline {
+  font-family: var(--font-heading);
+  font-size: 104px;
+  font-weight: 500;
+  line-height: 1.25em;
+  letter-spacing: -4px;
+  color: var(--text-1);
+  margin: 0;
+  max-width: 100%;
+}
+
+/* Text rotator */
+.nitro-rotator {
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: bottom;
+  height: 1.25em;
+}
+
+.nitro-rotator__word {
+  display: inline-block;
+  color: var(--text-1);
+}
+
+/* ─────────────────────────────────────────
+   Sections
+   ───────────────────────────────────────── */
+.nitro-section {
+  padding: 80px 48px;
+  max-width: 1920px;
+  margin: 0 auto;
+}
+
+.nitro-section--projects {
+  padding: 0 48px 120px;
+}
+
+/* Label row with decorative line */
+.nitro-label-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  overflow: hidden;
+  margin-bottom: 36px;
+}
+
+.nitro-label {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--text-2);
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+  margin-bottom: 0;
+  flex-shrink: 0;
+}
+
+.nitro-label-line {
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+}
+
+/* ─────────────────────────────────────────
+   Project Cards — Stacked sticky layout
+   ───────────────────────────────────────── */
+.nitro-projects-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 144px;
+}
+
+.nitro-project-sticky-wrap {
+  position: sticky;
+  top: 160px;
+}
+
+.nitro-project-card {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+  height: calc(100vh - 200px);
+  padding: 24px;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  overflow: hidden;
+  cursor: pointer;
+  transition: box-shadow 0.4s ease, border-color 0.4s ease;
+  box-shadow: 0px -4px 20px -0.3px rgba(0, 0, 0, 0.15);
+}
+
+.nitro-project-card:hover {
+  box-shadow: 0 30px 80px -20px rgba(0, 0, 0, 0.45),
+              0 0 1px 0 rgba(255, 255, 255, 0.06);
+}
+
+.nitro-project-card__top {
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.nitro-project-card__meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  width: 100%;
+  font-family: var(--font-mono);
+  font-size: 14px;
+  font-weight: 300;
+  letter-spacing: 0;
+  line-height: 1em;
+  opacity: 0.75;
+}
+
+.nitro-project-card__divider {
+  width: 100%;
+  height: 1px;
+}
+
+.nitro-project-card__title-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 60px;
+  width: 100%;
+}
+
+.nitro-project-card__name {
+  font-family: var(--font-heading);
+  font-size: clamp(32px, 4vw, 64px);
+  font-weight: 500;
+  letter-spacing: -2.7px;
+  line-height: 1.35;
+}
+
+.nitro-project-card__arrow {
+  width: 72px;
+  height: 72px;
+  flex-shrink: 0;
+  opacity: 0.5;
+  transition: opacity 0.3s ease;
+}
+
+.nitro-project-card:hover .nitro-project-card__arrow {
+  opacity: 1;
+}
+
+.nitro-project-card__image {
+  flex: 1 0 0;
+  width: 100%;
+  min-height: 0;
+  position: relative;
+  overflow: hidden;
+  border-radius: 4px;
+}
+
+.nitro-project-card__image img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  border-radius: inherit;
+}
+
+/* ─────────────────────────────────────────
+   About
+   ───────────────────────────────────────── */
+.nitro-about-grid {
+  display: flex;
+  gap: 80px;
+  align-items: flex-start;
+}
+
+.nitro-about-text-col {
+  flex: 1;
+  min-width: 0;
+}
+
+.nitro-about-text {
+  font-family: var(--font-heading);
+  font-size: clamp(22px, 2.8vw, 36px);
+  font-weight: 500;
+  line-height: 1.45;
+  color: var(--text-1);
+  letter-spacing: -0.02em;
+}
+
+.nitro-about-cta {
+  margin-top: 48px;
+}
+
+.nitro-about-img-col {
+  flex: 0 0 37.5%;
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius);
+}
+
+.nitro-about-img-col img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-radius: inherit;
+}
+
+/* ─────────────────────────────────────────
+   Notes
+   ───────────────────────────────────────── */
+.nitro-notes-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  margin-top: 8px;
+}
+
+.nitro-note-card {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  padding: 32px 0;
+  border-bottom: 1px solid var(--border);
+  transition: opacity 0.3s ease;
+}
+
+.nitro-note-card:first-child {
+  border-top: 1px solid var(--border);
+}
+
+.nitro-note-card:hover {
+  opacity: 0.7;
+}
+
+.nitro-note-card__content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nitro-note-card h3 {
+  font-family: var(--font-heading);
+  font-size: clamp(20px, 2vw, 28px);
+  font-weight: 500;
+  color: var(--text-2);
+  letter-spacing: -0.02em;
+  line-height: 1.35;
+  transition: color 0.3s ease;
+}
+
+.nitro-note-card:hover h3 {
+  color: var(--text-1);
+}
+
+.nitro-note-date {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--text-3);
+  white-space: nowrap;
+  margin-left: 32px;
+  flex-shrink: 0;
+}
+
+/* ─────────────────────────────────────────
+   Contact CTA
+   ───────────────────────────────────────── */
+.nitro-contact-heading {
+  font-family: var(--font-heading);
+  font-size: clamp(26px, 3.8vw, 48px);
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--text-1);
+  max-width: 700px;
+  letter-spacing: -0.03em;
+}
+
+.nitro-contact-btn-wrap {
+  margin-top: 44px;
+}
+
+.nitro-contact-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  font-family: var(--font-body);
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--text-2);
+  text-decoration: none;
+  padding: 14px 28px;
+  border-radius: 100px;
+  border: 1px solid var(--text-2);
+  transition: color 0.3s ease, border-color 0.3s ease, background 0.3s ease;
+}
+
+.nitro-contact-btn:hover {
+  color: var(--text-1);
+  border-color: var(--text-1);
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.nitro-contact-btn__icon {
+  width: 18px;
+  height: 18px;
+}
+
+/* ─────────────────────────────────────────
+   Subpages (Projects, Contact)
+   ───────────────────────────────────────── */
+.nitro-subpage {
+  padding: 120px 48px 60px;
+  max-width: 1920px;
+  margin: 0 auto;
+}
+
+.nitro-subpage__header {
+  margin-bottom: 60px;
+}
+
+.nitro-subpage__title {
+  font-family: var(--font-heading);
+  font-size: clamp(48px, 6vw, 96px);
+  font-weight: 500;
+  letter-spacing: -3px;
+  line-height: 1.1;
+  color: var(--text-1);
+  margin-bottom: 32px;
+}
+
+.nitro-subpage__desc {
+  font-family: var(--font-body);
+  font-size: clamp(16px, 1.5vw, 20px);
+  color: var(--text-2);
+  max-width: 600px;
+  line-height: 1.6;
+}
+
+/* Clients section */
+.nitro-clients {
+  margin-bottom: 80px;
+}
+
+.nitro-clients__row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0;
+  margin-top: 16px;
+}
+
+.nitro-clients__logo {
+  font-family: var(--font-heading);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-3);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 16px 32px;
+  border: 1px solid var(--border);
+  margin-right: -1px;
+  margin-bottom: -1px;
+  transition: color 0.3s ease;
+}
+
+.nitro-clients__logo:hover {
+  color: var(--text-1);
+}
+
+/* Projects detailed list (projects page) */
+.nitro-projects-detailed {
+  display: flex;
+  flex-direction: column;
+  gap: 144px;
+}
+
+.nitro-project-detailed {
+  display: grid;
+  grid-template-columns: 1fr 280px;
+  gap: 0;
+  align-items: start;
+  position: sticky;
+  top: 100px;
+}
+
+.nitro-project-detailed__card {
+  min-width: 0;
+}
+
+.nitro-project-card--list {
+  height: 75vh;
+}
+
+.nitro-project-detailed__info {
+  padding: 24px 0 24px 32px;
+  display: flex;
+  align-items: flex-start;
+}
+
+.nitro-project-detailed__desc {
+  font-family: var(--font-body);
+  font-size: 14px;
+  color: var(--text-2);
+  line-height: 1.7;
+}
+
+/* Contact page */
+.nitro-contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: 80px;
+  align-items: start;
+}
+
+.nitro-contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.nitro-form-field {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 24px;
+  margin-bottom: -1px;
+}
+
+.nitro-form-field input,
+.nitro-form-field textarea {
+  all: unset;
+  font-family: var(--font-heading);
+  font-size: 16px;
+  color: var(--text-1);
+  width: 100%;
+  line-height: 1.5;
+  box-sizing: border-box;
+}
+
+.nitro-form-field--textarea {
+  min-height: 160px;
+}
+
+.nitro-form-field textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.nitro-form-field input::placeholder,
+.nitro-form-field textarea::placeholder {
+  color: var(--text-3);
+  font-family: var(--font-mono);
+  font-size: 13px;
+}
+
+.nitro-form-submit {
+  all: unset;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--bg);
+  background: var(--text-1);
+  padding: 18px 40px;
+  border-radius: 100px;
+  cursor: pointer;
+  margin-top: 32px;
+  transition: opacity 0.25s ease;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.nitro-form-submit:hover {
+  opacity: 0.85;
+}
+
+/* Social links */
+.nitro-contact-socials {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  padding-top: 0;
+}
+
+.nitro-social-link {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 18px 0;
+  border-bottom: 1px solid var(--border);
+  text-decoration: none;
+  color: var(--text-2);
+  transition: color 0.25s ease;
+}
+
+.nitro-social-link:first-child {
+  border-top: 1px solid var(--border);
+}
+
+.nitro-social-link:hover {
+  color: var(--text-1);
+}
+
+.nitro-social-link__icon-wrap {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: var(--text-3);
+  transition: color 0.25s ease, border-color 0.25s ease;
+}
+
+.nitro-social-link:hover .nitro-social-link__icon-wrap {
+  color: var(--text-1);
+  border-color: var(--text-2);
+}
+
+.nitro-social-link__text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.nitro-social-link__name {
+  font-family: var(--font-body);
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--text-1);
+}
+
+.nitro-social-link__handle {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--text-3);
+}
+
+/* Active nav link */
+.nitro-nav__links a.active,
+.nitro-nav__links button.active {
+  color: var(--text-1);
+}
+
+/* Nav links as <a> tags (for subpages) */
+.nitro-nav__links a {
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--text-2);
+  text-decoration: none;
+  transition: color 0.25s ease;
+  letter-spacing: -0.01em;
+}
+
+.nitro-nav__links a:hover {
+  color: var(--text-1);
+}
+
+.nitro-mobile-menu a {
+  font-family: var(--font-body);
+  font-size: 20px;
+  color: var(--text-2);
+  text-decoration: none;
+  transition: color 0.25s ease;
+}
+
+.nitro-mobile-menu a:hover {
+  color: var(--text-1);
+}
+
+/* Footer links as <a> tags */
+.nitro-footer__links a {
+  font-family: var(--font-body);
+  font-size: 14px;
+  color: var(--text-3);
+  text-decoration: none;
+  transition: color 0.25s ease;
+}
+
+.nitro-footer__links a:hover {
+  color: var(--text-1);
+}
+
+/* ─────────────────────────────────────────
+   Footer
+   ───────────────────────────────────────── */
+.nitro-footer {
+  padding: 56px 48px;
+  border-top: 1px solid var(--border);
+  margin-top: 40px;
+}
+
+.nitro-footer__inner {
+  max-width: 1920px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nitro-footer__links {
+  display: flex;
+  gap: 28px;
+}
+
+.nitro-footer__links button {
+  all: unset;
+  font-family: var(--font-body);
+  font-size: 14px;
+  color: var(--text-3);
+  cursor: pointer;
+  transition: color 0.25s ease;
+}
+
+.nitro-footer__links button:hover {
+  color: var(--text-1);
+}
+
+.nitro-footer__credit {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--text-3);
+}
+
+.nitro-footer__credit a {
+  color: var(--text-2);
+  text-decoration: none;
+  transition: color 0.25s ease;
+}
+
+.nitro-footer__credit a:hover {
+  color: var(--text-1);
+}
+
+/* ─────────────────────────────────────────
+   Responsive
+   ───────────────────────────────────────── */
+@media (max-width: 1439px) {
+  .nitro-hero__headline {
+    font-size: 80px;
+  }
+  .nitro-hero__inner {
+    gap: 160px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .nitro-hero__headline {
+    font-size: 60px;
+    letter-spacing: -1.2px;
+  }
+  .nitro-hero__inner {
+    gap: 120px;
+  }
+
+  .nitro-project-card {
+    height: calc(100vh - 220px);
+    padding: 20px;
+  }
+
+  .nitro-project-card__arrow {
+    width: 48px;
+    height: 48px;
+  }
+
+  .nitro-projects-stack {
+    gap: 100px;
+  }
+
+  .nitro-about-grid {
+    flex-direction: column;
+  }
+
+  .nitro-about-img-col {
+    flex: none;
+    width: 100%;
+    max-height: 500px;
+  }
+}
+
+@media (max-width: 768px) {
+  .nitro-nav { padding: 0 24px; }
+  .nitro-nav__links { display: none; }
+  .nitro-nav__cta { display: none; }
+  .nitro-hamburger { display: flex; }
+
+
+  .nitro-hero { padding: 90px 24px 0; }
+  .nitro-hero__inner { gap: 96px; }
+
+  .nitro-subpage { padding: 100px 24px 40px; }
+  .nitro-contact-grid { grid-template-columns: 1fr; gap: 48px; }
+  .nitro-project-card--list { height: 360px; }
+  .nitro-project-detailed { grid-template-columns: 1fr; }
+  .nitro-project-detailed__info { padding: 16px 0 32px; }
+
+  .nitro-section { padding: 60px 24px; }
+  .nitro-section--projects { padding: 40px 24px 80px; }
+  .nitro-mobile-menu { padding: 24px; }
+
+  .nitro-hero__top-meta {
+    flex-direction: row;
+  }
+
+  .nitro-hero__greeting,
+  .nitro-hero__availability {
+    font-size: 15px;
+  }
+
+  .nitro-project-card {
+    height: calc(100vh - 200px);
+    padding: 16px;
+  }
+
+  .nitro-project-card__name {
+    font-size: 28px;
+    letter-spacing: -1.5px;
+  }
+
+  .nitro-project-card__arrow {
+    width: 36px;
+    height: 36px;
+  }
+
+  .nitro-project-card__title-row {
+    gap: 24px;
+  }
+
+  .nitro-projects-stack {
+    gap: 60px;
+  }
+
+  .nitro-project-sticky-wrap {
+    position: sticky;
+    top: 80px;
+  }
+
+  .nitro-note-card__content {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .nitro-note-date {
+    margin-left: 0;
+  }
+
+  .nitro-footer { padding: 40px 24px; }
+
+  .nitro-footer__inner {
+    flex-direction: column;
+    gap: 24px;
+    text-align: center;
+  }
+
+  .nitro-footer__links {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .nitro-hero {
+    min-height: auto;
+    padding: 90px 20px 0;
+  }
+
+  .nitro-hero__inner { gap: 60px; }
+
+  .nitro-section { padding: 50px 20px; }
+  .nitro-section--projects { padding: 30px 20px 60px; }
+  .nitro-nav { padding: 0 20px; }
+
+  .nitro-hero__headline { font-size: 36px; letter-spacing: -1px; }
+  .nitro-hero__greeting { font-size: 14px; }
+  .nitro-hero__availability { font-size: 12px; }
+  .nitro-about-text { font-size: 20px; }
+  .nitro-contact-heading { font-size: 24px; }
+  .nitro-note-card h3 { font-size: 17px; }
+
+  .nitro-project-card {
+    height: calc(100vh - 180px);
+    padding: 12px;
+  }
+
+  .nitro-project-card__name {
+    font-size: 24px;
+    letter-spacing: -1px;
+  }
+
+  .nitro-project-card__arrow {
+    width: 32px;
+    height: 32px;
+  }
+
+  .nitro-project-card__meta {
+    font-size: 12px;
+  }
+
+  .nitro-projects-stack {
+    gap: 40px;
+  }
+}

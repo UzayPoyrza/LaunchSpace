@@ -8,6 +8,7 @@ import Footer from './Footer';
 import LoadingScreen from './LoadingScreen';
 import UnsubscribePage from './UnsubscribePage';
 import WeatherPrivacy from './WeatherPrivacy';
+import Framer from './Framer';
 
 function AppContent() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -18,6 +19,7 @@ function AppContent() {
   const [lastScrollY, setLastScrollY] = useState(0);
   const location = useLocation();
   const isHomePage = location.pathname === '/';
+  const isFramerPage = location.pathname.startsWith('/framer');
 
   // Handle initial loading
   useEffect(() => {
@@ -118,24 +120,25 @@ function AppContent() {
   }, [location.pathname]);
 
   // Show loading screen
-  if (isLoading) {
+  if (isLoading && !isFramerPage) {
     return <LoadingScreen />;
   }
 
   return (
     <div className={`App ${isHomePage ? 'home-page' : ''}`}>
+      {!isFramerPage && (<>
       {/* Flashlight/Spotlight Cursor Effect */}
-      <div 
+      <div
         className="flashlight-effect"
         style={{
           left: mousePosition.x - flashlightSize,
           top: mousePosition.y - flashlightSize,
         }}
       />
-      
+
       {/* Video Background for non-home pages */}
       {!isHomePage && <VideoBackground />}
-      
+
       {/* Navigation */}
       <nav className={`navbar ${!isHomePage ? 'inverted' : ''} ${isNavVisible ? 'nav-visible' : 'nav-hidden'}`}>
         <div className="nav-container">
@@ -209,6 +212,7 @@ function AppContent() {
           </Link>
         </div>
       </nav>
+      </>)}
 
       {/* Routes */}
       <Routes>
@@ -224,8 +228,9 @@ function AppContent() {
         <Route path="/contact" element={<Contact />} />
         <Route path="/unsubscribe" element={<UnsubscribePage />} />
         <Route path="/weatherprivacy" element={<WeatherPrivacy />} />
+        <Route path="/framer/*" element={<Framer />} />
       </Routes>
-      <Footer isHomePage={isHomePage} />
+      {!isFramerPage && <Footer isHomePage={isHomePage} />}
     </div>
   );
 }
