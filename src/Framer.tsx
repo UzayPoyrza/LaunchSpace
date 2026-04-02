@@ -98,9 +98,9 @@ const HomePage: React.FC = () => (
         </motion.div>
         <motion.div className="nitro-hero__heading-wrap" initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.5, ease }}>
           <h1 className="nitro-hero__headline">
-            we turn ideas into{' '}
-            <TextRotator words={['apps', 'platforms', 'AI tools', 'experiences']} interval={3000} />
-            {' '}people love to use
+            <span className="nitro-hero__headline-dim">we build apps from</span>
+            <br /><span className="nitro-hero__headline-dim">the ground up with</span>
+            <br /><TextRotator words={['clean design', 'real impact', 'fast shipping', 'fresh ideas']} interval={3000} />
           </h1>
         </motion.div>
       </div>
