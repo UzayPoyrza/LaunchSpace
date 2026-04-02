@@ -188,7 +188,7 @@ const TerminalShowcase: React.FC<{ title: string; castFile: string }> = ({ title
         loop: true,
         speed: 1.5,
         idleTimeLimit: 2,
-        fit: 'both',
+        fit: 'width',
         terminalFontFamily: "ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace",
       });
       playerRef.current = p;
