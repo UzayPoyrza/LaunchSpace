@@ -335,18 +335,9 @@ const Framer: React.FC = () => {
     return <button className={active ? 'active' : ''} onClick={onClick}>{children}</button>;
   };
 
-  const navContent = isHome ? (
-    <>
-      <NavLink onClick={() => scrollToSection('projects')}>projects</NavLink>
-      <NavLink onClick={() => scrollToSection('about')}>about</NavLink>
-      <NavLink onClick={() => scrollToSection('notes')}>notes</NavLink>
-      <NavLink onClick={() => scrollToSection('contact')}>contact</NavLink>
-    </>
-  ) : (
+  const navContent = (
     <>
       <NavLink to="/framer/projects" active={currentPage === 'projects'}>projects</NavLink>
-      <NavLink to="/framer" active={false}>about</NavLink>
-      <NavLink to="/framer" active={false}>notes</NavLink>
       <NavLink to="/framer/contact" active={currentPage === 'contact'}>contact</NavLink>
     </>
   );
@@ -357,7 +348,6 @@ const Framer: React.FC = () => {
         <div className="nitro-nav__inner">
           <Link to="/framer" className="nitro-nav__logo">.nitro</Link>
           <div className="nitro-nav__links">{navContent}</div>
-          <a className="nitro-nav__cta" href="https://framer.link/MvMdlCP" target="_blank" rel="noopener noreferrer">get template</a>
           <button className={`nitro-hamburger ${menuOpen ? 'active' : ''}`} onClick={() => setMenuOpen(!menuOpen)} aria-label="Toggle menu">
             <span /><span /><span />
           </button>
