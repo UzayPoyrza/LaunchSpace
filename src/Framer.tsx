@@ -26,43 +26,45 @@ const TextRotator: React.FC<{ words: string[]; interval?: number }> = ({ words, 
 /* ─── Icons ─── */
 const ArrowIcon: React.FC<{ className?: string }> = ({ className }) => (
   <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round">
-    <path d="M5 12h14M13 6l6 6-6 6" />
+    <path d="M7 17L17 7M17 7H7M17 7V17" />
   </svg>
+);
+
+const GithubIcon = () => (
+  <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+);
+
+const LinkedInIcon = () => (
+  <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
 );
 
 const TwitterIcon = () => (
   <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
 );
-const InstagramIcon = () => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} width="20" height="20"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg>
-);
-const TiktokIcon = () => (
-  <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1v-3.5a6.37 6.37 0 00-.79-.05A6.34 6.34 0 003.15 15.2a6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.34-6.34V9.27a8.16 8.16 0 004.76 1.52v-3.4a4.85 4.85 0 01-1-.7z"/></svg>
-);
-const YoutubeIcon = () => (
-  <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M23.5 6.19a3.02 3.02 0 00-2.12-2.14C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.38.55A3.02 3.02 0 00.5 6.19 31.6 31.6 0 000 12a31.6 31.6 0 00.5 5.81 3.02 3.02 0 002.12 2.14c1.88.55 9.38.55 9.38.55s7.5 0 9.38-.55a3.02 3.02 0 002.12-2.14A31.6 31.6 0 0024 12a31.6 31.6 0 00-.5-5.81zM9.55 15.57V8.43L15.82 12l-6.27 3.57z"/></svg>
+
+const MailIcon = () => (
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} width="20" height="20"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 4L12 13 2 4"/></svg>
 );
 
-const socialIcons: Record<string, React.FC> = { twitter: TwitterIcon, instagram: InstagramIcon, tiktok: TiktokIcon, youtube: YoutubeIcon };
+const socialIcons: Record<string, React.FC> = { github: GithubIcon, linkedin: LinkedInIcon, x: TwitterIcon, email: MailIcon };
+const socialLinks = [
+  { platform: 'github', handle: '@launchspace', url: 'https://github.com/launchspace' },
+  { platform: 'linkedin', handle: 'LaunchSpace LLC', url: 'https://linkedin.com/company/launchspace' },
+  { platform: 'x', handle: '@launchspace', url: 'https://x.com/launchspace' },
+  { platform: 'email', handle: 'hello@launchspace.org', url: 'mailto:hello@launchspace.org' },
+];
 
 /* ─── data ─── */
 const projects = [
-  { year: '2023', cat: 'Personal Project', name: 'bizz buzz', bg: '#FF6200', textColor: '#000', dividerColor: 'rgba(0,0,0,0.25)', img: 'https://framerusercontent.com/images/cak7U7dY4h898WLby7suvljdOcA.jpg?width=1920&height=1329', desc: 'A social media platform for entrepreneurs to network and collaborate' },
-  { year: '2023', cat: 'Branding & Identity', name: 'aquaflow', bg: '#FFFFFF', textColor: '#000', dividerColor: 'rgba(0,0,0,0.25)', img: 'https://framerusercontent.com/images/xKHWSysrgFe1ub1CxmcYLHQdpc.jpg?width=1920&height=1440', desc: 'A bottled water delivery service that sources water from the purest mountain streams' },
-  { year: '2023', cat: 'UI/UX', name: 'snackify', bg: '#2E3538', textColor: '#fff', dividerColor: 'rgba(255,255,255,0.15)', img: 'https://framerusercontent.com/images/v2Cxh5gAzf3y5i5rvV7stpdreY.jpg?width=1920&height=1440', desc: 'A healthy snack subscription service that curates personalized snack boxes based on your dietary preferences' },
-  { year: '2023', cat: 'Personal Project', name: 'zengo', bg: '#FFDD00', textColor: '#000', dividerColor: 'rgba(0,0,0,0.25)', img: 'https://framerusercontent.com/images/B4iHZ4n8YkDGgjtcjPiGagMwMzA.jpg?width=1920&height=1440', desc: 'A meditation app that uses AI to customize your mindfulness practice and track your progress' },
-  { year: '2023', cat: 'Branding & Identity', name: 'roverride', bg: '#333333', textColor: '#fff', dividerColor: 'rgba(255,255,255,0.15)', img: 'https://framerusercontent.com/images/ju62vkEreDoQkpYoSbxnVoVcnzo.jpg?width=1920&height=1440', desc: 'An on-demand dog walking and pet sitting service that connects busy pet owners with trusted local caregivers' },
+  { year: '2024', cat: 'Wellness · iOS', name: 'Neurotype', bg: '#7C3AED', textColor: '#fff', dividerColor: 'rgba(255,255,255,0.2)', icon: '/images/neurotype-icon.png', desc: 'A science-based meditation app designed to help neurodivergent people. Grounded in research, shaped by real needs.', url: 'https://neurotypeapp.com' },
+  { year: '2024', cat: 'Aviation · iOS', name: 'Volo', bg: '#0284C7', textColor: '#fff', dividerColor: 'rgba(255,255,255,0.2)', icon: '/images/volo-icon.png', desc: 'Your pilot companion & toolbox. Essential tools and resources for pilots, all in one app.', url: 'https://volopilot.app' },
+  { year: '2025', cat: 'AI · Web', name: 'Incraft', bg: '#EA580C', textColor: '#fff', dividerColor: 'rgba(255,255,255,0.2)', icon: '/images/incraft-icon.png', desc: 'Generate studio-quality guided meditation in one prompt. Natural voice narration, timed pauses, tailored scripts.', url: 'https://incraft.io' },
+  { year: '2025', cat: 'Education · CLI', name: 'Myro', bg: '#059669', textColor: '#fff', dividerColor: 'rgba(255,255,255,0.2)', icon: '/images/myro-icon.png', desc: 'An adaptive competitive programming trainer. The shortest path to red.', url: 'https://myro.coach' },
 ];
 
-const notes = [
-  { title: 'Starting and Growing a Career in Web Design', date: 'Apr 8, 2022' },
-  { title: 'Create a Landing Page That Performs Great', date: 'Mar 15, 2022' },
-  { title: 'How Can Designers Prepare for the Future?', date: 'Feb 28, 2022' },
-];
+const services = ['WEB APPS', 'MOBILE', 'AI / ML', 'API DESIGN', 'UI / UX', 'CLOUD', 'CONSULTING', 'PROTOTYPING'];
 
-const clients = ['D7', 'JAZZY SPINS', 'LOCO', 'BYFURA', 'STARLIGHT', 'MOVA', 'APEX', 'DRIFT'];
-
-/* ─── Project Card (shared) ─── */
+/* ─── Project Card ─── */
 const ProjectCard: React.FC<{ p: typeof projects[0]; variant?: 'stack' | 'list' }> = ({ p, variant = 'stack' }) => (
   <div className={`nitro-project-card ${variant === 'list' ? 'nitro-project-card--list' : ''}`} style={{ backgroundColor: p.bg, color: p.textColor }}>
     <div className="nitro-project-card__top">
@@ -77,7 +79,7 @@ const ProjectCard: React.FC<{ p: typeof projects[0]; variant?: 'stack' | 'list' 
       </div>
     </div>
     <div className="nitro-project-card__image">
-      <img src={p.img} alt={p.name} loading="lazy" decoding="async" />
+      <img src={p.icon} alt={p.name} loading="lazy" decoding="async" />
     </div>
   </div>
 );
@@ -91,13 +93,14 @@ const HomePage: React.FC = () => (
       <div className="nitro-hero__glow" />
       <div className="nitro-hero__inner">
         <motion.div className="nitro-hero__top-meta" initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.2, ease }}>
-          <p className="nitro-hero__greeting">Hey, I'm Nick</p>
-          <p className="nitro-hero__availability"><span className="nitro-dot" /> available for new projects</p>
+          <p className="nitro-hero__greeting">welcome to launchspace</p>
+          <p className="nitro-hero__availability"><span className="nitro-dot" /> open for projects</p>
         </motion.div>
         <motion.div className="nitro-hero__heading-wrap" initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.5, ease }}>
           <h1 className="nitro-hero__headline">
-            a product design partner with focus on{' '}
-            <TextRotator words={['no-code websites', 'software interfaces']} interval={3000} />
+            we turn ideas into{' '}
+            <TextRotator words={['apps', 'platforms', 'AI tools', 'experiences']} interval={3000} />
+            {' '}people love to use
           </h1>
         </motion.div>
       </div>
@@ -114,42 +117,18 @@ const HomePage: React.FC = () => (
     </section>
 
     <section className="nitro-section nitro-section--about" id="about">
-      <div className="nitro-about-grid">
-        <motion.div className="nitro-about-text-col" initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: '-100px' }} transition={{ duration: 0.8, ease }}>
-          <div className="nitro-label-row">
-            <span className="nitro-label">.about</span>
-            <div className="nitro-label-line" />
-          </div>
-          <h3 className="nitro-about-text">
-            my craft is building experiences that bring value to people and celebrate function over form. let's hide the ego and give some freedom to creativity and make the first small step changing the world to a better place
-          </h3>
-          <div className="nitro-about-cta">
-            <Link to="/framer/about" className="nitro-contact-btn">about me <ArrowIcon className="nitro-contact-btn__icon" /></Link>
-          </div>
-        </motion.div>
-        <motion.div className="nitro-about-img-col" initial={{ opacity: 0, y: -300, scale: 0.7 }} whileInView={{ opacity: 1, y: 0, scale: 1 }} viewport={{ once: true, margin: '-100px' }} transition={{ duration: 1.2, ease }}>
-          <img src="https://framerusercontent.com/images/INr3fWPwNzKVuKbZgjxl5xvZaSA.jpg?scale-down-to=1024" alt="Nick" loading="lazy" decoding="async" />
-        </motion.div>
-      </div>
-    </section>
-
-    <section className="nitro-section nitro-section--notes" id="notes">
       <motion.div initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: '-100px' }} transition={{ duration: 0.8, ease }}>
         <div className="nitro-label-row">
-          <span className="nitro-label">.three latest notes</span>
+          <span className="nitro-label">.about</span>
           <div className="nitro-label-line" />
         </div>
+        <h3 className="nitro-about-text">
+          solo developer building apps that haven't been done before — sometimes independently, sometimes collaborating with engineers and people from different fields
+        </h3>
+        <div className="nitro-about-cta">
+          <Link to="/framer/projects" className="nitro-contact-btn">see our work <ArrowIcon className="nitro-contact-btn__icon" /></Link>
+        </div>
       </motion.div>
-      <div className="nitro-notes-list">
-        {notes.map((n, i) => (
-          <motion.a key={i} href="#" className="nitro-note-card" initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: '-60px' }} transition={{ duration: 0.6, delay: i * 0.1, ease }}>
-            <div className="nitro-note-card__content">
-              <h3>{n.title}</h3>
-              <span className="nitro-note-date">{n.date}</span>
-            </div>
-          </motion.a>
-        ))}
-      </div>
     </section>
 
     <section className="nitro-section nitro-section--contact" id="contact">
@@ -158,7 +137,7 @@ const HomePage: React.FC = () => (
           <span className="nitro-label">.say hello</span>
           <div className="nitro-label-line" />
         </div>
-        <h2 className="nitro-contact-heading">i'm open for freelance projects, feel free to email me to see how can we collaborate</h2>
+        <h2 className="nitro-contact-heading">shoot us a message about anything — feedback, ideas, or collaboration</h2>
         <div className="nitro-contact-btn-wrap">
           <Link to="/framer/contact" className="nitro-contact-btn">contact <ArrowIcon className="nitro-contact-btn__icon" /></Link>
         </div>
@@ -173,21 +152,21 @@ const HomePage: React.FC = () => (
 const ProjectsPage: React.FC = () => (
   <div className="nitro-subpage">
     <motion.div className="nitro-subpage__header" initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, ease }}>
-      <h1 className="nitro-subpage__title">projects</h1>
+      <h1 className="nitro-subpage__title">our work</h1>
       <p className="nitro-subpage__desc">
-        I help startups and series A—D teams to establish a strong connection between their product and customers
+        we build apps that solve real problems — from wellness and aviation to AI and competitive programming.
       </p>
     </motion.div>
 
-    {/* Clients */}
+    {/* Services */}
     <motion.div className="nitro-clients" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.6, delay: 0.3, ease }}>
       <div className="nitro-label-row">
-        <span className="nitro-label">.clients</span>
+        <span className="nitro-label">.what we do</span>
         <div className="nitro-label-line" />
       </div>
       <div className="nitro-clients__row">
-        {clients.map((c) => (
-          <span key={c} className="nitro-clients__logo">{c}</span>
+        {services.map((s) => (
+          <span key={s} className="nitro-clients__logo">{s}</span>
         ))}
       </div>
     </motion.div>
@@ -201,6 +180,9 @@ const ProjectsPage: React.FC = () => (
           </div>
           <div className="nitro-project-detailed__info">
             <p className="nitro-project-detailed__desc">{p.desc}</p>
+            <a href={p.url} target="_blank" rel="noopener noreferrer" className="nitro-project-detailed__link">
+              visit site <ArrowIcon className="nitro-project-detailed__link-icon" />
+            </a>
           </div>
         </motion.div>
       ))}
@@ -209,12 +191,12 @@ const ProjectsPage: React.FC = () => (
     {/* Bottom CTA */}
     <motion.section className="nitro-section nitro-section--contact" initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.8, ease }}>
       <div className="nitro-label-row">
-        <span className="nitro-label">.say hello</span>
+        <span className="nitro-label">.get in touch</span>
         <div className="nitro-label-line" />
       </div>
-      <h2 className="nitro-contact-heading">i'm open for freelance projects, feel free to email me to see how can we collaborate</h2>
+      <h2 className="nitro-contact-heading">shoot us a message about anything — feedback, ideas, or collaboration</h2>
       <div className="nitro-contact-btn-wrap">
-        <Link to="/framer/contact" className="nitro-contact-btn">contact me <ArrowIcon className="nitro-contact-btn__icon" /></Link>
+        <Link to="/framer/contact" className="nitro-contact-btn">contact <ArrowIcon className="nitro-contact-btn__icon" /></Link>
       </div>
     </motion.section>
   </div>
@@ -227,7 +209,7 @@ const ContactPage: React.FC = () => {
   const [form, setForm] = useState({ name: '', email: '', message: '' });
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    window.location.href = `mailto:hello@example.com?subject=Contact from ${form.name}&body=${encodeURIComponent(form.message)}%0A%0AFrom: ${form.name} (${form.email})`;
+    window.location.href = `mailto:hello@launchspace.org?subject=Project inquiry from ${form.name}&body=${encodeURIComponent(form.message)}%0A%0AFrom: ${form.name} (${form.email})`;
   };
 
   return (
@@ -235,7 +217,7 @@ const ContactPage: React.FC = () => {
       <motion.div className="nitro-subpage__header" initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, ease }}>
         <h1 className="nitro-subpage__title">say hello</h1>
         <p className="nitro-subpage__desc">
-          let's collaborate. feel free to drop me a line about your project or follow me on social networks
+          drop us a line about anything — app feedback, collaboration, or whatever's on your mind.
         </p>
       </motion.div>
 
@@ -248,20 +230,20 @@ const ContactPage: React.FC = () => {
             <input type="email" placeholder="Email" value={form.email} onChange={(e) => setForm({ ...form, email: e.target.value })} required />
           </div>
           <div className="nitro-form-field nitro-form-field--textarea">
-            <textarea placeholder="Message" rows={6} value={form.message} onChange={(e) => setForm({ ...form, message: e.target.value })} required />
+            <textarea placeholder="Tell us about your project" rows={6} value={form.message} onChange={(e) => setForm({ ...form, message: e.target.value })} required />
           </div>
-          <button type="submit" className="nitro-form-submit">Submit</button>
+          <button type="submit" className="nitro-form-submit">Send message</button>
         </motion.form>
 
         <motion.div className="nitro-contact-socials" initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.3, ease }}>
-          {(['twitter', 'instagram', 'tiktok', 'youtube'] as const).map((s, i) => {
-            const Icon = socialIcons[s];
+          {socialLinks.map((s) => {
+            const Icon = socialIcons[s.platform];
             return (
-              <a key={s} href="#" className="nitro-social-link">
+              <a key={s.platform} href={s.url} target="_blank" rel="noopener noreferrer" className="nitro-social-link">
                 <span className="nitro-social-link__icon-wrap"><Icon /></span>
                 <div className="nitro-social-link__text">
-                  <span className="nitro-social-link__name">{s}</span>
-                  <span className="nitro-social-link__handle">@stfnco</span>
+                  <span className="nitro-social-link__name">{s.platform}</span>
+                  <span className="nitro-social-link__handle">{s.handle}</span>
                 </div>
               </a>
             );
@@ -283,10 +265,7 @@ const NitroFooter: React.FC = () => (
         <Link to="/framer/projects">projects</Link>
         <Link to="/framer/contact">contact</Link>
       </div>
-      <span className="nitro-footer__credit">
-        built with{' '}
-        <a href="https://www.framer.com" target="_blank" rel="noopener noreferrer">framer</a>
-      </span>
+      <span className="nitro-footer__credit">© 2024 LaunchSpace LLC</span>
     </div>
   </footer>
 );
@@ -308,7 +287,6 @@ const Framer: React.FC = () => {
   const { scrollYProgress } = useScroll();
   const progressScaleX = useTransform(scrollYProgress, [0, 1], [0, 1]);
   const location = useLocation();
-  const isHome = location.pathname === '/framer' || location.pathname === '/framer/';
   const currentPage = location.pathname.split('/').pop() || '';
 
   useEffect(() => {
@@ -333,11 +311,6 @@ const Framer: React.FC = () => {
     setMenuOpen(false);
   }, [location.pathname]);
 
-  const scrollToSection = (id: string) => {
-    setMenuOpen(false);
-    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
-  };
-
   const closeMenu = () => setMenuOpen(false);
 
   const navContent = (
@@ -351,7 +324,7 @@ const Framer: React.FC = () => {
     <div className="nitro-page">
       <motion.nav className={`nitro-nav ${scrolled ? 'nitro-nav--scrolled' : ''}`} initial={{ y: -80 }} animate={{ y: 0 }} transition={{ duration: 0.6, ease }}>
         <div className="nitro-nav__inner">
-          <Link to="/framer" className="nitro-nav__logo">.nitro</Link>
+          <Link to="/framer" className="nitro-nav__logo">LaunchSpace</Link>
           <div className="nitro-nav__links">{navContent}</div>
           <button className={`nitro-hamburger ${menuOpen ? 'active' : ''}`} onClick={() => setMenuOpen(!menuOpen)} aria-label="Toggle menu">
             <span /><span /><span />

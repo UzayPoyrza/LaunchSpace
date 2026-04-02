@@ -103,13 +103,11 @@ body.nitro-body {
 }
 
 .nitro-nav__logo {
-  font-family: var(--font-mono);
+  font-family: var(--font-heading);
   font-size: 18px;
-  font-weight: 500;
+  font-weight: 600;
   color: var(--text-1);
   letter-spacing: -0.02em;
-  cursor: default;
-  user-select: none;
 }
 
 .nitro-nav__links {
@@ -259,7 +257,7 @@ body.nitro-body {
 .nitro-hero {
   display: flex;
   align-items: flex-start;
-  padding: 100px 48px 0;
+  padding: 84px 48px 0;
   position: relative;
   overflow: visible;
 }
@@ -297,8 +295,8 @@ body.nitro-body {
 
 .nitro-hero__greeting {
   font-family: var(--font-body);
-  font-size: 18px;
-  color: var(--text-2);
+  font-size: 14px;
+  color: var(--text-3);
   font-weight: 400;
   letter-spacing: -0.01em;
   flex: 1;
@@ -307,8 +305,8 @@ body.nitro-body {
 
 .nitro-hero__availability {
   font-family: var(--font-body);
-  font-size: 18px;
-  color: var(--text-2);
+  font-size: 14px;
+  color: var(--text-3);
   font-weight: 400;
   letter-spacing: -0.01em;
   flex: 1;
@@ -495,31 +493,23 @@ body.nitro-body {
   position: relative;
   overflow: hidden;
   border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .nitro-project-card__image img {
   display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
-  border-radius: inherit;
+  width: 160px;
+  height: 160px;
+  object-fit: contain;
+  border-radius: 32px;
+  filter: drop-shadow(0 20px 60px rgba(0, 0, 0, 0.35));
 }
 
 /* ─────────────────────────────────────────
    About
    ───────────────────────────────────────── */
-.nitro-about-grid {
-  display: flex;
-  gap: 80px;
-  align-items: flex-start;
-}
-
-.nitro-about-text-col {
-  flex: 1;
-  min-width: 0;
-}
-
 .nitro-about-text {
   font-family: var(--font-heading);
   font-size: clamp(22px, 2.8vw, 36px);
@@ -527,81 +517,11 @@ body.nitro-body {
   line-height: 1.45;
   color: var(--text-1);
   letter-spacing: -0.02em;
+  max-width: 900px;
 }
 
 .nitro-about-cta {
   margin-top: 48px;
-}
-
-.nitro-about-img-col {
-  flex: 0 0 37.5%;
-  position: relative;
-  overflow: hidden;
-  border-radius: var(--radius);
-}
-
-.nitro-about-img-col img {
-  display: block;
-  width: 100%;
-  height: auto;
-  object-fit: cover;
-  border-radius: inherit;
-}
-
-/* ─────────────────────────────────────────
-   Notes
-   ───────────────────────────────────────── */
-.nitro-notes-list {
-  display: flex;
-  flex-direction: column;
-  gap: 0;
-  margin-top: 8px;
-}
-
-.nitro-note-card {
-  display: block;
-  text-decoration: none;
-  color: inherit;
-  padding: 32px 0;
-  border-bottom: 1px solid var(--border);
-  transition: opacity 0.3s ease;
-}
-
-.nitro-note-card:first-child {
-  border-top: 1px solid var(--border);
-}
-
-.nitro-note-card:hover {
-  opacity: 0.7;
-}
-
-.nitro-note-card__content {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.nitro-note-card h3 {
-  font-family: var(--font-heading);
-  font-size: clamp(20px, 2vw, 28px);
-  font-weight: 500;
-  color: var(--text-2);
-  letter-spacing: -0.02em;
-  line-height: 1.35;
-  transition: color 0.3s ease;
-}
-
-.nitro-note-card:hover h3 {
-  color: var(--text-1);
-}
-
-.nitro-note-date {
-  font-family: var(--font-mono);
-  font-size: 13px;
-  color: var(--text-3);
-  white-space: nowrap;
-  margin-left: 32px;
-  flex-shrink: 0;
 }
 
 /* ─────────────────────────────────────────
@@ -613,12 +533,16 @@ body.nitro-body {
   font-weight: 600;
   line-height: 1.2;
   color: var(--text-1);
-  max-width: 700px;
+  max-width: 900px;
   letter-spacing: -0.03em;
+  text-align: center;
+  margin: 0 auto;
 }
 
 .nitro-contact-btn-wrap {
   margin-top: 44px;
+  display: flex;
+  justify-content: center;
 }
 
 .nitro-contact-btn {
@@ -678,7 +602,7 @@ body.nitro-body {
   line-height: 1.6;
 }
 
-/* Clients section */
+/* Services / clients section */
 .nitro-clients {
   margin-bottom: 80px;
 }
@@ -735,6 +659,7 @@ body.nitro-body {
 .nitro-project-detailed__info {
   padding: 24px 0 24px 32px;
   display: flex;
+  flex-direction: column;
   align-items: flex-start;
 }
 
@@ -743,6 +668,28 @@ body.nitro-body {
   font-size: 14px;
   color: var(--text-2);
   line-height: 1.7;
+}
+
+.nitro-project-detailed__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 20px;
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--accent);
+  text-decoration: none;
+  transition: opacity 0.25s ease;
+}
+
+.nitro-project-detailed__link:hover {
+  opacity: 0.7;
+}
+
+.nitro-project-detailed__link-icon {
+  width: 14px;
+  height: 14px;
 }
 
 /* Contact page */
@@ -871,6 +818,7 @@ body.nitro-body {
   font-size: 15px;
   font-weight: 500;
   color: var(--text-1);
+  text-transform: capitalize;
 }
 
 .nitro-social-link__handle {
@@ -1011,14 +959,10 @@ body.nitro-body {
     gap: 100px;
   }
 
-  .nitro-about-grid {
-    flex-direction: column;
-  }
-
-  .nitro-about-img-col {
-    flex: none;
-    width: 100%;
-    max-height: 500px;
+  .nitro-project-card__image img {
+    width: 120px;
+    height: 120px;
+    border-radius: 24px;
   }
 }
 
@@ -1027,7 +971,6 @@ body.nitro-body {
   .nitro-nav__links { display: none; }
   .nitro-nav__cta { display: none; }
   .nitro-hamburger { display: flex; }
-
 
   .nitro-hero { padding: 90px 24px 0; }
   .nitro-hero__inner { gap: 96px; }
@@ -1079,14 +1022,10 @@ body.nitro-body {
     top: 80px;
   }
 
-  .nitro-note-card__content {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 10px;
-  }
-
-  .nitro-note-date {
-    margin-left: 0;
+  .nitro-project-card__image img {
+    width: 100px;
+    height: 100px;
+    border-radius: 20px;
   }
 
   .nitro-footer { padding: 40px 24px; }
@@ -1120,7 +1059,6 @@ body.nitro-body {
   .nitro-hero__availability { font-size: 12px; }
   .nitro-about-text { font-size: 20px; }
   .nitro-contact-heading { font-size: 24px; }
-  .nitro-note-card h3 { font-size: 17px; }
 
   .nitro-project-card {
     height: calc(100vh - 180px);
@@ -1143,5 +1081,15 @@ body.nitro-body {
 
   .nitro-projects-stack {
     gap: 40px;
+  }
+
+  .nitro-project-card__image img {
+    width: 80px;
+    height: 80px;
+    border-radius: 16px;
+  }
+
+  .nitro-nav__logo {
+    font-size: 16px;
   }
 }
