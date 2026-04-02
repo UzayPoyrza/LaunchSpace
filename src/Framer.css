@@ -698,7 +698,7 @@ body.nitro-body {
 .web-showcase__url span {
   font-family: var(--font-mono);
   font-size: 11px;
-  color: rgba(255, 255, 255, 0.4);
+  color: rgba(255, 255, 255, 0.75);
 }
 
 .web-showcase__viewport {

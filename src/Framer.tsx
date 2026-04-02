@@ -159,15 +159,9 @@ const WebShowcase: React.FC<{ screenshots: string[]; title: string; url?: string
             <button className="web-showcase__arrow web-showcase__arrow--right" onClick={() => go(1)} aria-label="Next">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="9 18 15 12 9 6" /></svg>
             </button>
-            <div className="web-showcase__label"><span>{pages[current]?.label}</span></div>
           </>}
         </div>
       </div>
-      {screenshots.length > 1 && <div className="web-showcase__indicators">
-        {pages.map((_, i) => (
-          <button key={i} className={`web-showcase__indicator ${i === current ? 'active' : ''}`} onClick={() => setCurrent(i)} aria-label={`Page ${i + 1}`} />
-        ))}
-      </div>}
     </div>
   );
 };
