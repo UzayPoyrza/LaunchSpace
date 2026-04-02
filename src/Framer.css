@@ -581,14 +581,10 @@ body.nitro-body {
   color: var(--text-1);
   max-width: 900px;
   letter-spacing: -0.03em;
-  text-align: center;
-  margin: 0 auto;
 }
 
 .nitro-contact-btn-wrap {
   margin-top: 44px;
-  display: flex;
-  justify-content: center;
 }
 
 .nitro-contact-btn {
@@ -632,20 +628,22 @@ body.nitro-body {
 
 .nitro-subpage__title {
   font-family: var(--font-heading);
-  font-size: clamp(48px, 6vw, 96px);
+  font-size: 104px;
   font-weight: 500;
-  letter-spacing: -3px;
-  line-height: 1.1;
-  color: var(--text-1);
-  margin-bottom: 32px;
+  letter-spacing: -4px;
+  line-height: 1.25;
+  color: rgba(255, 255, 255, 0.66);
+  margin-bottom: 180px;
 }
 
 .nitro-subpage__desc {
-  font-family: var(--font-body);
-  font-size: clamp(16px, 1.5vw, 20px);
-  color: var(--text-2);
-  max-width: 600px;
-  line-height: 1.6;
+  font-family: var(--font-heading);
+  font-size: clamp(36px, 4.5vw, 64px);
+  font-weight: 500;
+  color: var(--text-1);
+  line-height: 1.35;
+  letter-spacing: -2.7px;
+  max-width: none;
 }
 
 /* Services / clients section */
@@ -690,8 +688,6 @@ body.nitro-body {
   grid-template-columns: 1fr 280px;
   gap: 0;
   align-items: start;
-  position: sticky;
-  top: 100px;
 }
 
 .nitro-project-detailed__card {
@@ -707,12 +703,14 @@ body.nitro-body {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  position: sticky;
+  top: 120px;
 }
 
 .nitro-project-detailed__desc {
-  font-family: var(--font-body);
+  font-family: var(--font-mono);
   font-size: 14px;
-  color: var(--text-2);
+  color: inherit;
   line-height: 1.7;
 }
 
@@ -1017,10 +1015,12 @@ body.nitro-body {
   .nitro-hero__inner { gap: 96px; }
 
   .nitro-subpage { padding: 100px 24px 40px; }
+  .nitro-subpage__title { font-size: 64px; letter-spacing: -2px; margin-bottom: 80px; }
+  .nitro-subpage__desc { font-size: 32px; letter-spacing: -1px; }
   .nitro-contact-grid { grid-template-columns: 1fr; gap: 48px; }
   .nitro-project-card--list { height: 360px; }
   .nitro-project-detailed { grid-template-columns: 1fr; }
-  .nitro-project-detailed__info { padding: 16px 0 32px; }
+  .nitro-project-detailed__info { padding: 16px 0 32px; position: static; }
 
   .nitro-section { padding: 60px 24px; }
   .nitro-section--projects { padding: 40px 24px 80px; }

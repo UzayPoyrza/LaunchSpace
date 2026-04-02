@@ -178,9 +178,9 @@ const ProjectsPage: React.FC = () => (
           <div className="nitro-project-detailed__card">
             <ProjectCard p={p} variant="list" />
           </div>
-          <div className="nitro-project-detailed__info">
+          <div className="nitro-project-detailed__info" style={{ color: p.bg }}>
             <p className="nitro-project-detailed__desc">{p.desc}</p>
-            <a href={p.url} target="_blank" rel="noopener noreferrer" className="nitro-project-detailed__link">
+            <a href={p.url} target="_blank" rel="noopener noreferrer" className="nitro-project-detailed__link" style={{ color: p.bg }}>
               visit site <ArrowIcon className="nitro-project-detailed__link-icon" />
             </a>
           </div>
@@ -191,12 +191,12 @@ const ProjectsPage: React.FC = () => (
     {/* Bottom CTA */}
     <motion.section className="nitro-section nitro-section--contact" initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.8, ease }}>
       <div className="nitro-label-row">
-        <span className="nitro-label">.get in touch</span>
+        <span className="nitro-label">.say hello</span>
         <div className="nitro-label-line" />
       </div>
       <h2 className="nitro-contact-heading">shoot us a message about anything — feedback, ideas, or collaboration</h2>
       <div className="nitro-contact-btn-wrap">
-        <Link to="/framer/contact" className="nitro-contact-btn">contact <ArrowIcon className="nitro-contact-btn__icon" /></Link>
+        <Link to="/framer/contact" className="nitro-contact-btn">contact us <ArrowIcon className="nitro-contact-btn__icon" /></Link>
       </div>
     </motion.section>
   </div>
