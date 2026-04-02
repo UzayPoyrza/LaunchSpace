@@ -153,10 +153,10 @@ const WebShowcase: React.FC<{ screenshots: string[]; title: string; url?: string
             <img key={i} src={src} alt={`${title} ${pages[i]?.label || ''}`} className="web-showcase__page" style={{ opacity: i === current ? 1 : 0 }} draggable={false} />
           ))}
           {screenshots.length > 1 && <>
-            <button className="web-showcase__arrow web-showcase__arrow--left" onClick={() => go(-1)} aria-label="Previous">
+            <button className="web-showcase__arrow web-showcase__arrow--left" onClick={(e) => { e.stopPropagation(); go(-1); }} aria-label="Previous">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="15 18 9 12 15 6" /></svg>
             </button>
-            <button className="web-showcase__arrow web-showcase__arrow--right" onClick={() => go(1)} aria-label="Next">
+            <button className="web-showcase__arrow web-showcase__arrow--right" onClick={(e) => { e.stopPropagation(); go(1); }} aria-label="Next">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="9 18 15 12 9 6" /></svg>
             </button>
           </>}
@@ -255,15 +255,15 @@ const services = ['WEB APPS', 'MOBILE', 'AI / ML', 'API DESIGN', 'UI / UX', 'CLO
 const openUrl = (url: string) => window.open(url, '_blank', 'noopener,noreferrer');
 
 const ProjectCard: React.FC<{ p: typeof projects[0]; variant?: 'stack' | 'list' }> = ({ p, variant = 'stack' }) => {
-  const isPhone = p.showcase === 'phone';
+  const isTerminal = p.showcase === 'terminal';
 
   return (
     <div
       className={`nitro-project-card ${variant === 'list' ? 'nitro-project-card--list' : ''}`}
       style={{ backgroundColor: p.bg, color: p.textColor }}
-      onClick={isPhone ? () => openUrl(p.url) : undefined}
+      onClick={isTerminal ? undefined : () => openUrl(p.url)}
     >
-      <div className="nitro-project-card__top" onClick={!isPhone ? () => openUrl(p.url) : undefined}>
+      <div className="nitro-project-card__top" onClick={isTerminal ? () => openUrl(p.url) : undefined}>
         <div className="nitro-project-card__meta">
           <span>{p.year}</span>
           <span>{p.cat}</span>
@@ -274,7 +274,7 @@ const ProjectCard: React.FC<{ p: typeof projects[0]; variant?: 'stack' | 'list' 
           <ArrowIcon className="nitro-project-card__arrow" />
         </div>
       </div>
-      <div className="nitro-project-card__image" onClick={isPhone ? undefined : (e) => e.stopPropagation()}>
+      <div className="nitro-project-card__image" onClick={isTerminal ? (e) => e.stopPropagation() : undefined}>
         {p.showcase === 'phone' && <PhoneShowcase screenshots={p.screenshots} title={p.name} />}
         {p.showcase === 'web' && <WebShowcase screenshots={p.screenshots} title={p.name} url={p.url.replace('https://', '')} pages={(p as any).webPages} />}
         {p.showcase === 'terminal' && <TerminalShowcase title={p.name} castFile={(p as any).castFile || ''} />}
