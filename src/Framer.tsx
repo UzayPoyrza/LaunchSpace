@@ -205,6 +205,9 @@ const TerminalShowcase: React.FC<{ title: string; castFile: string }> = ({ title
             <span className="web-showcase__dot web-showcase__dot--green" />
           </div>
           <span className="terminal-showcase__title">{title.toLowerCase()} — ~/competitive</span>
+        </div>
+        <div className="terminal-showcase__content-wrap">
+          <div className="terminal-showcase__content" ref={containerRef} />
           <button className="terminal-showcase__restart" onClick={handleRestart} aria-label="Restart">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" width="12" height="12">
               <polyline points="1 4 1 10 7 10" />
@@ -213,7 +216,6 @@ const TerminalShowcase: React.FC<{ title: string; castFile: string }> = ({ title
             restart
           </button>
         </div>
-        <div className="terminal-showcase__content" ref={containerRef} />
       </div>
     </div>
   );
