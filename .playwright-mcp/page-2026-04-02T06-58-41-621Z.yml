@@ -1,0 +1,79 @@
+- generic [ref=e4]:
+  - navigation [ref=e5]:
+    - generic [ref=e6]:
+      - link "LaunchSpace" [ref=e7] [cursor=pointer]:
+        - /url: /framer
+      - generic [ref=e8]:
+        - link "projects" [ref=e9] [cursor=pointer]:
+          - /url: /framer/projects
+        - link "contact" [ref=e10] [cursor=pointer]:
+          - /url: /framer/contact
+  - generic [ref=e13]:
+    - generic [ref=e14]:
+      - paragraph [ref=e15]: welcome to launchspace
+      - paragraph [ref=e16]: open for projects
+    - heading "we turn ideas into apps people love to use" [level=1] [ref=e19]:
+      - text: we turn ideas into
+      - generic [ref=e21]: apps
+      - text: people love to use
+  - generic [ref=e23]:
+    - generic [ref=e25] [cursor=pointer]:
+      - generic [ref=e26]:
+        - generic [ref=e27]:
+          - generic [ref=e28]: "2024"
+          - generic [ref=e29]: Wellness · iOS
+        - generic [ref=e31]:
+          - heading "Neurotype" [level=2] [ref=e32]
+          - img [ref=e33]
+      - img "Neurotype" [ref=e36]
+    - generic [ref=e38] [cursor=pointer]:
+      - generic [ref=e39]:
+        - generic [ref=e40]:
+          - generic [ref=e41]: "2024"
+          - generic [ref=e42]: Aviation · iOS
+        - generic [ref=e44]:
+          - heading "Volo" [level=2] [ref=e45]
+          - img [ref=e46]
+      - img "Volo" [ref=e49]
+    - generic [ref=e51] [cursor=pointer]:
+      - generic [ref=e52]:
+        - generic [ref=e53]:
+          - generic [ref=e54]: "2025"
+          - generic [ref=e55]: AI · Web
+        - generic [ref=e57]:
+          - heading "Incraft" [level=2] [ref=e58]
+          - img [ref=e59]
+      - img "Incraft" [ref=e62]
+    - generic [ref=e64] [cursor=pointer]:
+      - generic [ref=e65]:
+        - generic [ref=e66]:
+          - generic [ref=e67]: "2025"
+          - generic [ref=e68]: Education · CLI
+        - generic [ref=e70]:
+          - heading "Myro" [level=2] [ref=e71]
+          - img [ref=e72]
+      - img "Myro" [ref=e75]
+  - generic [ref=e77]:
+    - generic [ref=e79]: .about
+    - heading "solo developer building apps that haven't been done before — sometimes independently, sometimes collaborating with engineers and people from different fields" [level=3] [ref=e81]
+    - link "see our work" [ref=e83] [cursor=pointer]:
+      - /url: /framer/projects
+      - text: see our work
+      - img [ref=e84]
+  - generic [ref=e87]:
+    - generic [ref=e89]: .say hello
+    - heading "shoot us a message about anything — feedback, ideas, or collaboration" [level=2] [ref=e91]
+    - link "contact" [ref=e93] [cursor=pointer]:
+      - /url: /framer/contact
+      - text: contact
+      - img [ref=e94]
+  - contentinfo [ref=e96]:
+    - generic [ref=e97]:
+      - generic [ref=e98]:
+        - link "home" [ref=e99] [cursor=pointer]:
+          - /url: /framer
+        - link "projects" [ref=e100] [cursor=pointer]:
+          - /url: /framer/projects
+        - link "contact" [ref=e101] [cursor=pointer]:
+          - /url: /framer/contact
+      - generic [ref=e102]: © 2024 LaunchSpace LLC

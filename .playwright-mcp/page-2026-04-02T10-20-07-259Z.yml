@@ -1,0 +1,143 @@
+- generic [ref=e4]:
+  - navigation [ref=e5]:
+    - generic [ref=e6]:
+      - link "LaunchSpace" [ref=e7] [cursor=pointer]:
+        - /url: /framer
+        - img [ref=e8]
+        - text: LaunchSpace
+      - generic [ref=e16]:
+        - link "projects" [ref=e17] [cursor=pointer]:
+          - /url: /framer/projects
+        - link "contact" [ref=e18] [cursor=pointer]:
+          - /url: /framer/contact
+  - generic [ref=e21]:
+    - generic [ref=e22]:
+      - paragraph [ref=e23]: welcome to launchspace
+      - paragraph [ref=e24]: open for projects
+    - heading "we build apps from the ground up with clean design" [level=1] [ref=e27]:
+      - text: we build apps from
+      - text: the ground up with
+      - generic [ref=e29]: clean design
+  - generic [ref=e31]:
+    - generic [ref=e33] [cursor=pointer]:
+      - generic [ref=e34]:
+        - generic [ref=e35]:
+          - generic [ref=e36]: "2024"
+          - generic [ref=e37]: Wellness · iOS
+        - generic [ref=e39]:
+          - heading "Neurotype · neurotypeapp.com" [level=2] [ref=e40]
+          - img [ref=e41]
+      - generic [ref=e44]:
+        - img "Neurotype" [ref=e49]
+        - img "Neurotype" [ref=e54]
+        - img "Neurotype" [ref=e59]
+    - generic [ref=e61] [cursor=pointer]:
+      - generic [ref=e62]:
+        - generic [ref=e63]:
+          - generic [ref=e64]: "2024"
+          - generic [ref=e65]: Aviation · iOS
+        - generic [ref=e67]:
+          - heading "Volo · volopilot.app" [level=2] [ref=e68]
+          - img [ref=e69]
+      - generic [ref=e72]:
+        - img "Volo" [ref=e77]
+        - img "Volo" [ref=e82]
+        - img "Volo" [ref=e87]
+    - generic [ref=e89] [cursor=pointer]:
+      - generic [ref=e90]:
+        - generic [ref=e91]:
+          - generic [ref=e92]: "2025"
+          - generic [ref=e93]: AI · Web
+        - generic [ref=e95]:
+          - heading "Incraft · incraft.io" [level=2] [ref=e96]
+          - img [ref=e97]
+      - generic [ref=e100]:
+        - generic [ref=e101]:
+          - generic [ref=e107]: incraft.io
+          - generic [ref=e108]:
+            - img "Incraft Home" [ref=e109]
+            - img "Incraft Create" [ref=e110]
+            - img "Incraft Studio" [ref=e111]
+            - button "Previous" [ref=e112]:
+              - img [ref=e113]
+            - button "Next" [ref=e115]:
+              - img [ref=e116]
+            - generic [ref=e118]: Home
+        - generic [ref=e119]:
+          - button "Page 1" [ref=e120]
+          - button "Page 2" [ref=e121]
+          - button "Page 3" [ref=e122]
+    - generic [ref=e124] [cursor=pointer]:
+      - generic [ref=e125]:
+        - generic [ref=e126]:
+          - generic [ref=e127]: "2025"
+          - generic [ref=e128]: Education · CLI
+        - generic [ref=e130]:
+          - heading "Myro · myro.coach" [level=2] [ref=e131]
+          - img [ref=e132]
+      - generic [ref=e135]:
+        - generic [ref=e136]:
+          - generic [ref=e142]: myro — ~/competitive
+          - generic [ref=e143]:
+            - generic [ref=e144]:
+              - generic [ref=e145]: ❯ myro
+              - generic [ref=e147]: ┌──────────────────────────────────────┐
+              - generic [ref=e148]: │ myro v0.1.0 │
+              - generic [ref=e149]: │ competitive programming coach │
+              - generic [ref=e150]: └──────────────────────────────────────┘
+              - generic [ref=e152]: Fetching problem...
+              - generic [ref=e153]: CF-1842E Tenzing and His Animal Friends
+              - generic [ref=e154]: "Rating: 2200 | Tags: graphs, greedy"
+              - generic [ref=e156]: ❯ ready — press enter to begin ▊
+            - generic:
+              - generic: ❯ myro solve
+              - generic: ⏱ Timer started
+              - generic: Observation 1/3
+              - generic: Think about what happens when you model
+              - generic: friendships as edges in a graph.
+              - generic: What property must the graph have for
+              - generic: all animals to coexist in two groups?
+              - generic: ❯ type your answer or enter for next hint ▊
+            - generic:
+              - generic: ❯ myro stats
+              - generic: Your Progress
+              - generic: ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+              - generic: Problems solved 47 / 200
+              - generic: Current streak 12 days
+              - generic: Avg solve time 18m → 14m ↓
+              - generic: Rating estimate 1847 → 1923
+              - generic: "Weak topics: segment trees, dp on trees"
+              - generic: "Next session: dp optimization"
+              - generic: ❯ ▊
+            - button "Previous" [ref=e157]:
+              - img [ref=e158]
+            - button "Next" [ref=e160]:
+              - img [ref=e161]
+        - generic [ref=e163]:
+          - button "startup" [ref=e164]
+          - button "hint" [ref=e165]
+          - button "progress" [ref=e166]
+  - generic [ref=e168]:
+    - generic [ref=e170]: .about
+    - heading "solo developer building apps that haven't been done before — sometimes independently, sometimes collaborating with engineers and people from different fields" [level=3] [ref=e172]
+    - link "see our work" [ref=e174] [cursor=pointer]:
+      - /url: /framer/projects
+      - text: see our work
+      - img [ref=e175]
+  - generic [ref=e178]:
+    - generic [ref=e180]: .say hello
+    - heading "shoot us a message about anything — feedback, ideas, or collaboration" [level=2] [ref=e182]
+    - link "contact" [ref=e184] [cursor=pointer]:
+      - /url: /framer/contact
+      - text: contact
+      - img [ref=e185]
+  - contentinfo [ref=e187]:
+    - generic [ref=e188]:
+      - generic [ref=e189]:
+        - link "home" [ref=e190] [cursor=pointer]:
+          - /url: /framer
+        - link "projects" [ref=e191] [cursor=pointer]:
+          - /url: /framer/projects
+        - link "contact" [ref=e192] [cursor=pointer]:
+          - /url: /framer/contact
+      - generic [ref=e193]: © 2024 LaunchSpace LLC

@@ -1,0 +1,378 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - generic [ref=e3]:
+      - generic [ref=e5]:
+        - link "Incraft" [ref=e6] [cursor=pointer]:
+          - /url: /
+          - img [ref=e7]
+          - generic [ref=e11]: Incraft
+        - generic [ref=e12]:
+          - generic [ref=e13]:
+            - button "Listen to examples" [ref=e14] [cursor=pointer]
+            - button "How it works" [ref=e15] [cursor=pointer]
+          - link "Sign in / Incraft Studio" [ref=e16] [cursor=pointer]:
+            - /url: /login
+      - generic [ref=e18]:
+        - generic: a guided meditation
+        - heading "Generate a guided meditation" [level=1] [ref=e19]:
+          - generic [ref=e20]: Generate
+          - generic [ref=e22]: a guided meditation
+        - paragraph [ref=e23]: Describe what you need — a sentence or two is perfect
+        - generic [ref=e26]:
+          - textbox "Create a guided meditation on..." [ref=e27]
+          - button [disabled] [ref=e28] [cursor=pointer]:
+            - img [ref=e29]
+        - paragraph [ref=e31]:
+          - generic [ref=e32]: "1"
+          - generic [ref=e33]: Prompt
+          - generic [ref=e34]: →
+          - generic [ref=e35]: Customize
+          - generic [ref=e36]: →
+          - generic [ref=e37]: Generate
+        - generic [ref=e38]:
+          - generic [ref=e39]: or try one of these
+          - generic [ref=e40]:
+            - button "Calm my anxiety before a big meeting" [ref=e41] [cursor=pointer]
+            - button "Help me wind down and fall asleep" [ref=e42] [cursor=pointer]
+            - button "I want singing bowls while I decompress" [ref=e43] [cursor=pointer]
+            - button "PMR session for muscle tension" [ref=e44] [cursor=pointer]
+            - button "CBT-i session to help me sleep" [ref=e45] [cursor=pointer]
+      - button "Listen to examples" [ref=e46] [cursor=pointer]:
+        - generic [ref=e49]:
+          - img [ref=e50]
+          - generic [ref=e52]: Listen to examples
+        - img [ref=e54]
+    - generic [ref=e56]:
+      - generic [ref=e57]:
+        - generic [ref=e58]:
+          - heading "Don't take our word for it. Listen." [level=2] [ref=e59]:
+            - text: Don't take our word for it.
+            - text: Listen.
+          - paragraph [ref=e60]: Zero editing. Zero post-production. Every session below was generated in one shot — entirely using Incraft.
+        - generic [ref=e61]:
+          - generic [ref=e64] [cursor=pointer]:
+            - generic [ref=e65]:
+              - generic [ref=e66]: Low-Drone Calm
+              - img [ref=e68]
+            - generic [ref=e70]:
+              - generic [ref=e71]:
+                - generic [ref=e72]: Prompt
+                - generic [ref=e73]: “I just need something calming in the background while I decompress”
+              - generic [ref=e74]:
+                - generic [ref=e75]:
+                  - generic [ref=e76]: Voice
+                  - generic [ref=e77]: Aditya
+                - generic [ref=e78]:
+                  - generic [ref=e79]: Protocol
+                  - generic [ref=e80]: Supportive Ambient Sound
+              - generic [ref=e81]:
+                - generic [ref=e82]: Sound
+                - generic [ref=e83]:
+                  - img [ref=e84]
+                  - slider [ref=e88]: "0.3"
+                - button "Calm Drone" [ref=e90]
+          - generic [ref=e93] [cursor=pointer]:
+            - generic [ref=e94]:
+              - generic [ref=e95]: Shoulder Drop Scan
+              - img [ref=e97]
+            - generic [ref=e99]:
+              - generic [ref=e100]:
+                - generic [ref=e101]: Prompt
+                - generic [ref=e102]: “Help me release tension in my shoulders and upper body”
+              - generic [ref=e103]:
+                - generic [ref=e104]:
+                  - generic [ref=e105]: Voice
+                  - generic [ref=e106]: Luna
+                - generic [ref=e107]:
+                  - generic [ref=e108]: Protocol
+                  - generic [ref=e109]: Progressive Muscle Relaxation
+              - generic [ref=e110]:
+                - generic [ref=e111]: Sound
+                - generic [ref=e112]:
+                  - img [ref=e113]
+                  - slider [ref=e117]: "0.3"
+                - generic [ref=e118]:
+                  - button "Rain" [ref=e119]
+                  - generic [ref=e120]: ·
+                  - button "River" [ref=e121]
+                  - generic [ref=e122]: ·
+                  - button "Calm Drone" [ref=e123]
+          - generic [ref=e126] [cursor=pointer]:
+            - generic [ref=e127]:
+              - generic [ref=e128]: Probability Rebalance
+              - img [ref=e130]
+            - generic [ref=e132]:
+              - generic [ref=e133]:
+                - generic [ref=e134]: Prompt
+                - generic [ref=e135]: “Help me challenge catastrophic thinking and see things more clearly”
+              - generic [ref=e136]:
+                - generic [ref=e137]:
+                  - generic [ref=e138]: Voice
+                  - generic [ref=e139]: Luna
+                - generic [ref=e140]:
+                  - generic [ref=e141]: Protocol
+                  - generic [ref=e142]: CBT-style Cognitive Skill
+              - generic [ref=e143]:
+                - generic [ref=e144]: Sound
+                - generic [ref=e145]:
+                  - img [ref=e146]
+                  - slider [ref=e150]: "0.7"
+                - generic [ref=e151]:
+                  - button "Fireplace" [ref=e152]
+                  - generic [ref=e153]: ·
+                  - button "Calm Drone" [ref=e154]
+                  - button "River" [ref=e155]
+                  - generic [ref=e156]: ·
+                  - button "Rain" [ref=e157]
+                  - button "Deep Space" [ref=e158]
+          - generic [ref=e161] [cursor=pointer]:
+            - generic [ref=e162]:
+              - generic [ref=e163]: Gentle Even Breathing· from mid-session
+              - img [ref=e165]
+            - generic [ref=e167]:
+              - generic [ref=e168]:
+                - generic [ref=e169]: Prompt
+                - generic [ref=e170]: “Guide me through calm, even breathing to settle my nerves”
+              - generic [ref=e171]:
+                - generic [ref=e172]:
+                  - generic [ref=e173]: Voice
+                  - generic [ref=e174]: Aditya
+                - generic [ref=e175]:
+                  - generic [ref=e176]: Protocol
+                  - generic [ref=e177]: Slow Breathing
+              - generic [ref=e178]:
+                - generic [ref=e179]: Sound
+                - generic [ref=e180]:
+                  - img [ref=e181]
+                  - slider [ref=e185]: "0.3"
+                - generic [ref=e186]:
+                  - button "Pink Noise" [ref=e187]
+                  - generic [ref=e188]: ·
+                  - button "Room Tone" [ref=e189]
+                  - button "Calm Drone" [ref=e190]
+                  - generic [ref=e191]: ·
+                  - button "Rain" [ref=e192]
+      - generic [ref=e193]:
+        - generic [ref=e194]: Scroll
+        - img [ref=e196]
+    - generic [ref=e198]:
+      - generic:
+        - generic: sound different
+      - generic [ref=e199]:
+        - paragraph [ref=e200]: Now you've heard it
+        - paragraph [ref=e202]: Why our AI sessions
+        - paragraph [ref=e204]: sound different
+      - generic [ref=e205]:
+        - generic [ref=e206]:
+          - generic [ref=e207]:
+            - img [ref=e208]
+            - img [ref=e210]
+            - img [ref=e212]
+            - img [ref=e214]
+            - img [ref=e216]
+          - paragraph [ref=e218]: “...honestly it replaced like 4 hours of recording and editing per week. I just type what the client needs and it's done.”
+          - paragraph [ref=e220]: Mia Torres
+          - paragraph [ref=e221]: Meditation Instructor, Austin
+        - generic [ref=e222]:
+          - generic [ref=e223]:
+            - img [ref=e224]
+            - img [ref=e226]
+            - img [ref=e228]
+            - img [ref=e230]
+            - img [ref=e232]
+          - paragraph [ref=e234]: “I've tried every meditation app out there. This is the first one where I actually fall asleep before it ends.”
+          - paragraph [ref=e236]: James Chen
+          - paragraph [ref=e237]: San Francisco
+        - generic [ref=e238]:
+          - generic [ref=e239]:
+            - img [ref=e240]
+            - img [ref=e242]
+            - img [ref=e244]
+            - img [ref=e246]
+            - img [ref=e248]
+          - paragraph [ref=e250]: “The PMR timing is clinically accurate. I've started recommending it to patients between sessions.”
+          - paragraph [ref=e252]: Dr. Anita Kapoor
+          - paragraph [ref=e253]: Psychiatrist, Chicago
+      - generic [ref=e254] [cursor=pointer]:
+        - generic [ref=e255]: Explanation
+        - img [ref=e257]
+    - generic [ref=e260]:
+      - generic [ref=e261]:
+        - paragraph [ref=e262]: Pause Intelligence
+        - heading "Most AI reads text. Ours understands silence." [level=2] [ref=e263]:
+          - text: Most AI reads text.
+          - text: Ours understands silence.
+        - paragraph [ref=e264]: Every pause is intentional — timed to your breath, calibrated to the instruction.
+      - generic [ref=e266]:
+        - generic [ref=e272]: Incraft Session — First 24 seconds
+        - generic [ref=e273]:
+          - generic [ref=e274]:
+            - paragraph [ref=e281]: Gently close your eyes.
+            - generic [ref=e290]: settle in · AI pauses 3s
+            - paragraph [ref=e297]: Breathe in for 4 seconds…
+            - generic [ref=e306]: inhale · AI pauses 4s
+            - paragraph [ref=e313]: Now exhale slowly for 6 seconds.
+            - generic [ref=e322]: exhale · AI pauses 6s
+            - paragraph [ref=e329]: Notice your shoulders… let them drop.
+            - generic [ref=e337]: body responds · AI pauses 5s
+          - generic [ref=e338]:
+            - img [ref=e340]
+            - generic [ref=e342]:
+              - paragraph [ref=e343]: Every pause is precision-timed
+              - paragraph [ref=e344]: Audio matches the script exactly — every pause, every breath cue
+    - generic [ref=e346]:
+      - generic [ref=e347]:
+        - paragraph [ref=e348]: Engineered with professional sound designers
+        - heading "Every session is mixed like a professional album." [level=2] [ref=e349]:
+          - text: Every session is mixed
+          - text: like a professional album.
+        - paragraph [ref=e350]: We partnered with audio engineers to make sure every meditation sounds warm, spacious, and crafted for headphones.
+      - generic [ref=e402]:
+        - generic [ref=e403]: Voice
+        - generic [ref=e404]: Spatial Mix
+        - generic [ref=e405]: Ambient
+      - generic [ref=e406]:
+        - generic [ref=e408]:
+          - generic [ref=e409]:
+            - img [ref=e411]
+            - heading "Voice that breathes" [level=3] [ref=e414]
+          - paragraph [ref=e415]: Natural inflection and emotion, not robotic text-to-speech. Every word sounds human.
+        - generic [ref=e417]:
+          - generic [ref=e418]:
+            - img [ref=e420]
+            - heading "Mixed for headphones" [level=3] [ref=e422]
+          - paragraph [ref=e423]: Binaural spatial audio places the voice and sounds around you, not just in front of you.
+        - generic [ref=e425]:
+          - generic [ref=e426]:
+            - img [ref=e428]
+            - heading "Studio mastered" [level=3] [ref=e429]
+          - paragraph [ref=e430]: 48kHz, 24-bit audio with loudness optimization. The same quality standard as streaming music.
+    - generic [ref=e432]:
+      - generic [ref=e433]:
+        - paragraph [ref=e434]: Built on clinical research
+        - heading "Not vibes. Science." [level=2] [ref=e435]
+        - paragraph [ref=e436]: Every session is built on clinical techniques we researched and carefully incorporated into our AI. Tell us what you need, and we match the right approach automatically.
+      - generic [ref=e438]:
+        - generic [ref=e439]: How it works — prompt to protocol
+        - generic [ref=e441]:
+          - generic [ref=e443]:
+            - generic [ref=e444]:
+              - generic [ref=e445]: “
+              - generic [ref=e446]: I can’t fall asleep
+              - generic [ref=e447]: ”
+            - generic [ref=e448]:
+              - generic [ref=e449]: CBT-I
+              - generic [ref=e450]: PMR
+              - generic [ref=e451]: NSDR
+            - paragraph [ref=e452]: Restructure sleep thoughts, release body tension, guide into deep rest
+          - generic [ref=e454]:
+            - generic [ref=e455]:
+              - generic [ref=e456]: “
+              - generic [ref=e457]: Anxious before a meeting
+              - generic [ref=e458]: ”
+            - generic [ref=e459]:
+              - generic [ref=e460]: HRV-BF
+              - generic [ref=e461]: ACT
+            - paragraph [ref=e462]: Regulate heart rate with paced breathing, defuse anxious thoughts
+          - generic [ref=e464]:
+            - generic [ref=e465]:
+              - generic [ref=e466]: “
+              - generic [ref=e467]: Help me focus deeply
+              - generic [ref=e468]: ”
+            - generic [ref=e469]:
+              - generic [ref=e470]: MBSR
+              - generic [ref=e471]: HRV-BF
+            - paragraph [ref=e472]: Open monitoring attention training with coherence breathing
+      - generic [ref=e473]:
+        - generic [ref=e475]:
+          - generic [ref=e476]: CBT-I
+          - paragraph [ref=e478]: Cognitive Behavioral Therapy for Insomnia
+        - generic [ref=e480]:
+          - generic [ref=e481]: PMR
+          - paragraph [ref=e483]: Progressive Muscle Relaxation
+        - generic [ref=e485]:
+          - generic [ref=e486]: MBSR
+          - paragraph [ref=e488]: Mindfulness-Based Stress Reduction
+        - generic [ref=e490]:
+          - generic [ref=e491]: NSDR
+          - paragraph [ref=e493]: Non-Sleep Deep Rest
+        - generic [ref=e495]:
+          - generic [ref=e496]: ACT
+          - paragraph [ref=e498]: Acceptance & Commitment Therapy
+        - generic [ref=e500]:
+          - generic [ref=e501]: HRV-BF
+          - paragraph [ref=e503]: Heart Rate Variability Biofeedback
+    - generic [ref=e505]:
+      - generic [ref=e506]:
+        - paragraph [ref=e507]: Script-aware soundscapes
+        - heading "Intelligent Sound Pairing" [level=2] [ref=e508]
+        - paragraph [ref=e509]: The AI scans the script it generates and selects from 40+ ambient layers to match exactly what's happening. Bowl in the script? Real singing bowl audio. Breath pacing? A synced pacer track. General mindfulness? Soft, unobtrusive ambience. It gets specific when the session is specific, and stays out of the way when it isn't.
+      - generic [ref=e511]:
+        - generic [ref=e517]: Sound pairing engine
+        - generic [ref=e518]:
+          - generic [ref=e520]:
+            - paragraph [ref=e521]: “Let the sound of the singing bowl wash over you…”
+            - generic [ref=e522]:
+              - img [ref=e523]
+              - generic [ref=e525]: AI provides 2 sounds
+            - generic [ref=e527]:
+              - generic [ref=e528]:
+                - img [ref=e529]
+                - text: Sound Bowl Bath
+              - generic [ref=e531]:
+                - img [ref=e532]
+                - text: 110 Hz Resonance
+          - generic [ref=e535]:
+            - paragraph [ref=e536]: “Breathe in for four… and out for six…”
+            - generic [ref=e537]:
+              - img [ref=e538]
+              - generic [ref=e540]: AI provides 2 sounds
+            - generic [ref=e542]:
+              - generic [ref=e543]:
+                - img [ref=e544]
+                - text: 4-6 Breath Pacer
+              - generic [ref=e546]:
+                - img [ref=e547]
+                - text: Calm Drone
+          - generic [ref=e550]:
+            - paragraph [ref=e551]: “Rest your awareness on whatever arises…rest your awareness”
+            - generic [ref=e552]:
+              - img [ref=e553]
+              - generic [ref=e555]: AI provides 3 sounds
+            - generic [ref=e557]:
+              - generic [ref=e558]:
+                - img [ref=e559]
+                - text: Rain
+              - generic [ref=e561]:
+                - img [ref=e562]
+                - text: River
+              - generic [ref=e564]:
+                - img [ref=e565]
+                - text: Peaceful Moment
+      - paragraph [ref=e568]: Selects from 40+ layers — binaural beats, breath pacers, sound bowls, nature, drones, metronomes
+    - generic [ref=e571]:
+      - heading "Try it now. Completely free." [level=2] [ref=e572]
+      - paragraph [ref=e573]: Describe what you need, choose your preferences, and your meditation is ready in seconds.
+      - button "Create Your Meditation" [ref=e574] [cursor=pointer]:
+        - img [ref=e575]
+        - text: Create Your Meditation
+    - contentinfo [ref=e577]:
+      - generic [ref=e578]:
+        - generic [ref=e579]:
+          - img [ref=e580]
+          - generic [ref=e584]: Incraft
+        - navigation [ref=e585]:
+          - link "Create" [ref=e586] [cursor=pointer]:
+            - /url: /create
+          - link "Pricing" [ref=e587] [cursor=pointer]:
+            - /url: /upgrade
+          - link "About" [ref=e588] [cursor=pointer]:
+            - /url: /about
+          - link "Contact" [ref=e589] [cursor=pointer]:
+            - /url: /contact
+          - link "Privacy" [ref=e590] [cursor=pointer]:
+            - /url: /privacy
+          - link "Terms" [ref=e591] [cursor=pointer]:
+            - /url: /terms
+        - paragraph [ref=e592]: © 2026 Incraft. All rights reserved.
+  - alert [ref=e593]

@@ -1,0 +1,112 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e3]:
+    - generic [ref=e7]:
+      - paragraph [ref=e10]:
+        - link ".nitro" [ref=e11] [cursor=pointer]:
+          - /url: ./
+      - generic [ref=e12]:
+        - paragraph [ref=e14]:
+          - link "projects" [ref=e15] [cursor=pointer]:
+            - /url: ./projects
+        - paragraph [ref=e17]:
+          - link "about" [ref=e18] [cursor=pointer]:
+            - /url: ./about
+        - paragraph [ref=e20]:
+          - link "blog" [ref=e21] [cursor=pointer]:
+            - /url: ./blog
+        - paragraph [ref=e23]:
+          - link "contact" [ref=e24] [cursor=pointer]:
+            - /url: ./contact
+    - heading "projects" [level=1] [ref=e42]:
+      - generic [ref=e43]: projects
+    - heading "I help startups and series A—D teams to establish a strong connection between their product and customers" [level=2] [ref=e52]:
+      - generic [ref=e53]: I help startups and series A—D teams to establish a strong connection between their product and customers
+    - paragraph [ref=e58]: .clients
+    - generic [ref=e107]:
+      - generic [ref=e108]:
+        - link "2024 Personal Project bizz buzz" [ref=e112] [cursor=pointer]:
+          - /url: ./work/bizzbuzz/
+          - generic [ref=e113]:
+            - paragraph [ref=e115]: "2024"
+            - paragraph [ref=e117]: Personal Project
+          - generic [ref=e119]:
+            - heading "bizz buzz" [level=2] [ref=e121]
+            - img [ref=e124]
+        - paragraph [ref=e132]: A social media platform for entrepreneurs to network and collaborate
+      - generic [ref=e138]:
+        - link "2024 Branding and Identity aquaflow" [ref=e142] [cursor=pointer]:
+          - /url: ./work/aquaflow/
+          - generic [ref=e143]:
+            - paragraph [ref=e145]: "2024"
+            - paragraph [ref=e147]: Branding and Identity
+          - generic [ref=e149]:
+            - heading "aquaflow" [level=2] [ref=e151]
+            - img [ref=e154]
+        - paragraph [ref=e162]: A bottled water delivery service that sources water from the purest mountain streams.
+      - generic [ref=e168]:
+        - link "2024 UI/UX snackify" [ref=e172] [cursor=pointer]:
+          - /url: ./work/snackify/
+          - generic [ref=e173]:
+            - paragraph [ref=e175]: "2024"
+            - paragraph [ref=e177]: UI/UX
+          - generic [ref=e179]:
+            - heading "snackify" [level=2] [ref=e181]
+            - img [ref=e184]
+        - paragraph [ref=e192]: A healthy snack subscription service that curates personalized snack boxes based on your dietary preferences
+      - generic [ref=e198]:
+        - link "2024 Personal Project zengo" [ref=e202] [cursor=pointer]:
+          - /url: ./work/zengo/
+          - generic [ref=e203]:
+            - paragraph [ref=e205]: "2024"
+            - paragraph [ref=e207]: Personal Project
+          - generic [ref=e209]:
+            - heading "zengo" [level=2] [ref=e211]
+            - img [ref=e214]
+        - paragraph [ref=e222]: A meditation app that uses AI to customize your mindfulness practice and track your progress
+      - generic [ref=e228]:
+        - link "2024 Branding and Identity roverride" [ref=e232] [cursor=pointer]:
+          - /url: ./work/roverride/
+          - generic [ref=e233]:
+            - paragraph [ref=e235]: "2024"
+            - paragraph [ref=e237]: Branding and Identity
+          - generic [ref=e239]:
+            - heading "roverride" [level=2] [ref=e241]
+            - img [ref=e244]
+        - paragraph [ref=e252]: An on-demand dog walking and pet sitting service that connects busy pet owners with trusted local caregivers
+    - generic [ref=e260]:
+      - paragraph [ref=e263]: .say hello
+      - heading "i'm open for freelance projects, feel free to email me to see how can we collaborate" [level=2] [ref=e266]:
+        - generic [ref=e267]: i'm open for freelance projects, feel free to email me to see how can we collaborate
+      - link "contact me" [ref=e272] [cursor=pointer]:
+        - /url: ./contact
+        - paragraph [ref=e275]: contact me
+        - img [ref=e279]
+    - generic [ref=e290]:
+      - paragraph [ref=e292]:
+        - text: .
+        - link "nitro" [ref=e293] [cursor=pointer]:
+          - /url: ./
+      - generic [ref=e294]:
+        - paragraph [ref=e296]:
+          - link "projects" [ref=e297] [cursor=pointer]:
+            - /url: ./projects
+        - paragraph [ref=e299]:
+          - link "about" [ref=e300] [cursor=pointer]:
+            - /url: ./about
+        - paragraph [ref=e302]: blog
+        - paragraph [ref=e304]:
+          - link "contact" [ref=e305] [cursor=pointer]:
+            - /url: ./contact
+      - generic [ref=e306]:
+        - link [ref=e309] [cursor=pointer]:
+          - /url: https://linkedin.com
+          - img [ref=e312]
+        - link [ref=e316] [cursor=pointer]:
+          - /url: https://twitter.com/
+          - img [ref=e319]
+        - link [ref=e323] [cursor=pointer]:
+          - /url: https://instagram.com
+          - img [ref=e326]
+  - link "Framer - Custom site builder" [ref=e329] [cursor=pointer]:
+    - /url: https://www.framer.com
+    - img "Framer - Custom site builder" [ref=e333]

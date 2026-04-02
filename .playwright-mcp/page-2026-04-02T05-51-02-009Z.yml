@@ -1,0 +1,124 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e3]:
+    - generic [ref=e20]:
+      - paragraph [ref=e23]:
+        - link ".nitro" [ref=e24] [cursor=pointer]:
+          - /url: ./
+      - generic [ref=e25]:
+        - paragraph [ref=e27]:
+          - link "projects" [ref=e28] [cursor=pointer]:
+            - /url: ./projects
+        - paragraph [ref=e30]:
+          - link "about" [ref=e31] [cursor=pointer]:
+            - /url: ./about
+        - paragraph [ref=e33]:
+          - link "blog" [ref=e34] [cursor=pointer]:
+            - /url: ./blog
+        - paragraph [ref=e36]:
+          - link "contact" [ref=e37] [cursor=pointer]:
+            - /url: ./contact
+    - generic [ref=e41]:
+      - generic [ref=e42]:
+        - paragraph [ref=e44]: Hey, I'm Jake
+        - paragraph [ref=e48]: available for new projects
+      - generic [ref=e50]:
+        - heading "a design partner focusing on crisp and catchy" [level=1] [ref=e52]:
+          - generic [ref=e53]: a design partner focusing on crisp and catchy
+        - generic [ref=e58]:
+          - heading "no-code websites" [level=1] [ref=e60]
+          - heading "software interfaces" [level=1] [ref=e62]
+          - heading "interactive experiences" [level=1] [ref=e64]
+          - heading "no-code websites" [level=1] [ref=e66]
+    - generic [ref=e74]:
+      - link "2024 Personal Project bizz buzz" [ref=e78] [cursor=pointer]:
+        - /url: ./work/bizzbuzz/
+        - generic [ref=e79]:
+          - paragraph [ref=e81]: "2024"
+          - paragraph [ref=e83]: Personal Project
+        - heading "bizz buzz" [level=2] [ref=e87]
+      - link "2024 Branding and Identity aquaflow" [ref=e94] [cursor=pointer]:
+        - /url: ./work/aquaflow/
+        - generic [ref=e95]:
+          - paragraph [ref=e97]: "2024"
+          - paragraph [ref=e99]: Branding and Identity
+        - heading "aquaflow" [level=2] [ref=e103]
+      - link "2024 UI/UX snackify" [ref=e110] [cursor=pointer]:
+        - /url: ./work/snackify/
+        - generic [ref=e111]:
+          - paragraph [ref=e113]: "2024"
+          - paragraph [ref=e115]: UI/UX
+        - heading "snackify" [level=2] [ref=e119]
+      - link "2024 Personal Project zengo" [ref=e126] [cursor=pointer]:
+        - /url: ./work/zengo/
+        - generic [ref=e127]:
+          - paragraph [ref=e129]: "2024"
+          - paragraph [ref=e131]: Personal Project
+        - heading "zengo" [level=2] [ref=e135]
+      - link "2024 Branding and Identity roverride" [ref=e142] [cursor=pointer]:
+        - /url: ./work/roverride/
+        - generic [ref=e143]:
+          - paragraph [ref=e145]: "2024"
+          - paragraph [ref=e147]: Branding and Identity
+        - heading "roverride" [level=2] [ref=e151]
+    - generic [ref=e162]:
+      - generic [ref=e164]:
+        - paragraph [ref=e167]: .about
+        - heading "my craft is building experiences that bring value to people and celebrate function over form. let's hide the ego and give some freedom to creativity and make the first small step changing the world to a better place" [level=3] [ref=e170]:
+          - generic [ref=e171]: my craft is building experiences that bring value to people and celebrate function over form. let's hide the ego and give some freedom to creativity and make the first small step changing the world to a better place
+      - link "about me" [ref=e182] [cursor=pointer]:
+        - /url: ./about
+        - paragraph [ref=e185]: about me
+    - generic [ref=e195]:
+      - paragraph [ref=e198]: .three latest notes
+      - generic [ref=e200]:
+        - link "Starting and Growing a Career in Web Design Apr 8, 2022" [ref=e203] [cursor=pointer]:
+          - /url: ./blog/starting-a-career-in-web-design
+          - generic [ref=e204]:
+            - heading "Starting and Growing a Career in Web Design" [level=3] [ref=e206]
+            - paragraph [ref=e208]: Apr 8, 2022
+        - link "Create a Landing Page That Performs Great Mar 15, 2022" [ref=e219] [cursor=pointer]:
+          - /url: ./blog/create-a-landing-page-that-performs-great
+          - generic [ref=e220]:
+            - heading "Create a Landing Page That Performs Great" [level=3] [ref=e222]
+            - paragraph [ref=e224]: Mar 15, 2022
+        - link "How Can Designers Prepare for the Future? Feb 28, 2022" [ref=e235] [cursor=pointer]:
+          - /url: ./blog/how-can-designers-prepare-for-the-future
+          - generic [ref=e236]:
+            - heading "How Can Designers Prepare for the Future?" [level=3] [ref=e238]
+            - paragraph [ref=e240]: Feb 28, 2022
+      - link "visit blog" [ref=e253] [cursor=pointer]:
+        - /url: ./blog
+        - paragraph [ref=e256]: visit blog
+    - generic [ref=e267]:
+      - paragraph [ref=e270]: .say hello
+      - heading "i'm open for freelance projects, feel free to email me to see how can we collaborate" [level=2] [ref=e273]:
+        - generic [ref=e274]: i'm open for freelance projects, feel free to email me to see how can we collaborate
+      - link "contact me" [ref=e279] [cursor=pointer]:
+        - /url: ./contact
+        - paragraph [ref=e282]: contact me
+    - generic [ref=e294]:
+      - paragraph [ref=e296]:
+        - text: .
+        - link "nitro" [ref=e297] [cursor=pointer]:
+          - /url: ./
+      - generic [ref=e298]:
+        - paragraph [ref=e300]:
+          - link "projects" [ref=e301] [cursor=pointer]:
+            - /url: ./projects
+        - paragraph [ref=e303]:
+          - link "about" [ref=e304] [cursor=pointer]:
+            - /url: ./about
+        - paragraph [ref=e306]: blog
+        - paragraph [ref=e308]:
+          - link "contact" [ref=e309] [cursor=pointer]:
+            - /url: ./contact
+      - generic [ref=e310]:
+        - link [ref=e313] [cursor=pointer]:
+          - /url: https://linkedin.com
+        - link [ref=e317] [cursor=pointer]:
+          - /url: https://twitter.com/
+        - link [ref=e321] [cursor=pointer]:
+          - /url: https://instagram.com
+  - link "Framer - Custom site builder" [ref=e324] [cursor=pointer]:
+    - /url: https://www.framer.com
+    - img "Framer - Custom site builder" [ref=e328]

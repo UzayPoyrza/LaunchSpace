@@ -1,0 +1,107 @@
+- generic [ref=e4]:
+  - navigation [ref=e5]:
+    - generic [ref=e6]:
+      - link "LaunchSpace" [ref=e7] [cursor=pointer]:
+        - /url: /framer
+      - generic [ref=e8]:
+        - link "projects" [ref=e9] [cursor=pointer]:
+          - /url: /framer/projects
+        - link "contact" [ref=e10] [cursor=pointer]:
+          - /url: /framer/contact
+  - generic [ref=e12]:
+    - generic [ref=e13]:
+      - heading "our work" [level=1] [ref=e14]
+      - paragraph [ref=e15]: we build apps that solve real problems — from wellness and aviation to AI and competitive programming.
+    - generic [ref=e16]:
+      - generic [ref=e18]: .what we do
+      - generic [ref=e20]:
+        - generic [ref=e21]: WEB APPS
+        - generic [ref=e22]: MOBILE
+        - generic [ref=e23]: AI / ML
+        - generic [ref=e24]: API DESIGN
+        - generic [ref=e25]: UI / UX
+        - generic [ref=e26]: CLOUD
+        - generic [ref=e27]: CONSULTING
+        - generic [ref=e28]: PROTOTYPING
+    - generic [ref=e29]:
+      - generic [ref=e30]:
+        - generic [ref=e32] [cursor=pointer]:
+          - generic [ref=e33]:
+            - generic [ref=e34]:
+              - generic [ref=e35]: "2024"
+              - generic [ref=e36]: Wellness · iOS
+            - generic [ref=e38]:
+              - heading "Neurotype" [level=2] [ref=e39]
+              - img [ref=e40]
+          - img "Neurotype" [ref=e43]
+        - generic [ref=e44]:
+          - paragraph [ref=e45]: A science-based meditation app designed to help neurodivergent people. Grounded in research, shaped by real needs.
+          - link "visit site" [ref=e46] [cursor=pointer]:
+            - /url: https://neurotypeapp.com
+            - text: visit site
+            - img [ref=e47]
+      - generic [ref=e49]:
+        - generic [ref=e51] [cursor=pointer]:
+          - generic [ref=e52]:
+            - generic [ref=e53]:
+              - generic [ref=e54]: "2024"
+              - generic [ref=e55]: Aviation · iOS
+            - generic [ref=e57]:
+              - heading "Volo" [level=2] [ref=e58]
+              - img [ref=e59]
+          - img "Volo" [ref=e62]
+        - generic [ref=e63]:
+          - paragraph [ref=e64]: Your pilot companion & toolbox. Essential tools and resources for pilots, all in one app.
+          - link "visit site" [ref=e65] [cursor=pointer]:
+            - /url: https://volopilot.app
+            - text: visit site
+            - img [ref=e66]
+      - generic [ref=e68]:
+        - generic [ref=e70] [cursor=pointer]:
+          - generic [ref=e71]:
+            - generic [ref=e72]:
+              - generic [ref=e73]: "2025"
+              - generic [ref=e74]: AI · Web
+            - generic [ref=e76]:
+              - heading "Incraft" [level=2] [ref=e77]
+              - img [ref=e78]
+          - img "Incraft" [ref=e81]
+        - generic [ref=e82]:
+          - paragraph [ref=e83]: Generate studio-quality guided meditation in one prompt. Natural voice narration, timed pauses, tailored scripts.
+          - link "visit site" [ref=e84] [cursor=pointer]:
+            - /url: https://incraft.io
+            - text: visit site
+            - img [ref=e85]
+      - generic [ref=e87]:
+        - generic [ref=e89] [cursor=pointer]:
+          - generic [ref=e90]:
+            - generic [ref=e91]:
+              - generic [ref=e92]: "2025"
+              - generic [ref=e93]: Education · CLI
+            - generic [ref=e95]:
+              - heading "Myro" [level=2] [ref=e96]
+              - img [ref=e97]
+          - img "Myro" [ref=e100]
+        - generic [ref=e101]:
+          - paragraph [ref=e102]: An adaptive competitive programming trainer. The shortest path to red.
+          - link "visit site" [ref=e103] [cursor=pointer]:
+            - /url: https://myro.coach
+            - text: visit site
+            - img [ref=e104]
+    - generic [ref=e106]:
+      - generic [ref=e108]: .get in touch
+      - heading "shoot us a message about anything — feedback, ideas, or collaboration" [level=2] [ref=e110]
+      - link "contact" [ref=e112] [cursor=pointer]:
+        - /url: /framer/contact
+        - text: contact
+        - img [ref=e113]
+  - contentinfo [ref=e115]:
+    - generic [ref=e116]:
+      - generic [ref=e117]:
+        - link "home" [ref=e118] [cursor=pointer]:
+          - /url: /framer
+        - link "projects" [ref=e119] [cursor=pointer]:
+          - /url: /framer/projects
+        - link "contact" [ref=e120] [cursor=pointer]:
+          - /url: /framer/contact
+      - generic [ref=e121]: © 2024 LaunchSpace LLC

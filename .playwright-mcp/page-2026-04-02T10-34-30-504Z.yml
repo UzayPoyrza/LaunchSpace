@@ -1,0 +1,288 @@
+- generic [active] [ref=e1]:
+  - paragraph [ref=e3]:
+    - text: "|"
+    - generic [ref=e4]: Percolating...
+  - banner [ref=e5]:
+    - generic [ref=e6]:
+      - heading "Uzay Poyraz" [level=1] [ref=e7]
+      - paragraph [ref=e8]: i build things, break things, and occasionally ship them.
+      - navigation [ref=e9]:
+        - list [ref=e10]:
+          - listitem [ref=e11]:
+            - link "ABOUT" [ref=e12] [cursor=pointer]:
+              - /url: "#about"
+              - text: ABOUT
+          - listitem [ref=e14]:
+            - link "PROJECTS" [ref=e15] [cursor=pointer]:
+              - /url: "#projects"
+              - text: PROJECTS
+          - listitem [ref=e17]:
+            - link "EXPERIENCE" [ref=e18] [cursor=pointer]:
+              - /url: "#experience"
+              - text: EXPERIENCE
+    - generic [ref=e20]:
+      - link "GitHub" [ref=e21] [cursor=pointer]:
+        - /url: https://github.com/UzayPoyrza
+        - img [ref=e22]
+      - link "LinkedIn" [ref=e24] [cursor=pointer]:
+        - /url: https://www.linkedin.com/in/uzaypoyraz/
+        - img [ref=e25]
+      - link "Email" [ref=e27] [cursor=pointer]:
+        - /url: mailto:upoyrazlol@gmail.com
+        - img [ref=e28]
+      - button "Toggle theme" [ref=e32]:
+        - img [ref=e33]
+  - main [ref=e39]:
+    - generic [ref=e40]:
+      - generic [ref=e41]:
+        - paragraph [ref=e42]: CS grad from Skidmore College. I started coding in high school in Japan and never really stopped. Since then, I've built tools for Turkish Airlines pilots, e-commerce platforms at Optimum7, and an AI that beats me at checkers.
+        - paragraph [ref=e43]: I thought that was cool and all, but then vibe coding happened and I've never been more hooked to coding ever. Got Claude Max with my roommate and now we've got four Claude Code CLI terminals each running at all times, MCPs hooked up, custom skills loaded. The dopamine hit of shipping in minutes what used to take weeks is genuinely unreasonable. I'm currently building two apps under my company LaunchSpace and they're about to publish very very soon - not touching grass until they do. After that, I'd love to bring this energy to a team where shipping quality product fast actually matters.
+      - generic [ref=e44]:
+        - heading "stuff i've built" [level=2] [ref=e45]
+        - paragraph [ref=e46]: some shipped, some still cooking, some vibecoded, some not
+        - generic [ref=e47]:
+          - generic [ref=e49]:
+            - generic [ref=e50]:
+              - generic [ref=e51]:
+                - generic [ref=e52]: Mobile App
+                - generic [ref=e55]: In Dev
+              - generic [ref=e56]:
+                - heading "Neurotype" [level=3] [ref=e57]
+                - link "neurotypeapp.com" [ref=e58] [cursor=pointer]:
+                  - /url: https://neurotypeapp.com
+                  - text: neurotypeapp.com
+              - paragraph [ref=e60]: Science-Based Meditation App
+              - paragraph [ref=e61]: Noticed no meditation app is actually science-based, even though research shows certain techniques can be borderline therapeutic. That idea alone was enough to start building a full production-grade app from scratch. Took a while but it's coming together. Launching soon.
+              - generic [ref=e62]:
+                - generic [ref=e63]: React Native
+                - generic [ref=e64]: TypeScript
+                - generic [ref=e65]: Supabase
+                - generic [ref=e66]: so many more
+              - link "GitHub" [ref=e68] [cursor=pointer]:
+                - /url: https://github.com/UzayPoyrza/Neurotype
+                - img [ref=e69]
+                - text: GitHub
+            - generic [ref=e71]:
+              - generic [ref=e72]:
+                - button "App" [ref=e73]:
+                  - img [ref=e74]
+                  - text: App
+                - button "Website" [ref=e76]:
+                  - img [ref=e77]
+                  - text: Website
+              - generic [ref=e80]:
+                - img "Neurotype" [ref=e89] [cursor=pointer]
+                - img "Neurotype" [ref=e98] [cursor=pointer]
+                - img "Neurotype" [ref=e107] [cursor=pointer]
+          - generic [ref=e109]:
+            - generic [ref=e110]:
+              - generic [ref=e111]:
+                - generic [ref=e112]: Mobile App
+                - generic [ref=e115]: In Dev
+              - generic [ref=e116]:
+                - heading "Volo" [level=3] [ref=e117]
+                - link "volopilot.app" [ref=e118] [cursor=pointer]:
+                  - /url: https://volopilot.app
+                  - text: volopilot.app
+              - paragraph [ref=e120]: AviaAssist reborn - more features, more useful, more pilots involved, built with and integrated AI
+              - paragraph [ref=e121]: AviaAssist was loved by pilots but never hit production - so we went bigger. Volo is the full rebuild with AI baked in, more features, and more pilots involved. We also set up OpenClaw on WhatsApp to directly involve one of the pilots with development. Insane experience, launching soon.
+              - generic [ref=e122]:
+                - generic [ref=e123]: React Native
+                - generic [ref=e124]: TypeScript
+                - generic [ref=e125]: Supabase
+            - generic [ref=e126]:
+              - generic [ref=e127]:
+                - button "App" [ref=e128]:
+                  - img [ref=e129]
+                  - text: App
+                - button "Website" [ref=e131]:
+                  - img [ref=e132]
+                  - text: Website
+              - generic [ref=e135]:
+                - img "Volo" [ref=e144] [cursor=pointer]
+                - img "Volo" [ref=e153] [cursor=pointer]
+                - img "Volo" [ref=e162] [cursor=pointer]
+          - generic [ref=e164]:
+            - generic [ref=e165]:
+              - generic [ref=e166]:
+                - generic [ref=e167]: Website
+                - generic [ref=e170]: Live
+              - generic [ref=e171]:
+                - heading "Incraft" [level=3] [ref=e172]
+                - link "incraft.io" [ref=e173] [cursor=pointer]:
+                  - /url: https://incraft.io
+                  - text: incraft.io
+              - paragraph [ref=e175]: AI Guided Meditation Generator
+              - paragraph [ref=e176]: Prompt-to-guided meditation generator with a custom studio for therapists, creators, and instructors. Users enter what they need, configure voice, duration, and protocol, and the app generates a personalized script via AI, pairs it with TTS audio and ambient soundscapes, and delivers a full playback experience. Freemium model with Stripe billing, deployed as a RESTful API on AWS Lambda with self-healing post-processing.
+              - generic [ref=e177]:
+                - generic [ref=e178]: Next.js
+                - generic [ref=e179]: Stripe
+                - generic [ref=e180]: AWS Lambda
+                - generic [ref=e181]: ElevenLabs
+                - generic [ref=e182]: Supabase
+                - generic [ref=e183]: PostHog
+                - generic [ref=e184]: Python
+            - generic [ref=e185]:
+              - generic [ref=e186]:
+                - button "Site" [ref=e187]:
+                  - img [ref=e188]
+                  - text: Site
+                - button "Demo" [ref=e190]:
+                  - img [ref=e191]
+                  - text: Demo
+              - generic [ref=e194] [cursor=pointer]:
+                - generic [ref=e195]:
+                  - generic [ref=e201]: incraft.io
+                  - generic [ref=e202]:
+                    - img "Incraft Home" [ref=e203]
+                    - img "Incraft Create" [ref=e204]
+                    - img "Incraft Studio" [ref=e205]
+                    - button "Previous page" [ref=e206]:
+                      - img [ref=e207]
+                    - button "Next page" [ref=e209]:
+                      - img [ref=e210]
+                    - generic [ref=e212]: Home
+                - generic [ref=e213]:
+                  - button "Go to Home" [ref=e214]
+                  - button "Go to Create" [ref=e215]
+                  - button "Go to Studio" [ref=e216]
+          - generic [ref=e218]:
+            - generic [ref=e219]:
+              - generic [ref=e220]:
+                - generic [ref=e221]: CLI Tool
+                - generic [ref=e224]: In Dev
+              - generic [ref=e225]:
+                - heading "Myro" [level=3] [ref=e226]
+                - link "myro.coach" [ref=e227] [cursor=pointer]:
+                  - /url: https://myro.coach
+                  - text: myro.coach
+              - paragraph [ref=e229]: Competitive Programming Coach
+              - paragraph [ref=e230]: Primarily CLI-based. Passion project with a PhD friend from Princeton and UC Riverside. Goal is to make you red in Codeforces in the shortest time possible - a problem that takes 40 mins to solve, Myro guides you through the key observations in 15 without giving it away.
+              - generic [ref=e231]:
+                - generic [ref=e232]: Rust
+                - generic [ref=e233]: LLMs
+                - generic [ref=e234]: CLI
+            - generic [ref=e238] [cursor=pointer]:
+              - generic [ref=e245]: myro — ~/competitive
+              - generic [ref=e249]:
+                - generic [ref=e250]:
+                  - img
+                - generic [ref=e277]:
+                  - button "Play" [ref=e279]
+                  - textbox [ref=e281]:
+                    - generic [ref=e282]: "--:--"
+                  - button "Show keyboard shortcuts" [ref=e286]:
+                    - img [ref=e287]
+                  - button "Toggle fullscreen mode" [ref=e289]:
+                    - img [ref=e290]
+          - generic [ref=e294]:
+            - generic [ref=e295]:
+              - generic [ref=e296]:
+                - generic [ref=e297]: Mobile App
+                - generic [ref=e300]: Live
+              - heading "WeatherTimeWidget" [level=3] [ref=e302]
+              - paragraph [ref=e303]: iOS Widget — Weather, Date & Time All Together
+              - paragraph [ref=e304]: The only iOS widget that combines weather, date, and time into one clean widget. Multiple sizes, dark/light themes, hourly forecast, and fully customizable units.
+              - generic [ref=e305]:
+                - generic [ref=e306]: Swift
+                - generic [ref=e307]: WidgetKit
+                - generic [ref=e308]: iOS
+            - generic [ref=e311]:
+              - img "WeatherTimeWidget" [ref=e320] [cursor=pointer]
+              - img "WeatherTimeWidget" [ref=e329] [cursor=pointer]
+              - img "WeatherTimeWidget" [ref=e338] [cursor=pointer]
+          - generic [ref=e340]:
+            - generic [ref=e341]:
+              - generic [ref=e342]:
+                - generic [ref=e343]: Website
+                - generic [ref=e346]: Live
+              - generic [ref=e347]:
+                - heading "LaunchSpace" [level=3] [ref=e348]
+                - link "launchspace.org" [ref=e349] [cursor=pointer]:
+                  - /url: https://launchspace.org
+                  - text: launchspace.org
+              - paragraph [ref=e351]: Web & AI Applications Company
+              - paragraph [ref=e352]: Company website with a pretty clean UI. Claude could probably one-shot this now, but at the time it took a while building with early Cursor.
+              - generic [ref=e353]:
+                - generic [ref=e354]: React
+                - generic [ref=e355]: TypeScript
+                - generic [ref=e356]: Node.js
+                - generic [ref=e357]: Vercel
+              - link "GitHub" [ref=e359] [cursor=pointer]:
+                - /url: https://github.com/UzayPoyrza/LaunchSpace
+                - img [ref=e360]
+                - text: GitHub
+            - generic [ref=e364] [cursor=pointer]:
+              - generic [ref=e365]:
+                - generic [ref=e371]: launchspace.org
+                - generic [ref=e372]:
+                  - generic [ref=e374]: L
+                  - button "Previous page" [ref=e375]:
+                    - img [ref=e376]
+                  - button "Next page" [ref=e378]:
+                    - img [ref=e379]
+                  - generic [ref=e381]: Home
+              - generic [ref=e382]:
+                - button "Go to Home" [ref=e383]
+                - button "Go to Create" [ref=e384]
+                - button "Go to Studio" [ref=e385]
+          - generic [ref=e387]:
+            - generic [ref=e388]:
+              - generic [ref=e389]:
+                - generic [ref=e390]: AI / ML
+                - generic [ref=e393]: Live
+              - heading "Checkers AI" [level=3] [ref=e395]
+              - paragraph [ref=e396]: Alpha-Beta vs. Reinforcement Learning
+              - paragraph [ref=e397]: Built this from scratch after my reinforcement learning class. See if you can beat my AI (alpha-beta pruning, depth 4, running Python in your browser via Pyodide)
+              - generic [ref=e398]:
+                - generic [ref=e399]: Python
+                - generic [ref=e400]: Q-Learning
+                - generic [ref=e401]: Alpha-Beta Pruning
+              - link "GitHub" [ref=e403] [cursor=pointer]:
+                - /url: https://github.com/UzayPoyrza/checker-RL
+                - img [ref=e404]
+                - text: GitHub
+            - generic [ref=e408]:
+              - button "Play Live" [ref=e410]
+              - generic [ref=e412]: ▌
+        - button "legacy projects" [ref=e414]:
+          - img [ref=e415]
+          - text: legacy projects
+        - link "View all projects" [ref=e418] [cursor=pointer]:
+          - /url: /projects
+          - text: View all projects
+          - img [ref=e419]
+      - generic [ref=e421]:
+        - heading "jobs / internships" [level=2] [ref=e422]
+        - generic [ref=e423]:
+          - generic [ref=e424]:
+            - paragraph [ref=e425]: "2024"
+            - generic [ref=e426]:
+              - heading "Full-Stack Developer Intern · Optimum7" [level=3] [ref=e427]
+              - paragraph [ref=e428]: Worked on full-stack development at a digital marketing and e-commerce agency. Integrated BigCommerce & Shopify APIs into dynamic platforms.
+          - generic [ref=e429]:
+            - paragraph [ref=e430]: "2023"
+            - generic [ref=e431]:
+              - heading "Software Engineering Intern · CsTech" [level=3] [ref=e432]
+              - paragraph [ref=e433]: Built a C++ tool that optimized language translations at a software company in the Defense Industry.
+      - generic [ref=e434]:
+        - heading "education" [level=2] [ref=e435]
+        - generic [ref=e436]:
+          - generic [ref=e437]:
+            - paragraph [ref=e438]: 2021 – 2025
+            - generic [ref=e439]:
+              - heading "B.A. Computer Science · Skidmore College" [level=3] [ref=e440]
+              - paragraph [ref=e441]: Computer Science graduate with a focus on AI and software engineering.
+              - generic [ref=e442]: 4.0 Major GPA
+          - generic [ref=e443]:
+            - paragraph [ref=e444]: 2019 – 2021
+            - generic [ref=e445]:
+              - heading "International Baccalaureate · UWC ISAK Japan" [level=3] [ref=e446]
+              - paragraph [ref=e447]: Studied at a United World College in Karuizawa, Japan. Immersed in a culture of innovation and global perspectives.
+              - generic [ref=e448]: Davis-UWC Scholar
+      - link "View Full Resume" [ref=e450] [cursor=pointer]:
+        - /url: https://docs.google.com/document/d/1YKK0GZJPhOyr4Hv1IK85q0Y-85q0MR5BjGqFuVXelyQ/edit?usp=sharing
+        - text: View Full Resume
+        - img [ref=e451]
+      - generic [ref=e453]: built by uzay with mass amounts of caffeine. and yes, i made claude do the claude loading screen. · © 2026
+  - alert [ref=e454]

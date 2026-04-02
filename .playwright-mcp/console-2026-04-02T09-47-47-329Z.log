@@ -1,0 +1,9 @@
+[     528ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://www.uzaypoyraz.com/recordings/myro.cast:0
+[     529ms] Error: failed fetching recording from /recordings/myro.cast: 404 
+    at T (https://www.uzaypoyraz.com/_next/static/chunks/b655b546da930f99.js:4:1116)
+    at async K (https://www.uzaypoyraz.com/_next/static/chunks/b655b546da930f99.js:4:736)
+    at async S (https://www.uzaypoyraz.com/_next/static/chunks/b655b546da930f99.js:2:102796)
+    at async Object.b [as init] (https://www.uzaypoyraz.com/_next/static/chunks/b655b546da930f99.js:2:102623)
+    at async Aq._initializeDriver (https://www.uzaypoyraz.com/_next/static/chunks/b655b546da930f99.js:2:97630)
+    at async Aw.init (https://www.uzaypoyraz.com/_next/static/chunks/b655b546da930f99.js:2:90680)
+    at async Aw.play (https://www.uzaypoyraz.com/_next/static/chunks/b655b546da930f99.js:2:90845)
