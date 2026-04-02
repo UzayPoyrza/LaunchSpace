@@ -304,7 +304,7 @@ const HomePage: React.FC = () => (
           solo developer building apps that haven't been done before — sometimes independently, sometimes collaborating with engineers and people from different fields
         </h3>
         <div className="nitro-about-cta">
-          <Link to="/framer/projects" className="nitro-contact-btn">see our work <ArrowIcon className="nitro-contact-btn__icon" /></Link>
+          <Link to="/projects" className="nitro-contact-btn">see our work <ArrowIcon className="nitro-contact-btn__icon" /></Link>
         </div>
       </motion.div>
     </section>
@@ -317,7 +317,7 @@ const HomePage: React.FC = () => (
         </div>
         <h2 className="nitro-contact-heading">shoot us a message about anything — feedback, ideas, or collaboration</h2>
         <div className="nitro-contact-btn-wrap">
-          <Link to="/framer/contact" className="nitro-contact-btn">contact <ArrowIcon className="nitro-contact-btn__icon" /></Link>
+          <Link to="/contact" className="nitro-contact-btn">contact <ArrowIcon className="nitro-contact-btn__icon" /></Link>
         </div>
       </motion.div>
     </section>
@@ -374,7 +374,7 @@ const ProjectsPage: React.FC = () => (
       </div>
       <h2 className="nitro-contact-heading">shoot us a message about anything — feedback, ideas, or collaboration</h2>
       <div className="nitro-contact-btn-wrap">
-        <Link to="/framer/contact" className="nitro-contact-btn">contact us <ArrowIcon className="nitro-contact-btn__icon" /></Link>
+        <Link to="/contact" className="nitro-contact-btn">contact us <ArrowIcon className="nitro-contact-btn__icon" /></Link>
       </div>
     </motion.section>
   </div>
@@ -439,9 +439,9 @@ const NitroFooter: React.FC = () => (
   <footer className="nitro-footer">
     <div className="nitro-footer__inner">
       <div className="nitro-footer__links">
-        <Link to="/framer">home</Link>
-        <Link to="/framer/projects">projects</Link>
-        <Link to="/framer/contact">contact</Link>
+        <Link to="/">home</Link>
+        <Link to="/projects">projects</Link>
+        <Link to="/contact">contact</Link>
       </div>
       <span className="nitro-footer__credit">© 2024 LaunchSpace LLC</span>
     </div>
@@ -493,8 +493,8 @@ const Framer: React.FC = () => {
 
   const navContent = (
     <>
-      <NavLink to="/framer/projects" active={currentPage === 'projects'} onNavigate={closeMenu}>projects</NavLink>
-      <NavLink to="/framer/contact" active={currentPage === 'contact'} onNavigate={closeMenu}>contact</NavLink>
+      <NavLink to="/projects" active={currentPage === 'projects'} onNavigate={closeMenu}>projects</NavLink>
+      <NavLink to="/contact" active={currentPage === 'contact'} onNavigate={closeMenu}>contact</NavLink>
     </>
   );
 
@@ -502,7 +502,7 @@ const Framer: React.FC = () => {
     <div className="nitro-page">
       <motion.nav className={`nitro-nav ${scrolled ? 'nitro-nav--scrolled' : ''}`} initial={{ y: -80 }} animate={{ y: 0 }} transition={{ duration: 0.6, ease }}>
         <div className="nitro-nav__inner">
-          <Link to="/framer" className="nitro-nav__logo">
+          <Link to="/" className="nitro-nav__logo">
             <svg className="nitro-nav__logo-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
               <circle cx="12" cy="12" r="10" fill="currentColor" opacity="0.1"/>
               <circle cx="12" cy="12" r="8" stroke="currentColor" strokeWidth="1.5"/>
