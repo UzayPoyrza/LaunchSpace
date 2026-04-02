@@ -845,6 +845,13 @@ body.nitro-body {
   background: rgba(0, 0, 0, 0.3) !important;
   border-top: 1px solid rgba(255, 255, 255, 0.05) !important;
   opacity: 1 !important;
+  pointer-events: auto !important;
+  position: relative !important;
+  z-index: 20 !important;
+}
+
+.terminal-showcase__content .ap-overlay {
+  pointer-events: auto !important;
 }
 
 /* ─────────────────────────────────────────

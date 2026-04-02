@@ -178,7 +178,7 @@ const TerminalShowcase: React.FC<{ title: string; castFile: string }> = ({ title
       if (!containerRef.current) return;
       containerRef.current.innerHTML = '';
       AsciinemaPlayer.create(castFile, containerRef.current, {
-        autoPlay: false,
+        autoPlay: true,
         loop: true,
         speed: 1.5,
         idleTimeLimit: 2,
