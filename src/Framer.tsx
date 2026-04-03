@@ -224,6 +224,7 @@ const projects = [
   { year: '2024', cat: 'Aviation · iOS', name: 'Volo', bg: '#0284C7', textColor: '#fff', dividerColor: 'rgba(255,255,255,0.2)', linkColor: '#7dd3fc', showcase: 'phone' as const, screenshots: ['/images/volo-screen.png', '/images/projects/volo_ops.png', '/images/projects/volo_nat.png'], desc: 'Your pilot companion & toolbox. Essential tools and resources for pilots, all in one app.', url: 'https://volopilot.app' },
   { year: '2025', cat: 'AI · Web', name: 'Incraft', bg: '#EA580C', textColor: '#fff', dividerColor: 'rgba(255,255,255,0.2)', linkColor: '#fdba74', showcase: 'web' as const, screenshots: ['/images/incraft-screen.png', '/images/projects/incraft_create.png', '/images/projects/incraft_studio.png'], webPages: [{ label: 'Home', path: '' }, { label: 'Create', path: '/create' }, { label: 'Studio', path: '/studio' }], desc: 'Generate studio-quality guided meditation in one prompt. Natural voice narration, timed pauses, tailored scripts.', url: 'https://incraft.io' },
   { year: '2025', cat: 'Education · CLI', name: 'Myro', bg: '#059669', textColor: '#fff', dividerColor: 'rgba(255,255,255,0.2)', linkColor: '#6ee7b7', showcase: 'terminal' as const, screenshots: [], castFile: '/recordings/myro.cast', desc: 'An adaptive competitive programming trainer. The shortest path to red.', url: 'https://myro.coach' },
+  { year: '2025', cat: 'Utilities · iOS', name: 'Weather Time Widget', bg: '#4F46E5', textColor: '#fff', dividerColor: 'rgba(255,255,255,0.2)', linkColor: '#a5b4fc', showcase: 'phone' as const, screenshots: ['/images/projects/wtw_promo.png', '/images/projects/wtw_widgets.jpg', '/images/projects/wtw_settings.jpg'], desc: 'No iOS widget combined weather, date, and time in one place — so we built one. Concept to App Store in a single day, reaching #22 in Weather.', url: 'https://apps.apple.com/us/app/weather-time-widget/id6761026960', displayUrl: 'App Store' },
 ];
 
 const services = ['WEB APPS', 'MOBILE', 'AI / ML', 'API DESIGN', 'UI / UX', 'CLOUD', 'CONSULTING', 'PROTOTYPING'];
@@ -245,7 +246,7 @@ const ProjectCard: React.FC<{ p: typeof projects[0]; variant?: 'stack' | 'list' 
         </div>
         <div className="nitro-project-card__divider" style={{ backgroundColor: p.dividerColor }} />
         <div className="nitro-project-card__title-row">
-          <h2 className="nitro-project-card__name">{p.name} <span className="nitro-project-card__dot">·</span> <span className="nitro-project-card__url" style={{ color: p.linkColor }}>{p.url.replace('https://', '')}</span></h2>
+          <h2 className="nitro-project-card__name">{p.name} <span className="nitro-project-card__dot">·</span> <span className="nitro-project-card__url" style={{ color: p.linkColor }}>{(p as any).displayUrl || p.url.replace('https://', '')}</span></h2>
           <ArrowIcon className="nitro-project-card__arrow" />
         </div>
       </div>
