@@ -97,7 +97,7 @@ function Footer({ isHomePage = false }: FooterProps) {
           
           {alreadySubscribed && (
             <div className="info-message">
-              This email is already subscribed to our newsletter! 📧
+              This email is already subscribed to the newsletter! 📧
             </div>
           )}
           
@@ -108,7 +108,7 @@ function Footer({ isHomePage = false }: FooterProps) {
           )}
           
           <p className="consent-text">
-            By subscribing you provide consent to receive updates from our company.
+            By subscribing you provide consent to receive updates from LaunchSpace.
           </p>
         </div>
 

@@ -119,7 +119,7 @@ function Contact() {
           </div>
           
           <div className="services-section">
-            <h3>Our Services</h3>
+            <h3>Services</h3>
             <ul>
               <li>Web Application Development</li>
               <li>AI & Machine Learning Solutions</li>
@@ -132,7 +132,7 @@ function Contact() {
         
         <div className="contact-form-container">
           <form className="contact-form" onSubmit={handleSubmit}>
-            <h3>Send us a message</h3>
+            <h3>Send me a message</h3>
             
             <div className={`form-group ${validationErrors.name ? 'error' : ''}`}>
               <label htmlFor="name">Name *</label>
@@ -188,7 +188,7 @@ function Contact() {
                 value={formData.message}
                 onChange={handleChange}
                 required
-                placeholder="Tell us about your project..."
+                placeholder="Tell me about your project..."
                 rows={5}
                 className={validationErrors.message ? 'error' : ''}
               />

@@ -224,7 +224,7 @@ const projects = [
   { year: '2024', cat: 'Aviation · iOS', name: 'Volo', bg: '#0284C7', textColor: '#fff', dividerColor: 'rgba(255,255,255,0.2)', linkColor: '#7dd3fc', showcase: 'phone' as const, screenshots: ['/images/volo-screen.png', '/images/projects/volo_ops.png', '/images/projects/volo_nat.png'], desc: 'Your pilot companion & toolbox. Essential tools and resources for pilots, all in one app.', url: 'https://volopilot.app' },
   { year: '2025', cat: 'AI · Web', name: 'Incraft', bg: '#EA580C', textColor: '#fff', dividerColor: 'rgba(255,255,255,0.2)', linkColor: '#fdba74', showcase: 'web' as const, screenshots: ['/images/incraft-screen.png', '/images/projects/incraft_create.png', '/images/projects/incraft_studio.png'], webPages: [{ label: 'Home', path: '' }, { label: 'Create', path: '/create' }, { label: 'Studio', path: '/studio' }], desc: 'Generate studio-quality guided meditation in one prompt. Natural voice narration, timed pauses, tailored scripts.', url: 'https://incraft.io' },
   { year: '2025', cat: 'Education · CLI', name: 'Myro', bg: '#059669', textColor: '#fff', dividerColor: 'rgba(255,255,255,0.2)', linkColor: '#6ee7b7', showcase: 'terminal' as const, screenshots: [], castFile: '/recordings/myro.cast', desc: 'An adaptive competitive programming trainer. The shortest path to red.', url: 'https://myro.coach' },
-  { year: '2025', cat: 'Utilities · iOS', name: 'Weather Time Widget', bg: '#4F46E5', textColor: '#fff', dividerColor: 'rgba(255,255,255,0.2)', linkColor: '#a5b4fc', showcase: 'phone' as const, screenshots: ['/images/projects/wtw_promo.png', '/images/projects/wtw_widgets.jpg', '/images/projects/wtw_settings.jpg'], desc: 'No iOS widget combined weather, date, and time in one place — so we built one. Concept to App Store in a single day, reaching #22 in Weather.', url: 'https://apps.apple.com/us/app/weather-time-widget/id6761026960', displayUrl: 'App Store' },
+  { year: '2025', cat: 'Utilities · iOS', name: 'Weather Time Widget', bg: '#4F46E5', textColor: '#fff', dividerColor: 'rgba(255,255,255,0.2)', linkColor: '#a5b4fc', showcase: 'phone' as const, screenshots: ['/images/projects/wtw_promo.png', '/images/projects/wtw_widgets.jpg', '/images/projects/wtw_settings.jpg'], desc: 'No iOS widget combined weather, date, and time in one place, so I built one. Concept to App Store in a single day, reaching #22 in Weather.', url: 'https://apps.apple.com/us/app/weather-time-widget/id6761026960', displayUrl: 'App Store' },
 ];
 
 const services = ['WEB APPS', 'MOBILE', 'AI / ML', 'API DESIGN', 'UI / UX', 'CLOUD', 'CONSULTING', 'PROTOTYPING'];
@@ -273,7 +273,7 @@ const HomePage: React.FC = () => (
         </motion.div>
         <motion.div className="nitro-hero__heading-wrap" initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.5, ease }}>
           <h1 className="nitro-hero__headline">
-            <span className="nitro-hero__headline-dim">we build apps from</span>
+            <span className="nitro-hero__headline-dim">I build apps from</span>
             <br /><span className="nitro-hero__headline-dim">the ground up with</span>
             <br /><TextRotator words={['clean design', 'real impact', 'fast shipping', 'fresh ideas']} interval={3000} />
           </h1>
@@ -298,10 +298,10 @@ const HomePage: React.FC = () => (
           <div className="nitro-label-line" />
         </div>
         <h3 className="nitro-about-text">
-          solo developer building apps that haven't been done before — sometimes independently, sometimes collaborating with engineers and people from different fields
+          solo developer building apps that haven't been done before. sometimes independently, sometimes collaborating with engineers and people from different fields
         </h3>
         <div className="nitro-about-cta">
-          <Link to="/projects" className="nitro-contact-btn">see our work <ArrowIcon className="nitro-contact-btn__icon" /></Link>
+          <Link to="/projects" className="nitro-contact-btn">see my work <ArrowIcon className="nitro-contact-btn__icon" /></Link>
         </div>
       </motion.div>
     </section>
@@ -312,7 +312,7 @@ const HomePage: React.FC = () => (
           <span className="nitro-label">.say hello</span>
           <div className="nitro-label-line" />
         </div>
-        <h2 className="nitro-contact-heading">shoot us a message about anything — feedback, ideas, or collaboration</h2>
+        <h2 className="nitro-contact-heading">shoot me a message about anything, feedback, ideas, or collaboration</h2>
         <div className="nitro-contact-btn-wrap">
           <Link to="/contact" className="nitro-contact-btn">contact <ArrowIcon className="nitro-contact-btn__icon" /></Link>
         </div>
@@ -327,16 +327,16 @@ const HomePage: React.FC = () => (
 const ProjectsPage: React.FC = () => (
   <div className="nitro-subpage">
     <motion.div className="nitro-subpage__header" initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, ease }}>
-      <h1 className="nitro-subpage__title">our work</h1>
+      <h1 className="nitro-subpage__title">my work</h1>
       <p className="nitro-subpage__desc">
-        we build apps that solve real problems — from wellness and aviation to AI and competitive programming.
+        I build apps that solve real problems, from wellness and aviation to AI and competitive programming.
       </p>
     </motion.div>
 
     {/* Services */}
     <motion.div className="nitro-clients" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.6, delay: 0.3, ease }}>
       <div className="nitro-label-row">
-        <span className="nitro-label">.what we do</span>
+        <span className="nitro-label">.what I do</span>
         <div className="nitro-label-line" />
       </div>
       <div className="nitro-clients__row">
@@ -369,9 +369,9 @@ const ProjectsPage: React.FC = () => (
         <span className="nitro-label">.say hello</span>
         <div className="nitro-label-line" />
       </div>
-      <h2 className="nitro-contact-heading">shoot us a message about anything — feedback, ideas, or collaboration</h2>
+      <h2 className="nitro-contact-heading">shoot me a message about anything, feedback, ideas, or collaboration</h2>
       <div className="nitro-contact-btn-wrap">
-        <Link to="/contact" className="nitro-contact-btn">contact us <ArrowIcon className="nitro-contact-btn__icon" /></Link>
+        <Link to="/contact" className="nitro-contact-btn">contact me <ArrowIcon className="nitro-contact-btn__icon" /></Link>
       </div>
     </motion.section>
   </div>
@@ -392,7 +392,7 @@ const ContactPage: React.FC = () => {
       <motion.div className="nitro-subpage__header" initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, ease }}>
         <h1 className="nitro-subpage__title">say hello</h1>
         <p className="nitro-subpage__desc">
-          drop us a line about anything — app feedback, collaboration, or whatever's on your mind.
+          drop me a line about anything, app feedback, collaboration, or whatever's on your mind.
         </p>
       </motion.div>
 
@@ -405,7 +405,7 @@ const ContactPage: React.FC = () => {
             <input type="email" placeholder="Email" value={form.email} onChange={(e) => setForm({ ...form, email: e.target.value })} required />
           </div>
           <div className="nitro-form-field nitro-form-field--textarea">
-            <textarea placeholder="Tell us about your project" rows={6} value={form.message} onChange={(e) => setForm({ ...form, message: e.target.value })} required />
+            <textarea placeholder="Tell me about your project" rows={6} value={form.message} onChange={(e) => setForm({ ...form, message: e.target.value })} required />
           </div>
           <button type="submit" className="nitro-form-submit">Send message</button>
         </motion.form>
