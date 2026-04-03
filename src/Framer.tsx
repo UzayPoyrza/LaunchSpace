@@ -236,7 +236,6 @@ const services = ['WEB APPS', 'MOBILE', 'AI / ML', 'API DESIGN', 'UI / UX', 'CLO
 const openUrl = (url: string) => window.open(url, '_blank', 'noopener,noreferrer');
 
 const ProjectCard: React.FC<{ p: typeof projects[0]; variant?: 'stack' | 'list' }> = ({ p, variant = 'stack' }) => {
-  const isTerminal = p.showcase === 'terminal';
   return (
     <div
       className={`nitro-project-card ${variant === 'list' ? 'nitro-project-card--list' : ''}`}
@@ -254,7 +253,7 @@ const ProjectCard: React.FC<{ p: typeof projects[0]; variant?: 'stack' | 'list' 
           <ArrowIcon className="nitro-project-card__arrow" />
         </div>
       </div>
-      <div className="nitro-project-card__image" onClick={isTerminal ? (e) => e.stopPropagation() : undefined}>
+      <div className="nitro-project-card__image">
         {p.showcase === 'phone' && <PhoneShowcase screenshots={p.screenshots} title={p.name} />}
         {p.showcase === 'web' && <WebShowcase screenshots={p.screenshots} title={p.name} url={p.url.replace('https://', '')} pages={(p as any).webPages} />}
         {p.showcase === 'terminal' && <TerminalShowcase title={p.name} castFile={(p as any).castFile || ''} />}
