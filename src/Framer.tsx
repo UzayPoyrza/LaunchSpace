@@ -220,14 +220,14 @@ const TerminalShowcase: React.FC<{ title: string; castFile: string }> = ({ title
 
 /* ─── data ─── */
 const projects = [
-  { year: '2024', cat: 'Wellness · iOS', name: 'Neurotype', bg: '#7C3AED', textColor: '#fff', dividerColor: 'rgba(255,255,255,0.2)', linkColor: '#c4b5fd', showcase: 'phone' as const, screenshots: ['/images/neurotype-screen.png', '/images/projects/neurotype_progress.png', '/images/projects/neurotype_session.png'], desc: 'A science-based meditation app designed to help neurodivergent people. Grounded in research, shaped by real needs.', url: 'https://neurotypeapp.com' },
-  { year: '2024', cat: 'Aviation · iOS', name: 'Volo', bg: '#0284C7', textColor: '#fff', dividerColor: 'rgba(255,255,255,0.2)', linkColor: '#7dd3fc', showcase: 'phone' as const, screenshots: ['/images/volo-screen.png', '/images/projects/volo_ops.png', '/images/projects/volo_nat.png'], desc: 'Your pilot companion & toolbox. Essential tools and resources for pilots, all in one app.', url: 'https://volopilot.app' },
-  { year: '2025', cat: 'AI · Web', name: 'Incraft', bg: '#EA580C', textColor: '#fff', dividerColor: 'rgba(255,255,255,0.2)', linkColor: '#fdba74', showcase: 'web' as const, screenshots: ['/images/incraft-screen.png', '/images/projects/incraft_create.png', '/images/projects/incraft_studio.png'], webPages: [{ label: 'Home', path: '' }, { label: 'Create', path: '/create' }, { label: 'Studio', path: '/studio' }], desc: 'Generate studio-quality guided meditation in one prompt. Natural voice narration, timed pauses, tailored scripts.', url: 'https://incraft.io' },
-  { year: '2025', cat: 'Education · CLI', name: 'Myro', bg: '#059669', textColor: '#fff', dividerColor: 'rgba(255,255,255,0.2)', linkColor: '#6ee7b7', showcase: 'terminal' as const, screenshots: [], castFile: '/recordings/myro.cast', desc: 'An adaptive competitive programming trainer. The shortest path to red.', url: 'https://myro.coach' },
-  { year: '2025', cat: 'Utilities · iOS', name: 'Weather Time Widget', bg: '#4F46E5', textColor: '#fff', dividerColor: 'rgba(255,255,255,0.2)', linkColor: '#a5b4fc', showcase: 'phone' as const, screenshots: ['/images/projects/wtw_promo.png', '/images/projects/wtw_widgets.jpg', '/images/projects/wtw_settings.jpg'], desc: 'No iOS widget combined weather, date, and time in one place, so I built one. Concept to App Store in a single day, reaching #22 in Weather.', url: 'https://apps.apple.com/us/app/weather-time-widget/id6761026960', displayUrl: 'App Store' },
+  { year: '2026', cat: 'Wellness · iOS', tags: ['MOBILE', 'WELLNESS'], name: 'Neurotype', bg: '#7C3AED', textColor: '#fff', dividerColor: 'rgba(255,255,255,0.2)', linkColor: '#c4b5fd', showcase: 'phone' as const, screenshots: ['/images/neurotype-screen.png', '/images/projects/neurotype_progress.png', '/images/projects/neurotype_session.png'], desc: 'A science-based meditation app designed to help neurodivergent people. Grounded in research, shaped by real needs.', url: 'https://neurotypeapp.com' },
+  { year: '2026', cat: 'Aviation · iOS', tags: ['MOBILE', 'AVIATION'], name: 'Volo', bg: '#0284C7', textColor: '#fff', dividerColor: 'rgba(255,255,255,0.2)', linkColor: '#7dd3fc', showcase: 'phone' as const, screenshots: ['/images/volo-screen.png', '/images/projects/volo_ops.png', '/images/projects/volo_nat.png'], desc: 'Your pilot companion & toolbox. Essential tools and resources for pilots, all in one app.', url: 'https://volopilot.app' },
+  { year: '2026', cat: 'AI · Web', tags: ['WEB', 'AI'], name: 'Incraft', bg: '#EA580C', textColor: '#fff', dividerColor: 'rgba(255,255,255,0.2)', linkColor: '#fdba74', showcase: 'web' as const, screenshots: ['/images/incraft-screen.png', '/images/projects/incraft_create.png', '/images/projects/incraft_studio.png'], webPages: [{ label: 'Home', path: '' }, { label: 'Create', path: '/create' }, { label: 'Studio', path: '/studio' }], desc: 'Generate studio-quality guided meditation in one prompt. Natural voice narration, timed pauses, tailored scripts.', url: 'https://incraft.io' },
+  { year: '2026', cat: 'Education · CLI', tags: ['CLI', 'EDUCATION'], name: 'Myro', bg: '#059669', textColor: '#fff', dividerColor: 'rgba(255,255,255,0.2)', linkColor: '#6ee7b7', showcase: 'terminal' as const, screenshots: [], castFile: '/recordings/myro.cast', desc: 'An adaptive competitive programming trainer. The shortest path to red.', url: 'https://myro.coach' },
+  { year: '2026', cat: 'Utilities · iOS', tags: ['MOBILE', 'UTILITIES'], name: 'Weather Time Widget', bg: '#4F46E5', textColor: '#fff', dividerColor: 'rgba(255,255,255,0.2)', linkColor: '#a5b4fc', showcase: 'phone' as const, screenshots: ['/images/projects/wtw_promo.png', '/images/projects/wtw_widgets.jpg', '/images/projects/wtw_settings.jpg'], desc: 'No iOS widget combined weather, date, and time in one place, so I built one. Concept to App Store in a single day, reaching #22 in Weather.', url: 'https://apps.apple.com/us/app/weather-time-widget/id6761026960', displayUrl: 'App Store' },
 ];
 
-const services = ['WEB APPS', 'MOBILE', 'AI / ML', 'API DESIGN', 'UI / UX', 'CLOUD', 'CONSULTING', 'PROTOTYPING'];
+const filters = ['ALL', ...Array.from(new Set(projects.flatMap((p) => p.tags)))];
 
 /* ─── Project Card ─── */
 const openUrl = (url: string) => window.open(url, '_blank', 'noopener,noreferrer');
@@ -324,7 +324,11 @@ const HomePage: React.FC = () => (
 /* ═══════════════════════════════════════
    PROJECTS PAGE
    ═══════════════════════════════════════ */
-const ProjectsPage: React.FC = () => (
+const ProjectsPage: React.FC = () => {
+  const [activeFilter, setActiveFilter] = useState('ALL');
+  const filtered = activeFilter === 'ALL' ? projects : projects.filter((p) => p.tags.includes(activeFilter));
+
+  return (
   <div className="nitro-subpage">
     <motion.div className="nitro-subpage__header" initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, ease }}>
       <h1 className="nitro-subpage__title">my work</h1>
@@ -333,35 +337,42 @@ const ProjectsPage: React.FC = () => (
       </p>
     </motion.div>
 
-    {/* Services */}
+    {/* Filters */}
     <motion.div className="nitro-clients" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.6, delay: 0.3, ease }}>
       <div className="nitro-label-row">
-        <span className="nitro-label">.what I do</span>
+        <span className="nitro-label">.filter by</span>
         <div className="nitro-label-line" />
       </div>
       <div className="nitro-clients__row">
-        {services.map((s) => (
-          <span key={s} className="nitro-clients__logo">{s}</span>
+        {filters.map((f) => (
+          <button key={f} className={`nitro-clients__logo${activeFilter === f ? ' nitro-clients__logo--active' : ''}`} onClick={() => setActiveFilter(f)}>{f}</button>
         ))}
       </div>
     </motion.div>
 
     {/* Project cards with descriptions */}
+    <AnimatePresence mode="popLayout">
     <div className="nitro-projects-detailed">
-      {projects.map((p, i) => (
-        <motion.div key={p.name} className="nitro-project-detailed" style={{ zIndex: i + 1 }} initial={{ opacity: 0, y: 60 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: '-60px' }} transition={{ duration: 0.6, delay: i * 0.08, ease }}>
+      {filtered.map((p, i) => (
+        <motion.div key={p.name} className="nitro-project-detailed" style={{ zIndex: i + 1 }} layout initial={{ opacity: 0, y: 60 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -30 }} viewport={{ once: true, margin: '-60px' }} transition={{ duration: 0.4, delay: i * 0.06, ease }}>
           <div className="nitro-project-detailed__card">
             <ProjectCard p={p} variant="list" />
           </div>
           <div className="nitro-project-detailed__info" style={{ color: p.bg }}>
             <p className="nitro-project-detailed__desc">{p.desc}</p>
-            <a href={p.url} target="_blank" rel="noopener noreferrer" className="nitro-project-detailed__link" style={{ color: p.bg }}>
-              visit site <ArrowIcon className="nitro-project-detailed__link-icon" />
-            </a>
+            <div className="nitro-project-detailed__links">
+              <a href={p.url} target="_blank" rel="noopener noreferrer" className="nitro-project-detailed__link" style={{ color: p.bg }}>
+                visit site <ArrowIcon className="nitro-project-detailed__link-icon" />
+              </a>
+              <a href={`https://uzay.dev/projects/${p.name.toLowerCase().replace(/\s+/g, '-')}`} target="_blank" rel="noopener noreferrer" className="nitro-project-detailed__link" style={{ color: p.bg }}>
+                how it's built <ArrowIcon className="nitro-project-detailed__link-icon" />
+              </a>
+            </div>
           </div>
         </motion.div>
       ))}
     </div>
+    </AnimatePresence>
 
     {/* Bottom CTA */}
     <motion.section className="nitro-section nitro-section--contact" initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.8, ease }}>
@@ -375,7 +386,8 @@ const ProjectsPage: React.FC = () => (
       </div>
     </motion.section>
   </div>
-);
+  );
+};
 
 /* ═══════════════════════════════════════
    CONTACT PAGE
